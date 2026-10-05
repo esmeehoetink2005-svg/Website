@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dubbelgoed | Esmée Hoetink, CHRO</title>
-  <meta name="description" content="Acht ronden als CHRO van Dubbelgoed in de business game van de T-Challenge: wat ik koos, wat het opleverde en wat ik meeneem.">
+  <title>Dubbelgoed CHRO-portfolio</title>
+  <meta name="description" content="Acht ronden als CHRO van Dubbelgoed in de T-Challenge: wat ik koos, wat het opleverde en wat ik meeneem.">
   <link rel="preload" href="assets/fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <a class="skip" href="#main">Naar de inhoud</a>
@@ -16,10 +17,11 @@
     <a href="#top" class="nav__logo"><img src="assets/img/logo-white.webp" alt="Dubbelgoed" width="146" height="29"></a>
     <nav aria-label="Hoofdmenu">
       <ul>
-        <li><a href="#strategie">Strategie</a></li>
-        <li><a href="#kpi">KPI's</a></li>
+        <li class="nav__opt"><a href="#strategie">Strategie</a></li>
         <li><a href="#rondes">Rondes</a></li>
         <li><a href="#lessen">Lessen</a></li>
+        <li class="nav__opt"><a href="#waarde">Waarde</a></li>
+        <li><a href="#leerdoel">Leerdoel</a></li>
       </ul>
     </nav>
   </header>
@@ -27,6 +29,7 @@
   <main id="main">
     <!-- HERO -->
     <section class="hero" id="top">
+      <canvas class="hero__bubbles" aria-hidden="true"></canvas>
       <div class="hero__circle" aria-hidden="true"></div>
       <div class="hero__text">
         <p class="hero__who">Esmée Hoetink, CHRO van Dubbelgoed</p>
@@ -34,62 +37,84 @@
           <span class="line"><span>Mensen zijn</span></span>
           <span class="line"><span>geen kostenpost.</span></span>
         </h1>
-        <p class="hero__lead">Acht ronden business game, drie dagen, een half uur per besluit. Dit is wat ik als CHRO heb gekozen, wat het opleverde en wat ik meeneem.</p>
+        <p class="hero__lead">Acht ronden T-Challenge, drie speeldagen, ongeveer een uur per ronde. Dit is wat ik als CHRO heb gekozen, wat het opleverde en wat ik meeneem.</p>
         <a class="btn" href="#rondes">Bekijk de acht ronden</a>
       </div>
       <div class="hero__visual" aria-hidden="true">
-        <img class="hero__splash" src="assets/img/splash.webp" alt="" width="1100" height="923">
-        <img class="hero__can" src="assets/img/can-green-tea.webp" alt="" width="351" height="880">
-        <img class="hero__leaf hero__leaf--a" src="assets/img/mint-leaves.webp" alt="" width="600" height="245">
-        <img class="hero__mint" src="assets/img/mint-sprig.webp" alt="" width="700" height="565">
+        <!-- Zet de Higgsfield-video in assets/video/ als blikje.mp4 (en eventueel blikje.webm); tot die er is, blijft de compositie hieronder staan. -->
+        <video class="hero__video" muted playsinline preload="auto" poster="assets/img/hero-poster.webp">
+          <source src="assets/video/blikje.webm" type="video/webm">
+          <source src="assets/video/blikje.mp4" type="video/mp4">
+        </video>
+        <div class="hero__comp">
+          <div class="px" data-speed="-0.06"><img class="hero__splash" src="assets/img/splash.webp" alt="" width="1100" height="923"></div>
+          <div class="px hero__can-wrap" data-speed="0.12" data-rotate="10"><img class="hero__can" src="assets/img/can-green-tea.webp" alt="" width="351" height="880"></div>
+          <div class="px" data-speed="0.32"><img class="hero__leaf hero__leaf--a" src="assets/img/mint-leaves.webp" alt="" width="600" height="245"></div>
+          <div class="px" data-speed="0.2"><img class="hero__mint" src="assets/img/mint-sprig.webp" alt="" width="700" height="565"></div>
+        </div>
+      </div>
+      <svg class="wave wave--bottom" viewBox="0 0 2880 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C 240 10 480 10 720 60 S 1200 110 1440 60 S 1920 10 2160 60 S 2640 110 2880 60 V120 H0 Z"/></svg>
+    </section>
+
+    <!-- DE GAME -->
+    <section class="intro">
+      <div class="wrap intro__wrap">
+        <p class="intro__text reveal">De T-Challenge is een businessgame waarin je als managementteam een eigen bedrijf runt. Ons bedrijf Dubbelgoed maakt ice tea en sportdrank. We speelden in pool 5 tegen Sipp, Thirstea en VOLT, en landelijk deden twintig teams mee.</p>
+        <p class="intro__role reveal">Als CHRO was ik verantwoordelijk voor de arbeidsvoorwaarden, salarissen, het opleidingsbudget, werving en ontslag, en samen met productie voor het aantal ploegen. Mijn KPI was medewerkersloyaliteit.</p>
       </div>
     </section>
 
     <!-- STRATEGIE -->
     <section class="strategy" id="strategie">
       <div class="wrap">
-        <h2 class="display">Taste good.<br>Better tomorrow.</h2>
-        <div class="strategy__grid">
+        <h2 class="display split">Taste good.<br>Better tomorrow.</h2>
+        <div class="strategy__grid stagger">
           <article class="panel">
             <h3>Missie</h3>
-            <p>Dubbelgoed wil kwalitatieve en verantwoorde dranken aanbieden die goed zijn voor de consument en met aandacht voor mens en milieu worden geproduceerd.</p>
+            <p class="panel__quote">Wij maken dranken die goed zijn voor de mensen die ze drinken én voor de mensen die ze maken.</p>
           </article>
           <article class="panel">
             <h3>Visie</h3>
-            <p>Uitgroeien tot een sterk en herkenbaar drankenmerk dat kwaliteit en duurzaamheid combineert met gezonde groei: tevreden en loyale klanten, een groter marktaandeel en een financieel gezond bedrijf.</p>
+            <p class="panel__quote">Na acht ronden is Dubbelgoed de referentie voor eerlijk drinken in onze markt: het merk met de meest tevreden klanten en de meest loyale medewerkers, en daardóór, niet ondanks dat, het meest rendabele bedrijf van de pool.</p>
           </article>
           <article class="panel panel--mine">
-            <h3>Mijn vertaling als CHRO</h3>
-            <p>Een gezond product dat gemaakt wordt door onderbetaalde mensen in een ongezonde ploegendienst is geen gezond product. Personeel is bij ons onderdeel van de belofte zelf.</p>
+            <h3>Wat dat betekent voor HR</h3>
+            <p>Een gezond product dat door onderbetaalde mensen in een ongezonde ploegendienst wordt gemaakt, is geen gezond product. Personeel was bij ons daarom vanaf het begin onderdeel van de propositie, en geen kostenpost.</p>
             <p class="panel__proof">In de testgame kostte 7% ziekteverzuim ons 1.026.000 flesjes productiecapaciteit, ongeveer € 370.000 marge per ronde.</p>
           </article>
         </div>
-        <p class="strategy__focus">We kozen voor kwaliteit en duurzaamheid in plaats van de laagste prijs, voor de focusgroepen Steady, Authentic en New world (ice tea) en Steady, Authentic en Crafty world (sportdrank).</p>
+        <p class="strategy__focus reveal">Onze strategie: winnen met het eerlijkste product uit de meest fatsoenlijke fabriek, niet met de laagste prijs. Ongeveer € 1,5 miljoen van onze kosten staat vast, dus wie zijn capaciteit vult, verdient meer per fles. Verzuim is voor ons daarom geen HR-cijfer, maar productiecapaciteit.</p>
         <div class="cans" aria-hidden="true">
-          <img src="assets/img/can-mango.webp" alt="" width="207" height="543">
-          <img src="assets/img/can-green-tea.webp" alt="" width="351" height="880">
-          <img src="assets/img/can-multivitamine.webp" alt="" width="208" height="543">
+          <div class="px" data-speed="0.1" data-rotate="-6"><img class="float" src="assets/img/can-mango.webp" alt="" width="207" height="543" loading="lazy"></div>
+          <div class="px" data-speed="-0.06"><img class="float float--b" src="assets/img/can-green-tea.webp" alt="" width="351" height="880" loading="lazy"></div>
+          <div class="px" data-speed="0.14" data-rotate="6"><img class="float float--c" src="assets/img/can-multivitamine.webp" alt="" width="208" height="543" loading="lazy"></div>
         </div>
       </div>
     </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Taste good. Better tomorrow.</span><span class="o">Goed voor wie drinkt.</span><span>Goed voor wie maakt.</span><span class="o">Taste good. Better tomorrow.</span><span>Goed voor wie drinkt.</span><span class="o">Goed voor wie maakt.</span>
+      </div>
+    </div>
 
     <!-- KPI -->
     <section class="kpi" id="kpi">
       <div class="wrap kpi__wrap">
         <div class="kpi__intro">
-          <h2 class="display display--dark">Acht KPI's. Eén is van mij.</h2>
-          <p>Alle KPI's zijn relatief aan de concurrentie en beginnen voor iedereen op 5,50. Medewerkersloyaliteit telt voor 15% en is het enige cijfer waar ik direct op word afgerekend.</p>
-          <p>Indirect raak ik veel meer: via loonkosten de rentabiliteit (20%) en via ziekteverzuim de productiecapaciteit, en daarmee omzet en marktaandeel (samen 30%).</p>
+          <h2 class="display display--dark split">Acht KPI's. Eén is van mij.</h2>
+          <p class="reveal">Alle KPI's zijn relatief aan de concurrentie en beginnen voor iedereen op 5,50. Medewerkersloyaliteit telt voor 15% en is het enige cijfer waar ik direct op word afgerekend.</p>
+          <p class="reveal">Indirect raak ik veel meer: via de loonkosten de rentabiliteit (RTV, 20%) en via het ziekteverzuim de productiecapaciteit, en daarmee omzet en marktaandeel (samen 30%).</p>
         </div>
-        <figure class="weights">
+        <figure class="weights reveal">
           <figcaption>Weging van de totaalscore</figcaption>
           <ul class="weights__list" id="weights"></ul>
         </figure>
       </div>
 
       <div class="wrap">
-        <h3 class="sub">Mijn meetlat, vastgesteld vóór ronde 1</h3>
-        <div class="ruler">
+        <h3 class="sub">Mijn doelen, vastgesteld vóór ronde 1</h3>
+        <div class="ruler stagger">
           <div class="ruler__item"><h4>Meest loyale medewerkers van de pool</h4><p><span>Middel</span> primaire, secundaire en tertiaire arbeidsvoorwaarden</p><p><span>Meting</span> loyaliteitsscore</p></div>
           <div class="ruler__item"><h4>Kennisniveau op peil</h4><p><span>Middel</span> opleidingsbudget</p><p><span>Meting</span> medewerkerskwaliteit (25–100)</p></div>
           <div class="ruler__item"><h4>Werkdruk beheersbaar</h4><p><span>Middel</span> bezetting en ploegenindeling</p><p><span>Meting</span> ziekteverzuim en werkdruk</p></div>
@@ -100,9 +125,10 @@
 
     <!-- RONDES -->
     <section class="rounds" id="rondes">
+      <svg class="wave wave--top" viewBox="0 0 2880 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C 240 110 480 110 720 60 S 1200 10 1440 60 S 1920 110 2160 60 S 2640 10 2880 60 V0 H0 Z"/></svg>
       <div class="wrap">
-        <h2 class="display">Acht ronden</h2>
-        <p class="rounds__lead">Per ronde: wat ik koos, wat eruit kwam en wat ik bijstelde. Bij elk besluit staat of het uit ons plan kwam of dat ik het in het moment nam.</p>
+        <h2 class="display split">Acht ronden</h2>
+        <p class="rounds__lead reveal">Per ronde: wat ik koos, wat eruit kwam en wat ik bijstelde. Bij elk besluit staat of het uit ons plan kwam of dat ik het in het moment nam.</p>
       </div>
 
       <div class="wrap rounds__layout">
@@ -141,16 +167,38 @@
       </div>
     </section>
 
+    <!-- LESSEN -->
+    <section class="lessons" id="lessen">
+      <div class="wrap">
+        <h2 class="display split">Wat ik meeneem</h2>
+        <p class="lessons__lead reveal">Mijn loyaliteit ging van 52,4 naar 67,5 en mijn tevredenheid van 54,5 naar 75,2. Toch eindig ik onder mijn startscore van 5,50, op plek 16 van 20, terwijl ik na ronde 1 nog vierde stond.</p>
+        <div class="lessons__list stagger">
+          <article class="lesson">
+            <h3>Stilstaan is achteruitgaan</h3>
+            <p>Een relatieve KPI meet of je harder vooruitgaat dan de rest. In ronde 6 steeg mijn loyaliteit een half punt en zakte mijn score 0,59. Salaris, pensioen, winstdeling en pakketten staan in het marktonderzoek dat iedereen koopt, dus die werden een basis in plaats van een voorsprong. Opleiding, werkdruk en verzuim kan de concurrentie niet zien.</p>
+          </article>
+          <article class="lesson">
+            <h3>Werkdruk werkt twee kanten op</h3>
+            <p>Na de 105% uit ronde 2 wilde ik vooral voorkomen dat mensen opbrandden. Maar een half draaiende fabriek kost net zo hard loyaliteit. In ronde 5 ging de bezetting van 37% naar 61% en sprong mijn loyaliteit twaalf punten. In ronde 6 zakte de bezetting naar 39% en ging er 4,5 punt tevredenheid af.</p>
+          </article>
+          <article class="lesson">
+            <h3>Een vervelend besluit kun je zachter maken</h3>
+            <p>Snijd je in mensen, investeer dan in wie blijft. Dat is het enige wat ik binnen het spel echt heb aangetoond, en daar ben ik trots op. Ronde 4 en ronde 8 hieronder laten het zien.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- R4 vs R8 -->
     <section class="compare">
       <div class="wrap">
-        <h2 class="display display--dark">Zelfde ingreep.<br>Zes keer minder schade.</h2>
-        <p class="compare__lead">In ronde 4 en ronde 8 moesten er twaalf mensen uit. Het verschil zat in wat ik ernaast deed.</p>
-        <div class="compare__grid">
+        <h2 class="display display--dark split">Zelfde ingreep.<br>Zes keer minder schade.</h2>
+        <p class="compare__lead reveal">In ronde 4 en ronde 8 moesten er twaalf mensen uit. Het verschil zat in wat ik ernaast deed.</p>
+        <div class="compare__grid stagger">
           <article class="vs vs--bad">
             <p class="vs__round">Ronde 4</p>
             <p class="vs__what">Opleiding en loonstijging omlaag</p>
-            <p class="vs__num">−7,2</p>
+            <p class="vs__num"><span class="count" data-to="-7.2" data-dec="1">−7,2</span></p>
             <p class="vs__label">loyaliteit</p>
             <dl>
               <div><dt>Tevredenheid</dt><dd>+0,6</dd></div>
@@ -160,7 +208,7 @@
           <article class="vs vs--good">
             <p class="vs__round">Ronde 8</p>
             <p class="vs__what">Salaris +6,5% en opleiding verdubbeld</p>
-            <p class="vs__num">−1,1</p>
+            <p class="vs__num"><span class="count" data-to="-1.1" data-dec="1">−1,1</span></p>
             <p class="vs__label">loyaliteit</p>
             <dl>
               <div><dt>Tevredenheid</dt><dd>+2,3 naar 75,2</dd></div>
@@ -168,34 +216,93 @@
             </dl>
           </article>
         </div>
-        <img class="compare__ice" src="assets/img/ice.webp" alt="" width="500" height="579" aria-hidden="true" loading="lazy">
+        <div class="px compare__ice-wrap" data-speed="0.25" data-rotate="12" aria-hidden="true"><img class="compare__ice" src="assets/img/ice.webp" alt="" width="500" height="579" loading="lazy"></div>
       </div>
     </section>
 
-    <!-- LESSEN -->
-    <section class="lessons" id="lessen">
+    <!-- WAARDE -->
+    <section class="value" id="waarde">
       <div class="wrap">
-        <h2 class="display">Wat ik meeneem</h2>
-        <p class="lessons__lead">Mijn loyaliteit ging van 52,4 naar 67,5 en mijn tevredenheid van 54,5 naar 75,2. Toch eindig ik onder mijn startscore, op plek 16 van 20.</p>
-        <div class="lessons__list">
-          <article class="lesson">
-            <h3>Stilstaan is achteruitgaan</h3>
-            <p>Een relatieve KPI meet niet of jij vooruitgaat, maar of je harder vooruitgaat dan de rest. In ronde 6 steeg mijn loyaliteit een half punt en zakte mijn score 0,59.</p>
+        <h2 class="display display--dark split">Waarde voor stakeholders</h2>
+        <p class="value__lead reveal">Medewerkers horen bij de partijen met veel macht én veel belang: hun verzuim is direct productiecapaciteit. Zo staat het na ronde 8 ten opzichte van de start.</p>
+        <div class="value__grid stagger">
+          <article class="vcard">
+            <p class="vcard__dim">People</p>
+            <h3>Medewerkers</h3>
+            <dl class="vcard__rows">
+              <div><dt>Loyaliteit</dt><dd>52,4 <span aria-hidden="true">→</span><span class="sr-only">naar</span> <strong>67,5</strong></dd></div>
+              <div><dt>Tevredenheid</dt><dd>54,5 <span aria-hidden="true">→</span><span class="sr-only">naar</span> <strong>75,2</strong></dd></div>
+            </dl>
+            <p>De duidelijkste winst: loyaliteit +15,1 en tevredenheid +20,7 punten.</p>
           </article>
-          <article class="lesson">
-            <h3>Wat zichtbaar is, wordt gekopieerd</h3>
-            <p>Salaris, pensioen, winstdeling en pakketten staan in het marktonderzoek dat iedereen koopt. Mijn voorsprong in de pakketten werd binnen twee ronden de basis van de hele pool.</p>
+          <article class="vcard">
+            <p class="vcard__dim">Profit</p>
+            <h3>Organisatie</h3>
+            <dl class="vcard__rows">
+              <div><dt>Ziekteverzuim</dt><dd>4,0% <span aria-hidden="true">→</span><span class="sr-only">naar</span> <strong>4,0%</strong></dd></div>
+              <div><dt>Personeelskosten per kwartaal</dt><dd>€ 755k <span aria-hidden="true">→</span><span class="sr-only">naar</span> <strong>€ 1.517k</strong></dd></div>
+            </dl>
+            <p>Verzuim bleef gelijk terwijl het bedrijf opschaalde; elk procentpunt kost zo'n 150.000 flesjes. De afruil: de personeelskosten verdubbelden, dus een deel van de waarde is betaald met marge.</p>
           </article>
-          <article class="lesson">
-            <h3>Werkdruk werkt twee kanten op</h3>
-            <p>Na de 105% uit ronde 2 wilde ik vooral voorkomen dat mensen opbrandden. Maar een half draaiende fabriek kost net zo hard loyaliteit: van 37% naar 61% bezetting gaf twaalf punten erbij.</p>
-          </article>
-          <article class="lesson">
-            <h3>Een vervelend besluit kun je zachter maken</h3>
-            <p>Snijd je in mensen, investeer dan in wie blijft. Dat is het enige dat ik binnen het spel echt heb bewezen, en daar ben ik trots op.</p>
+          <article class="vcard vcard--quiet">
+            <p class="vcard__dim">Klant en Planet</p>
+            <h3>Indirect</h3>
+            <p>De arbeidsvoorwaarden zijn het bewijs onder onze boodschap: een eerlijk product komt uit een fatsoenlijke fabriek. De klantloyaliteit verdubbelde ruim, maar dat is niet aan HR alleen toe te rekenen. Op Planet had mijn beleid geen meetbaar effect; de MVO-score komt uit inkoop, productie en financiering.</p>
           </article>
         </div>
-        <p class="lessons__team">En als team: juist wanneer het slecht gaat moet je planmatiger werken, en eerst vaststellen wie welk besluit neemt en wie controleert.</p>
+        <p class="value__note reveal">In absolute zin is er duidelijk waarde gecreëerd. Relatief aan de pool daalde mijn score van 5,50 naar 4,95, omdat de concurrentie sneller verbeterde.</p>
+      </div>
+    </section>
+
+    <!-- AANBEVELINGEN -->
+    <section class="advice">
+      <div class="wrap">
+        <h2 class="display split">Drie aanbevelingen</h2>
+        <p class="advice__lead reveal">Voor een volgende CHRO in de T-Challenge, en vertaald naar een HR-afdeling in een echt productiebedrijf.</p>
+        <ol class="advice__list stagger">
+          <li>
+            <h3>Stuur op bezetting, niet alleen op werkdruk</h3>
+            <p>Te veel én te weinig werk kost loyaliteit (ronde 2, 5 en 6). Bepaal het aantal ploegen altijd samen met productie, op basis van de verwachte bezetting.</p>
+            <p class="advice__real"><strong>In de praktijk</strong> Koppel de personeelsplanning aan de productieplanning, zodat HR niet pas achteraf reageert op een ploegenwissel.</p>
+          </li>
+          <li>
+            <h3>Investeer bij krimp in wie blijft</h3>
+            <p>Twaalf ontslagen kostten in ronde 4 7,2 punten loyaliteit en in ronde 8 maar 1,1, omdat ik toen tegelijk investeerde in salaris en opleiding.</p>
+            <p class="advice__real"><strong>In de praktijk</strong> Leg bij een reorganisatie vooraf het budget vast voor ontwikkeling en beloning van wie blijft, zodat het niet als eerste sneuvelt.</p>
+          </li>
+          <li>
+            <h3>Spreek onder druk af wie beslist en wie controleert</h3>
+            <p>De zwaarste ronden (4 en 6) waren die waarin we in het moment beslisten. Na ronde 6 toetsten we elk besluit eerst aan de beslisregels, en ronde 7 werd de sterkste ronde van het spel.</p>
+            <p class="advice__real"><strong>In de praktijk</strong> Hoe groter de druk, hoe belangrijker het is om terug te vallen op een vooraf afgesproken kader in plaats van op gevoel.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- LEERDOEL -->
+    <section class="goal" id="leerdoel">
+      <div class="wrap">
+        <h2 class="display split">Mijn leerdoel</h2>
+        <div class="goal__intro">
+          <p class="goal__pit reveal"><strong>Mijn valkuil</strong> Onder tijdsdruk een beslissing nemen omdat die logisch vóélt, zonder te checken of die past bij wat we als team hebben afgesproken.</p>
+          <p class="goal__aim reveal"><strong>Mijn doel</strong> Per ronde kunnen beredeneren of een besluit uit ons plan kwam of dat ik het in het moment nam, en waarom.</p>
+        </div>
+
+        <ol class="goal__rounds stagger" aria-label="Herkomst van mijn besluiten per ronde">
+          <li class="gr gr--plan"><span class="gr__n">R1</span><span class="gr__src">Plan</span></li>
+          <li class="gr gr--mix"><span class="gr__n">R2</span><span class="gr__src">Visie</span></li>
+          <li class="gr gr--plan"><span class="gr__n">R3</span><span class="gr__src">Plan</span></li>
+          <li class="gr gr--moment"><span class="gr__n">R4</span><span class="gr__src">Moment</span><span class="gr__kpi">KPI −0,57</span></li>
+          <li class="gr gr--plan"><span class="gr__n">R5</span><span class="gr__src">Plan</span></li>
+          <li class="gr gr--moment"><span class="gr__n">R6</span><span class="gr__src">Moment</span><span class="gr__kpi">KPI −0,59</span></li>
+          <li class="gr gr--plan"><span class="gr__n">R7</span><span class="gr__src">Plan</span></li>
+          <li class="gr gr--plan"><span class="gr__n">R8</span><span class="gr__src">Plan</span></li>
+        </ol>
+
+        <div class="goal__body">
+          <p class="reveal">In de twee ronden waarin ik in het moment besliste, zakte mijn KPI het hardst. In ronde 4 ging ik mee in een bezuiniging zonder spelregel 9 in te brengen, die ik als CHRO had moeten bewaken. In ronde 6 reageerde ik op de chaos in plaats van op mijn plan. Daarmee zag ik mijn valkuil in de praktijk terug. Na ronde 6 werkte ik weer planmatig, met een vooraf opgeschreven plan voor ronde 7 en 8.</p>
+          <p class="reveal">Wat ik niet heb gedaan, is gericht feedback vragen op mijn eigen beslisgedrag. Daarom vraag ik voortaan bij belangrijke beslismomenten om feedback en verwerk ik die meteen in mijn growchart.</p>
+        </div>
       </div>
     </section>
   </main>
@@ -206,18 +313,19 @@
         <img src="assets/img/esmee.webp" alt="Portret van Esmée Hoetink" width="300" height="360" loading="lazy">
         <div>
           <p class="footer__name">Esmée Hoetink</p>
-          <p>CHRO van Dubbelgoed, Commerciële Economie</p>
-          <p class="footer__note">Bewijsstuk bij de eindkwalificatie Waarde creëren, onderdeel procesmatig werken.</p>
+          <p>CHRO van Dubbelgoed</p>
+          <p class="footer__note">Logboek T-Challenge<br>Commerciële Economie, afstudeerrichting Sales<br>HAN University of Applied Sciences, oktober 2026</p>
         </div>
       </div>
       <div class="footer__team">
-        <p class="footer__label">Het board</p>
+        <p class="footer__label">De directie</p>
         <ul>
-          <li>Max van der Weijden, CEO</li>
-          <li>Huyb Wentink, CFO</li>
-          <li>Daniël van den Brink, COO</li>
-          <li>Raphaël Jacobs en Maud Kemperman, CCO</li>
-          <li>Esmée Hoetink, CHRO</li>
+          <li><strong>CEO</strong> Max van der Weijden</li>
+          <li><strong>CFO</strong> Huyb Wentink</li>
+          <li><strong>COO</strong> Daniël van den Brink</li>
+          <li><strong>CCO sales</strong> Raphaël Jacobs</li>
+          <li><strong>CCO marketing en internationaal</strong> Maud Kemperman</li>
+          <li><strong>CHRO</strong> Esmée Hoetink</li>
         </ul>
       </div>
       <img class="footer__logo" src="assets/img/logo-white.webp" alt="Dubbelgoed" width="586" height="118" loading="lazy">

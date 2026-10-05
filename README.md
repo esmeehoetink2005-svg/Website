@@ -13,6 +13,10 @@ Open `index.html` in je browser. Er hoeft niets geïnstalleerd te worden.
 3. Kies bij *Source* **Deploy from a branch**, branch `main`, map `/ (root)`, en klik **Save**.
 4. Na een minuut staat de site op `https://<gebruikersnaam>.github.io/<repo>/`.
 
+## Video van het blikje
+
+Zet een video als `assets/video/blikje.mp4` neer en de opening van de site gebruikt hem automatisch. De prompt en het startbeeld voor Higgsfield staan in `brand/video/`.
+
 ## Structuur
 
 - `index.html`: de pagina
