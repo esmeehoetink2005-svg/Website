@@ -24,3 +24,4 @@ Zet een video als `assets/video/blikje.mp4` neer en de opening van de site gebru
 - `assets/js/main.js`: cijfers per ronde, teksten van de rondes en de grafiek
 - `assets/img/`, `assets/fonts/`: beeld en lettertypes (Anton en Poppins, OFL-licentie)
 - `brand/`: originele merkbestanden en `BRAND.md`
+- `tools/build-deel.py`: maakt `deel/`, de hele site in één bestand om te delen

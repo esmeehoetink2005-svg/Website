@@ -402,6 +402,13 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
   .goal__rounds { grid-template-columns: repeat(4, 1fr); }
 }
 
+/* ---------- Bronnen ---------- */
+.sources { background: var(--forest-deep); padding-block: clamp(56px, 8vw, 96px); border-top: 1px solid rgba(190, 255, 223, .12); }
+.sources__title { font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 700; color: var(--white); }
+.sources__list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; max-width: 80ch; }
+.sources__list li { padding-left: 2.5em; text-indent: -2.5em; color: var(--text-on-dark); font-size: .95rem; line-height: 1.6; overflow-wrap: anywhere; }
+.sources__list a { color: var(--mint-pale); }
+
 /* ---------- Footer ---------- */
 .footer { background: var(--forest); padding-block: 72px 48px; }
 .footer__wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
