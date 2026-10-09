@@ -420,6 +420,89 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
 .foot { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--mist); padding: clamp(28px, 5vw, 56px); }
 .foot .brand { color: var(--bone); font-size: clamp(44px, 7vw, 96px); display: block; margin-bottom: 18px; line-height: 1; }
 
+
+/* ---------- illustrations & diagrams ---------- */
+.fig { margin: 0; display: grid; gap: 14px; }
+.fig figcaption { font-size: 13.5px; color: var(--paper-mute); max-width: 60ch; }
+.panel .fig figcaption { color: var(--mist); }
+.ill { display: block; width: 100%; height: auto; overflow: visible; color: var(--paper-ink); }
+.ill.on-dark { color: var(--bone); }
+.ill .s { fill: none; stroke: currentColor; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
+.ill .s.acc { stroke: var(--brass); }
+.ill .s.dash { stroke-dasharray: 4 5; }
+.ill .mute { opacity: .45; }
+.ill .accf { fill: var(--brass); }
+.ill .inkf { fill: currentColor; }
+.ill .paperf { fill: var(--paper); }
+.ill .inkbg { fill: var(--ink); }
+.ill text { font-family: var(--body); font-size: 11.5px; fill: currentColor; }
+.ill text.d { font-family: var(--display); font-style: italic; font-size: 22px; }
+.ill text.acc { fill: var(--brass); }
+.ill text.m { fill: var(--paper-mute); }
+.ill.on-dark text.m { fill: var(--mist); }
+.trucks use { fill: none; stroke: var(--paper-ink); stroke-width: 1.1; }
+.trucks use.ghost-truck { stroke: var(--brass); stroke-dasharray: 3 4; opacity: .9; }
+
+.process { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); position: relative; }
+.process::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: var(--line-paper); }
+.process li { position: relative; padding: 30px 14px 0 0; display: grid; gap: 6px; align-content: start; font-size: 14px; }
+.process li::before { content: ""; position: absolute; left: 0; top: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--paper-ink); }
+.process li.next::before { background: var(--paper); border: 1px dashed var(--brass); }
+.process .no { font-size: 12px; color: var(--paper-mute); font-variant-numeric: tabular-nums; }
+.process b { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 22px; line-height: 1.1; }
+.process span:last-child { color: var(--paper-mute); font-size: 13.5px; }
+.quality { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+
+.levels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; align-items: end; margin-top: 8px; }
+.levels > div { border-top: 1px solid var(--line-paper); padding: 18px 18px 0 0; display: grid; gap: 10px; align-content: start; }
+.levels > div + div { padding-left: 18px; border-left: 1px solid var(--line-paper); }
+.levels > div:nth-child(1) { margin-top: 120px; }
+.levels > div:nth-child(2) { margin-top: 60px; }
+.levels b { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 28px; line-height: 1.05; }
+.levels .who { display: flex; flex-wrap: wrap; gap: 6px; }
+.levels .who i { font-style: normal; font-size: 12.5px; padding: 4px 11px; border-radius: 999px; border: 1px solid var(--line-paper); }
+.levels .who i.top { background: var(--paper-ink); color: var(--paper); border-color: var(--paper-ink); }
+.levels span { font-size: 14px; color: var(--paper-mute); }
+
+.matrix-scroll { overflow-x: auto; margin-top: 40px; }
+.matrix { min-width: 900px; font-size: 14px; }
+.matrix th { font-size: 12.5px; }
+.matrix td { padding: 16px 18px 16px 0; color: var(--paper-mute); }
+.matrix td:first-child { width: auto; color: var(--paper-ink); }
+.matrix td:first-child b { display: block; font-family: var(--display); font-style: italic; font-weight: 400; font-size: 22px; line-height: 1.1; color: var(--paper-ink); }
+.matrix td:first-child small { font-size: 12.5px; }
+.verdict-ico { display: inline-flex; align-items: center; gap: 8px; color: var(--paper-ink); }
+.verdict-ico::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--paper-ink); flex: none; }
+.verdict-ico.ja::before { background: var(--paper-ink); }
+.verdict-ico.deels::before { background: linear-gradient(90deg, var(--paper-ink) 50%, transparent 50%); }
+.matrix .dots i { border-color: var(--paper-mute); }
+.matrix .dots i.on { background: var(--paper-ink); border-color: var(--paper-ink); }
+.na { color: var(--paper-mute); opacity: .7; }
+
+.value-def { display: grid; gap: 28px; padding-bottom: clamp(56px, 8vw, 110px); border-bottom: 1px solid var(--line-paper); margin-bottom: clamp(56px, 8vw, 110px); }
+.flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+.flow div { position: relative; padding: 18px 26px 18px 18px; background: var(--ink); color: var(--bone); display: grid; gap: 6px; clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%, 16px 50%); }
+.flow div:first-child { clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%); }
+.flow div + div { margin-left: -6px; padding-left: 30px; }
+.flow b { font-weight: 500; font-size: 14.5px; }
+.flow span { font-size: 13px; color: var(--mist); }
+.balance { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 14px; align-items: center; }
+.balance .col { display: grid; gap: 4px; }
+.balance .col > b { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 26px; margin-bottom: 6px; }
+.balance .col span { padding: 10px 14px; border: 1px solid var(--line-paper); font-size: 14px; display: flex; justify-content: space-between; gap: 10px; }
+.balance .col span.meas { border-color: var(--brass); background: rgba(201, 172, 114, .14); }
+.balance .col span.meas::after { content: "gemeten"; font-size: 11.5px; color: var(--paper-mute); }
+.balance .minus { font-family: var(--display); font-style: italic; font-size: 48px; line-height: 1; padding-top: 30px; }
+
+.photo-band { height: clamp(240px, 38vw, 520px); margin-top: clamp(28px, 4vw, 48px); }
+.side-photo { aspect-ratio: 4 / 3; margin-top: 28px; max-width: 100%; }
+.side-photo::after { background: linear-gradient(180deg, rgba(19,21,15,0), rgba(19,21,15,.25)); }
+.photo figcaption, .photo .cap-in { position: absolute; left: 18px; bottom: 14px; z-index: 2; font-size: 12.5px; color: var(--bone); }
+
+@media (max-width: 600px) {
+  .fig:has(.wide) { overflow-x: auto; }
+  .ill.wide { min-width: 470px; }
+}
 /* ---------- responsive ---------- */
 @media (max-width: 1100px) {
   .nav-links { display: none; }
@@ -440,6 +523,14 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
   .thread + .thread, .route div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line-dark); margin-top: 22px; }
   .detail .photo { min-height: 360px; }
   .phone { justify-self: start; }
+  .quality { grid-template-columns: minmax(0, 1fr); }
+  .process { grid-template-columns: minmax(0, 1fr); }
+  .process::before { left: 7px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
+  .process li { padding: 0 0 22px 34px; }
+  .levels { grid-template-columns: minmax(0, 1fr); }
+  .levels > div, .levels > div + div { margin-top: 0 !important; padding-left: 0; border-left: 0; padding-bottom: 18px; }
+  .flow { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .flow div, .flow div:first-child, .flow div + div { clip-path: none; margin-left: 0; padding-left: 18px; }
 }
 @media (max-width: 600px) {
   .hero-card { left: 12px; right: 12px; bottom: 12px; width: auto; text-align: left; padding: 16px 18px; display: grid; grid-template-columns: 1fr; gap: 2px; }
@@ -469,6 +560,14 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
 </head>
 <body>
 <a class="skip" href="#main">Naar de inhoud</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="truck" viewBox="0 0 40 20"><path d="M1.5 3.5h23v11h-23z M24.5 7h7.5l5 5v2.5h-12.5z M27 8.5h4.5l3 3.2h-7.5z"/><circle cx="8" cy="16" r="2.6"/><circle cx="31" cy="16" r="2.6"/></symbol>
+    <pattern id="hatchInk" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#22251C" stroke-width=".7"/></pattern>
+    <pattern id="hatchBrass" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#C9AC72" stroke-width=".8"/></pattern>
+    <pattern id="hatchBone" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#ECE8DC" stroke-width=".6"/></pattern>
+  </defs>
+</svg>
 
 <header class="nav" id="nav">
   <a class="brand" href="#top" aria-label="Esmee Hoetink, naar boven">Esmee Hoetink</a>
@@ -550,6 +649,33 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
         <p>Stel: je wilt een pot verf kopen. Bij twee winkels liggen precies dezelfde potten. De ene kost tien euro, de andere negen. Grote kans dat je de goedkoopste kiest. Het product is hetzelfde, dus het enige verschil is de prijs.</p>
         <p>Dat is het risico van productverkoop. Bij waardeverkoop kijkt de verkoper naar wat een oplossing de klant oplevert: tijd, geld, gemak of minder zorgen. Samen met de klant begrijpen wat die écht nodig heeft, en laten zien wat de oplossing daarvoor oplevert (Terho et al., 2012).</p>
       </div>
+      <figure class="fig" style="margin-top:36px;max-width:440px">
+        <svg class="ill draw" viewBox="0 0 400 190" role="img" aria-label="Twee identieke potten verf, één van tien euro en één van negen euro">
+          <g transform="translate(0 0)">
+      <path class="s" d="M50 46 Q100 -4 150 46"/>
+      <ellipse class="s" cx="100" cy="48" rx="56" ry="12"/>
+      <ellipse class="s mute" cx="100" cy="48" rx="46" ry="8"/>
+      <path class="s" d="M44 48 V148 A56 12 0 0 0 156 148 V48"/>
+      <path class="s" d="M72 56 V70 Q72 77 77 77 Q82 77 82 70 V58"/>
+      <rect x="60" y="88" width="80" height="44" fill="url(#hatchInk)" opacity=".22"/>
+      <rect class="s" x="60" y="88" width="80" height="44"/>
+      <text class="d" x="100" y="118" text-anchor="middle">€10</text>
+      <text class="m" x="100" y="180" text-anchor="middle">winkel A</text>
+    </g>
+          <g transform="translate(200 0)">
+      <path class="s" d="M50 46 Q100 -4 150 46"/>
+      <ellipse class="s" cx="100" cy="48" rx="56" ry="12"/>
+      <ellipse class="s mute" cx="100" cy="48" rx="46" ry="8"/>
+      <path class="s" d="M44 48 V148 A56 12 0 0 0 156 148 V48"/>
+      <path class="s" d="M72 56 V70 Q72 77 77 77 Q82 77 82 70 V58"/>
+      <rect x="60" y="88" width="80" height="44" fill="url(#hatchInk)" opacity=".22"/>
+      <rect class="s" x="60" y="88" width="80" height="44"/>
+      <text class="d" x="100" y="118" text-anchor="middle">€9</text>
+      <text class="m" x="100" y="180" text-anchor="middle">winkel B</text>
+    </g>
+        </svg>
+        <figcaption>Twee keer dezelfde pot verf. Het enige verschil is de prijs.</figcaption>
+      </figure>
     </div>
     <div class="scale-box reveal" aria-labelledby="scaleTitle">
       <span class="kicker" id="scaleTitle">De weegschaal van Hans</span>
@@ -599,6 +725,10 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
       <div class="fact reveal"><span class="n">1,5 wk</span><span class="t">Terug in oude patronen</span><span class="d">Zonder begeleiding vallen verkopers na een training binnen anderhalve week terug, ziet Hans Goossens.</span></div>
       <div class="fact reveal"><span class="n">4 → 8</span><span class="t">Producten lijken op elkaar</span><span class="d">Vier verkopers van één bedrijf gaven samen acht verschillende antwoorden op de vraag wat hun toegevoegde waarde is.</span></div>
     </div>
+    <figure class="fig" style="margin-top:clamp(40px,6vw,72px);max-width:760px">
+      <svg class="ill draw on-dark" viewBox="0 0 520 170" role="img" aria-label="Vier verkopers met elk twee verschillende antwoorden, acht in totaal"><circle class="s" cx="80" cy="112" r="13"/><path class="s" d="M50 162 Q50 132 80 132 Q110 132 110 162"/><rect class="s" x="34" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M60 70 L70.9 94"/><circle class="s" cx="54" cy="54" r="7"/><rect class="s" x="86" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M100 54 L89.1 94"/><rect class="s" x="99.5" y="31.5" width="13" height="13"/><circle class="s" cx="200" cy="112" r="13"/><path class="s" d="M170 162 Q170 132 200 132 Q230 132 230 162"/><rect class="s" x="154" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M180 70 L190.9 94"/><path class="s" d="M174 46 L182 60 H166 Z"/><rect class="s" x="206" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M220 54 L209.1 94"/><path class="s" d="M226 30 L234 38 L226 46 L218 38 Z"/><circle class="s" cx="320" cy="112" r="13"/><path class="s" d="M290 162 Q290 132 320 132 Q350 132 350 162"/><rect class="s" x="274" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M300 70 L310.9 94"/><path class="s" d="M287 54 H301 M294 47 V61"/><rect class="s" x="326" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M340 54 L329.1 94"/><circle class="s" cx="346" cy="38" r="7"/><circle class="accf" cx="346" cy="38" r="2.2"/><circle class="s" cx="440" cy="112" r="13"/><path class="s" d="M410 162 Q410 132 440 132 Q470 132 470 162"/><rect class="s" x="394" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M420 70 L430.9 94"/><path class="s" d="M405 54 q3 -6 6 0 t6 0 t6 0"/><rect class="s" x="446" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M460 54 L449.1 94"/><path class="s" d="M466 30 L468.5 35.5 L474 38 L468.5 40.5 L466 46 L463.5 40.5 L458 38 L463.5 35.5 Z"/></svg>
+      <figcaption>Vier verkopers van hetzelfde bedrijf schreven elk twee punten op over hun toegevoegde waarde. Het leverde acht verschillende antwoorden op. Volgens Hans is dat gokken.</figcaption>
+    </figure>
     <div class="photo urg-photo" data-speed="0.12">
       <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80" alt="Kantoorgebouwen van onderaf gezien" loading="lazy">
     </div>
@@ -622,6 +752,10 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
       </div>
       <div class="codes" aria-label="Codes">
         <span class="chip">Klantwaarde</span><span class="chip">Rol van de verkoper</span><span class="chip">Organisatie en ondersteuning</span><span class="chip">Klant en aankoopsituatie</span><span class="chip">Sturing, KPI's en beloning</span><span class="chip">Knelpunten</span><span class="chip">Nieuwe inzichten</span>
+      </div>
+      <div class="photo side-photo" data-speed="0.06">
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1600&q=80" alt="Handgeschreven aantekeningen naast een laptop" loading="lazy">
+        <span class="cap-in">Transcriberen en coderen</span>
       </div>
     </div>
     <div class="reveal">
@@ -672,6 +806,59 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
       </div>
     </div>
   </div>
+
+  <div class="reveal" style="margin-top:clamp(56px,8vw,110px)">
+    <span class="kicker">Zo is het onderzoek verlopen</span>
+    <ol class="process">
+      <li><span class="no">1</span><b>Leidraad</b><span>Samen opgesteld vanuit de literatuur, vier thema's.</span></li>
+      <li><span class="no">2</span><b>Interviews</b><span>Zes experts. Hans op 23 september 2026 via Teams.</span></li>
+      <li><span class="no">3</span><b>Coderen</b><span>Transcript gecodeerd met zeven hoofdcodes.</span></li>
+      <li><span class="no">4</span><b>Member check</b><span>Samenvatting voorgelegd aan Hans.</span></li>
+      <li><span class="no">5</span><b>Vergelijken</b><span>Rode draden over zes interviews.</span></li>
+      <li><span class="no">6</span><b>Deskresearch</b><span>Getoetst aan peer-reviewed literatuur.</span></li>
+      <li><span class="no">7</span><b>Koers</b><span>Conclusies en strategische koers.</span></li>
+      <li class="next"><span class="no">8</span><b>Rondetafel</b><span>Koers toetsen. Volgt nog.</span></li>
+    </ol>
+  </div>
+  <div class="quality" style="margin-top:clamp(56px,8vw,110px)">
+    <div class="reveal">
+        <figure class="fig">
+          <svg class="ill draw" viewBox="0 0 380 300" role="img" aria-label="Triangulatie: data, onderzoekers en theorie zijn toegepast, methode volgt in het rondetafelgesprek">
+            <circle class="s" cx="190" cy="150" r="48"/>
+            <text class="d" x="190" y="157" text-anchor="middle" style="font-size:19px">Bevindingen</text>
+            <path class="s" d="M190 48 V102"/><path class="s" d="M318 150 H238"/><path class="s" d="M62 150 H142"/>
+            <path class="s dash acc" d="M190 198 V254"/>
+            <circle class="inkf" cx="190" cy="41" r="7"/><circle class="inkf" cx="325" cy="150" r="7"/><circle class="inkf" cx="55" cy="150" r="7"/>
+            <circle class="paperf" cx="190" cy="261" r="7" style="stroke:var(--brass);stroke-dasharray:3 3"/>
+            <text x="190" y="22" text-anchor="middle">Data · 6 respondenten</text>
+            <text x="325" y="176" text-anchor="middle">Onderzoekers</text><text class="m" x="325" y="191" text-anchor="middle">6 interviewers</text>
+            <text x="55" y="176" text-anchor="middle">Theorie</text><text class="m" x="55" y="191" text-anchor="middle">3 kaders</text>
+            <text x="190" y="290" text-anchor="middle" class="acc">Methode · volgt in het rondetafelgesprek</text>
+          </svg>
+          <figcaption>Triangulatie volgens Denzin (1978). Drie vormen zijn toegepast. Methodetriangulatie volgt pas in het rondetafelgesprek.</figcaption>
+        </figure>
+    </div>
+    <div class="reveal">
+        <figure class="fig">
+          <svg class="ill wide draw" viewBox="0 0 540 180" role="img" aria-label="Aantal interviews: dit onderzoek heeft er 6, codesaturatie ligt rond 9, betekenissaturatie tussen 16 en 24">
+            <rect x="350" y="96" width="160" height="28" fill="url(#hatchBrass)"/>
+            <rect class="s acc" x="350" y="96" width="160" height="28"/>
+            <text x="430" y="70" text-anchor="middle">betekenissaturatie</text>
+            <text class="m" x="430" y="85" text-anchor="middle">16–24 interviews</text>
+            <path class="s" d="M30 110 H510"/>
+            <path class="s mute" d="M30 106 V114"/><path class="s mute" d="M50 106 V114"/><path class="s mute" d="M70 106 V114"/><path class="s mute" d="M90 106 V114"/><path class="s mute" d="M110 106 V114"/><path class="s mute" d="M130 106 V114"/><path class="s mute" d="M150 106 V114"/><path class="s mute" d="M170 106 V114"/><path class="s mute" d="M190 106 V114"/><path class="s mute" d="M210 106 V114"/><path class="s mute" d="M230 106 V114"/><path class="s mute" d="M250 106 V114"/><path class="s mute" d="M270 106 V114"/><path class="s mute" d="M290 106 V114"/><path class="s mute" d="M310 106 V114"/><path class="s mute" d="M330 106 V114"/><path class="s mute" d="M350 106 V114"/><path class="s mute" d="M370 106 V114"/><path class="s mute" d="M390 106 V114"/><path class="s mute" d="M410 106 V114"/><path class="s mute" d="M430 106 V114"/><path class="s mute" d="M450 106 V114"/><path class="s mute" d="M470 106 V114"/><path class="s mute" d="M490 106 V114"/><path class="s mute" d="M510 106 V114"/>
+            <path class="s dash" d="M210 52 V110"/>
+            <text x="210" y="30" text-anchor="middle">codesaturatie</text>
+            <text class="m" x="210" y="45" text-anchor="middle">± 9 interviews</text>
+            <circle class="accf" cx="150" cy="110" r="6.5"/>
+            <text class="m" x="30" y="130" text-anchor="middle">0</text><text class="m" x="150" y="130" text-anchor="middle">6</text><text class="m" x="210" y="130" text-anchor="middle">9</text><text class="m" x="350" y="130" text-anchor="middle">16</text><text class="m" x="510" y="130" text-anchor="middle">24</text>
+            <text x="30" y="156">dit onderzoek: 6 interviews</text>
+            <text class="m" x="30" y="172">Guest et al. (2006): de belangrijkste thema's zijn vaak al na zes zichtbaar</text>
+          </svg>
+          <figcaption>Aantal interviews, op schaal. Met zes interviews claim ik geen saturatie (Hennink et al., 2017). Het rondetafelgesprek is een extra ronde.</figcaption>
+        </figure>
+    </div>
+  </div>
 </section>
 
 <!-- ================= INTERVIEW ================= -->
@@ -695,6 +882,24 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
           <div><b>Gespreksmodel:</b> <span>OPA: open gesprekken voeren, prioriteit stellen, afsluiten</span></div>
         </div>
         <p class="pullquote">“Wat je niet kunt voorbereiden is het antwoord, en daar zit de winst.”</p>
+        <figure class="fig">
+          <svg class="ill wide draw on-dark" viewBox="0 0 440 170" role="img" aria-label="Een klant vroeg om een auto met trekhaak en vertrok met een grotere bus">
+            <path class="s" d="M22 112 V94 Q24 86 36 84 L60 82 L80 64 Q84 60 92 60 H120 Q128 60 132 66 L146 84 Q156 86 158 94 V112 Z"/>
+            <path class="s mute" d="M86 68 H104 V82 H72 Z M110 68 H126 L136 82 H110 Z"/>
+            <circle class="s inkbg" cx="50" cy="114" r="12"/><circle class="s inkbg" cx="130" cy="114" r="12"/>
+            <path class="s" d="M22 106 H12"/><circle class="s" cx="9" cy="106" r="3"/>
+            <path class="s dash" d="M176 98 H254"/><path class="s" d="M246 92 L255 98 L246 104"/>
+            <text class="m" x="215" y="86" text-anchor="middle">doorvragen</text>
+            <path class="s acc" d="M276 114 V58 Q276 50 284 50 H410 Q420 50 423 60 L428 92 V114 Z"/>
+            <rect class="s acc" x="287" y="62" width="17" height="17" rx="1.5"/><rect class="s acc" x="310" y="62" width="17" height="17" rx="1.5"/><rect class="s acc" x="333" y="62" width="17" height="17" rx="1.5"/><rect class="s acc" x="356" y="62" width="17" height="17" rx="1.5"/><rect class="s acc" x="379" y="62" width="17" height="17" rx="1.5"/>
+            <path class="s acc" d="M403 62 H415 L420 88 H403 Z"/>
+            <path class="s acc mute" d="M276 92 H428"/>
+            <circle class="s acc inkbg" cx="306" cy="116" r="12"/><circle class="s acc inkbg" cx="396" cy="116" r="12"/>
+            <text x="90" y="152" text-anchor="middle">Gevraagd: auto met trekhaak</text>
+            <text class="acc" x="352" y="152" text-anchor="middle">Verkocht: grotere bus</text>
+          </svg>
+          <figcaption>Door door te vragen bleek een grotere bus zonder trekhaak beter te passen. De klant vertrok met een order. De productverkoper laat de gevraagde auto's zien en maakt een prijsje.</figcaption>
+        </figure>
         <p style="color:var(--mist);font-size:15px">Hans begon als encyclopedieverkoper, werkte als accountmanager bij vier marktleiders en had van 2003 tot 2015 een eigen groothandel in facilitaire goederen. Nu traint hij verkoopteams nationaal en internationaal, en voert hij zelf nog dagelijks acquisitie.</p>
 
         <div>
@@ -788,6 +993,41 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
   </div>
 </section>
 
+
+<!-- ================= VERGELIJKING ================= -->
+<section class="section wrap on-paper" id="vergelijking" aria-labelledby="cmpTitle">
+  <div class="split">
+    <div class="reveal">
+      <span class="kicker">Rode draad 2 in beeld</span>
+      <h2 class="h2" id="cmpTitle">Hoe ver gaan ze in het aantonen van waarde?</h2>
+      <p class="measure" style="margin-top:18px;color:var(--paper-mute)">De experts verschillen in hoe ver ze komen: van waarde benoemen, naar waarde concreet maken met voorbeelden, tot waarde vooraf meetbaar maken. Hoe abstracter de waarde blijft, hoe sneller het gesprek over prijs gaat.</p>
+    </div>
+    <div class="levels reveal" role="list">
+      <div role="listitem"><b>Benoemen</b><span>Waarde blijft bij woorden als goede service en goed advies.</span><span class="who"><i>Rob Besselink</i></span></div>
+      <div role="listitem"><b>Concreet maken</b><span>Met referenties, KPI's, audits en behaalde resultaten.</span><span class="who"><i>Robert Willemsen</i><i>Pim van de Kragt</i></span></div>
+      <div role="listitem"><b>Vooraf meetbaar</b><span>De waarde wordt vooraf doorgerekend.</span><span class="who"><i class="top">Wendy Austermann</i></span></div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:clamp(56px,8vw,110px)">
+    <span class="kicker">Alle zes interviews naast elkaar</span>
+    <div class="matrix-scroll" role="region" aria-label="Vergelijking van de experts" tabindex="0">
+      <table class="matrix">
+        <thead><tr><th scope="col">Expert</th><th scope="col">Waarde achterhalen</th><th scope="col">Waarde aantonen</th><th scope="col">Werkt het overal?</th><th scope="col">Beloning</th><th scope="col">Ladder</th></tr></thead>
+        <tbody>
+            <tr><td><b>Hans Goossens</b><small>SalesOpa</small></td><td>Gesprekstechniek: wat doe je met het antwoord?</td><td>Eenvoudige evaluatievragen, zoals een rapportcijfer</td><td><span class="verdict-ico ja">Ja, in elke branche</span></td><td>Goed salaris, beperkte bonus</td><td><span class="dots" aria-hidden="true" style="margin-bottom:6px"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span>Kijkt van buitenaf</td></tr>
+            <tr><td><b>Robert Willemsen</b><small>AIR</small></td><td>Veel ophalen, weinig zenden</td><td>Referenties; de waarde wordt pas na afloop zichtbaar</td><td><span class="verdict-ico deels">Weinig verschil per branche, wel per type klant</span></td><td><span class="na">Niet besproken</span></td><td><span class="dots" aria-hidden="true" style="margin-bottom:6px"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span>Trede 2</td></tr>
+            <tr><td><b>Ronald Vos</b><small>Daily Workwear</small></td><td>Vanuit de relatie, als gevoelsondernemer</td><td><span class="na">Niet besproken</span></td><td><span class="verdict-ico nee">Grenzen: bij grote aantallen weegt een paar cent zwaar</span></td><td>Provisie, lager bij veel korting</td><td><span class="dots" aria-hidden="true" style="margin-bottom:6px"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span>Trede 2</td></tr>
+            <tr><td><b>Rob Besselink</b><small>Verglasco</small></td><td>Klantwensen vastgelegd in klantprofielen</td><td>Service en advies zijn lastig concreet te maken</td><td><span class="verdict-ico nee">Grenzen: grote projecten gaan op prijs; bereikt vooral de top 20%</span></td><td>Collectief</td><td><span class="dots" aria-hidden="true" style="margin-bottom:6px"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span>Trede 3</td></tr>
+            <tr><td><b>Wendy Austermann</b><small>VMware, Google</small></td><td>Minstens drie keer doorvragen; meelopen op de werkvloer</td><td>Vooraf doorrekenen: 30% sneller, minimaal 10% lagere kosten</td><td><span class="verdict-ico nee">Grenzen: een traditioneel bedrijf heeft meer advies nodig</span></td><td><span class="na">Niet besproken</span></td><td><span class="dots" aria-hidden="true" style="margin-bottom:6px"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>Trede 4</td></tr>
+            <tr><td><b>Pim van de Kragt</b><small>Arcadis</small></td><td>De vraag achter de vraag, controleren door samen te vatten</td><td>KPI's, audits en referentieprojecten</td><td><span class="verdict-ico nee">Grenzen: aan het begin praten klanten vaak over prijs</span></td><td>Bonus is één onderdeel, naast het teamresultaat</td><td><span class="dots" aria-hidden="true" style="margin-bottom:6px"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>Trede 4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:16px;font-size:13.5px;color:var(--paper-mute)">“Niet besproken” betekent dat het onderwerp in dat interview niet aan bod kwam. Bron: hoofdstuk 4, eigen analyse van de zes interviews.</p>
+  </div>
+</section>
+
 <!-- ================= LITERATUUR / RODE DRADEN ================= -->
 <section class="section wrap on-paper" id="literatuur" aria-labelledby="litTitle">
   <div class="draden">
@@ -803,6 +1043,22 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
       </ol>
     </div>
     <div>
+      <div class="value-def reveal">
+        <span class="kicker">Wat is waardeverkoop?</span>
+        <h3 class="h3">Drie dimensies volgens Terho et al. (2012)</h3>
+        <div class="flow">
+          <div><b>Bedrijfsmodel begrijpen</b><span>Hoe verdient de klant zijn geld?</span></div>
+          <div><b>Waardepropositie maken</b><span>Een aanbod dat daarop aansluit.</span></div>
+          <div><b>Waarde communiceren</b><span>Laten zien wat het oplevert, in geld.</span></div>
+        </div>
+        <h3 class="h3" style="margin-top:20px">Klantwaarde volgens Töytäri et al. (2015)</h3>
+        <div class="balance">
+          <div class="col"><b>Voordelen</b><span class="meas">Operationeel</span><span>Strategisch</span><span>Sociaal</span><span>Symbolisch</span></div>
+          <span class="minus" aria-label="min">−</span>
+          <div class="col"><b>Offers</b><span class="meas">Operationeel</span><span>Strategisch</span><span>Sociaal</span><span>Symbolisch</span></div>
+        </div>
+        <p style="font-size:14px;color:var(--paper-mute)" class="measure">Klantwaarde is het verschil tussen de voordelen en de offers. Bedrijven meten in de praktijk bijna alleen de operationele waarde, terwijl klanten ook de andere dimensies meewegen.</p>
+      </div>
       <article class="draad" id="draad-1">
         <span class="kicker">Rode draad 1</span>
         <h3>De klant bepaalt wat waarde is</h3>
@@ -810,6 +1066,10 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
           <div><b>Bevestigt</b>Klanten beoordelen waarde subjectief, vanuit hun eigen situatie (Töytäri et al., 2015). Een klant vroeg om twintig trucks; door te vragen wat hij wilde bereiken, bleken achttien genoeg (Terho et al., 2012).</div>
           <div><b>Nuanceert</b>Waardeverkoop gaat verder dan de uitgesproken behoefte. Je moet het bedrijfsmodel van de klant begrijpen en waarde in geld uitdrukken, iets wat bij Hans nauwelijks terugkomt.</div>
         </div>
+        <figure class="fig reveal">
+          <svg class="ill trucks" viewBox="0 0 500 80" role="img" aria-label="Twintig trucks gevraagd, waarvan er achttien nodig bleken"><use href="#truck" x="5" y="6" width="40" height="20"/><use href="#truck" x="55" y="6" width="40" height="20"/><use href="#truck" x="105" y="6" width="40" height="20"/><use href="#truck" x="155" y="6" width="40" height="20"/><use href="#truck" x="205" y="6" width="40" height="20"/><use href="#truck" x="255" y="6" width="40" height="20"/><use href="#truck" x="305" y="6" width="40" height="20"/><use href="#truck" x="355" y="6" width="40" height="20"/><use href="#truck" x="405" y="6" width="40" height="20"/><use href="#truck" x="455" y="6" width="40" height="20"/><use href="#truck" x="5" y="40" width="40" height="20"/><use href="#truck" x="55" y="40" width="40" height="20"/><use href="#truck" x="105" y="40" width="40" height="20"/><use href="#truck" x="155" y="40" width="40" height="20"/><use href="#truck" x="205" y="40" width="40" height="20"/><use href="#truck" x="255" y="40" width="40" height="20"/><use href="#truck" x="305" y="40" width="40" height="20"/><use href="#truck" x="355" y="40" width="40" height="20"/><use href="#truck" x="405" y="40" width="40" height="20" class="ghost-truck"/><use href="#truck" x="455" y="40" width="40" height="20" class="ghost-truck"/></svg>
+          <figcaption>Een klant vroeg om twintig trucks. Door te vragen wat de klant wilde bereiken, bleken er achttien genoeg. Dat bespaarde miljoenen (Terho et al., 2012, p. 179).</figcaption>
+        </figure>
         <div class="model reveal" aria-label="SPIN-model">
           <div class="model-title"><b>SPIN-model</b><span>Figuur 1 · bewerking van Rackham (1988)</span></div>
           <div class="spin">
@@ -843,6 +1103,9 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
             <span class="x">toeleveringsrisico · laag → hoog</span>
           </div>
         </div>
+        <div class="photo reveal" style="height:clamp(200px,24vw,300px)" data-speed="0.08">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80" alt="Laptop en papieren met grafieken op een bureau" loading="lazy">
+        </div>
         <p class="concl"><b>Conclusie.</b> Waarde laten zien is de beste manier om prijsdruk te weerstaan, maar geen garantie. Organisaties moeten bepalen bij welke klanten en aankopen waardeverkoop past.</p>
       </article>
 
@@ -853,6 +1116,25 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
           <div><b>Bevestigt</b>Waardegericht werken is een organisatorische capability die een gedeelde visie en passende managementpraktijken vraagt (Töytäri & Rajala, 2015). Verkopers en organisatie bepalen samen of het idee in actie wordt omgezet (Terho et al., 2017).</div>
           <div><b>Nuanceert</b>Naast training zijn systemen, data en hulpmiddelen nodig. Er is geen standaardaanpak: begeleiding moet passen bij ervaring en ervaren risico van de verkoper (Salonen et al., 2021).</div>
         </div>
+
+        <figure class="fig reveal">
+          <svg class="ill wide draw" viewBox="0 0 520 260" role="img" aria-label="Barrières voor waardeverkoop op drie niveaus: individu, organisatie en markt">
+            <circle class="s" cx="160" cy="130" r="118"/>
+            <circle class="s" cx="160" cy="130" r="80"/>
+            <circle cx="160" cy="130" r="42" fill="url(#hatchBrass)"/>
+            <circle class="s acc" cx="160" cy="130" r="42"/>
+            <text x="160" y="30" text-anchor="middle">Markt</text>
+            <text x="160" y="68" text-anchor="middle">Organisatie</text>
+            <text class="d" x="160" y="137" text-anchor="middle" style="font-size:19px">Individu</text>
+            <path class="s mute" d="M278 130 H310"/>
+            <text x="318" y="96">Töytäri et al. (2017):</text>
+            <text class="m" x="318" y="112">barrières op drie niveaus</text>
+            <text x="318" y="144">Terho et al. (2017):</text>
+            <text class="m" x="318" y="160">verkoper én organisatie bepalen</text>
+            <text class="m" x="318" y="176">of het idee in actie komt</text>
+          </svg>
+          <figcaption>Een training richt zich op de binnenste cirkel. De barrières zitten ook in de organisatie en de markt.</figcaption>
+        </figure>
         <div class="photo reveal" style="height:clamp(220px,28vw,340px)" data-speed="0.08">
           <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80" alt="Team dat samen plannen maakt aan een wand met notities" loading="lazy">
         </div>
@@ -865,6 +1147,24 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
         <div class="verdict">
           <div><b>Bevestigt</b>Loyaliteit en langere relaties volgen uit waardeverkoop (Terho et al., 2012). De schatting van Hans, tien keer zo duur, valt binnen de bandbreedte van Gallo (2014).</div>
           <div><b>Nuanceert</b>Waarde controleren is kostbaar en gebeurt vaak alleen bij grote deals. Waardegerichte capabilities maken leveranciers “more attractive, but do not necessarily make them more profitable” (Töytäri et al., 2015, p. 62).</div>
+        </div>
+
+        <figure class="fig reveal">
+          <svg class="ill wide draw" viewBox="0 0 540 210" role="img" aria-label="Een goudberg van bestaande klanten, terwijl organisaties jagen op dure nieuwe klanten">
+            <path d="M20 186 L130 66 L184 118 L246 40 L380 186 Z" fill="url(#hatchBrass)" opacity=".7"/>
+            <path class="s acc" d="M20 186 L130 66 L184 118 L246 40 L380 186 Z"/>
+            <path class="s acc mute" d="M246 40 L226 92 M130 66 L118 104"/>
+            <text class="d" x="200" y="168" text-anchor="middle" style="font-size:20px">bestaande klanten</text>
+            <path class="s dash" d="M392 130 H462"/><path class="s" d="M454 124 L463 130 L454 136"/>
+            <text class="m" x="427" y="116" text-anchor="middle">jagen</text>
+            <circle class="s" cx="490" cy="104" r="9"/><circle class="s" cx="512" cy="130" r="9"/><circle class="s" cx="490" cy="156" r="9"/>
+            <text x="500" y="190" text-anchor="middle">nieuwe klant</text>
+            <text class="m" x="500" y="205" text-anchor="middle">5–25× duurder</text>
+          </svg>
+          <figcaption>“Ze zijn alleen maar aan het jagen, terwijl ze op een goudberg zitten” (Hans Goossens). Een nieuwe klant kost vijf tot vijfentwintig keer zoveel als een bestaande behouden (Gallo, 2014).</figcaption>
+        </figure>
+        <div class="photo reveal" style="height:clamp(200px,24vw,300px)" data-speed="0.08">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80" alt="Twee mensen die elkaar de hand schudden" loading="lazy">
         </div>
         <div class="model reveal" aria-label="Net Promoter Score">
           <div class="model-title"><b>Net Promoter Score</b><span>Figuur 3 · bewerking van Reichheld (2003)</span></div>
@@ -893,11 +1193,32 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
   </div>
   <div class="panel panel-pad">
     <span class="kicker">Van trede 2 naar trede 4, in drie stappen</span>
+    <figure class="fig reveal" style="margin-bottom:12px">
+      <svg class="ill wide draw on-dark" viewBox="0 0 560 230" role="img" aria-label="Ladder van weten naar borgen: van trede 2 naar trede 4 in drie stappen">
+        <path class="s" d="M20 200 H150 V160 H280 V120 H410 V80 H540"/>
+        <path class="s acc" d="M280 160 V120" style="stroke-width:3"/>
+        <text x="30" y="190">1 · weten</text><text x="160" y="150">2 · doen</text><text x="290" y="110">3 · ondersteunen</text><text x="420" y="70">4 · borgen</text>
+        <text class="acc" x="287" y="146">grootste gat</text>
+        <circle class="inkf" cx="215" cy="160" r="6"/>
+        <circle class="accf" cx="475" cy="80" r="6"/>
+        <path class="s dash acc" d="M220 152 Q345 10 470 74"/>
+        <text class="m" x="215" y="182" text-anchor="middle">nu: “ik doe het”</text>
+        <text class="acc" x="475" y="102" text-anchor="middle">doel: “wij doen het”</text>
+        <text class="d" x="350" y="40" text-anchor="middle" style="font-size:18px">stap 1 · 2 · 3</text>
+      </svg>
+    </figure>
     <div class="route">
       <div class="reveal"><span class="no">Stap 1</span><b>Samen bepalen wat onze waarde is</b><span>Zonder gedeeld beeld gaat iedereen gokken, zoals de vier verkopers met acht antwoorden. De organisatie legt vast welke waarde ze levert, en voor welke klanten (Terho et al., 2012; Kraljic, 1983).</span></div>
       <div class="reveal"><span class="no">Stap 2</span><b>Ondersteunen na de training</b><span>Management begeleidt verkopers op maat van hun ervaring, zodat ze niet terugvallen (Salonen et al., 2021). Kennisdeling tussen ervaren en nieuwe verkopers hoort erbij.</span></div>
       <div class="reveal"><span class="no">Stap 3</span><b>Borgen in werkwijze en meting</b><span>Klantgesprekken volgens een vaste structuur, metingen na de verkoop zoals een Net Promoter Score, en beloning op team of marge.</span></div>
     </div>
+  </div>
+</section>
+
+<section class="wrap" aria-label="Rondetafelgesprek">
+  <div class="photo photo-band" data-speed="0.12">
+    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=80" alt="Groep mensen in overleg rond een vergadertafel" loading="lazy">
+    <span class="cap-in">Volgende stap: de koers toetsen aan het rondetafelgesprek</span>
   </div>
 </section>
 
@@ -1098,6 +1419,31 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
         el.style.transitionDelay = ((i % 4) * 70) + "ms";
         io.observe(el);
       }
+    });
+  }
+
+  /* ---------- line drawings draw themselves in ---------- */
+  if ("IntersectionObserver" in window && !reduce) {
+    var drawObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        drawObs.unobserve(en.target);
+        en.target.querySelectorAll(".s:not(.dash)").forEach(function (p, i) {
+          p.style.transition = "stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1) " + Math.min(i * 40, 900) + "ms";
+          p.style.strokeDashoffset = "0";
+        });
+      });
+    }, { rootMargin: "0px 0px -12% 0px" });
+    document.querySelectorAll(".draw").forEach(function (svg) {
+      if (svg.getBoundingClientRect().top < window.innerHeight) return;
+      svg.querySelectorAll(".s:not(.dash)").forEach(function (p) {
+        try {
+          var L = Math.ceil(p.getTotalLength()) + 4;
+          p.style.strokeDasharray = L + " " + L;
+          p.style.strokeDashoffset = String(L);
+        } catch (err) {}
+      });
+      drawObs.observe(svg);
     });
   }
 
