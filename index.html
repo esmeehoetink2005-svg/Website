@@ -503,6 +503,18 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
   .fig:has(.wide) { overflow-x: auto; }
   .ill.wide { min-width: 470px; }
 }
+
+.head-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 6vw, 96px); align-items: end; }
+.head-photo { min-height: 100%; aspect-ratio: 4 / 5; max-height: 640px; }
+.refs-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.refs-aside { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--nav-h) + 40px); }
+.refs-photo { aspect-ratio: 3 / 4; max-height: calc(100vh - 160px); width: 100%; }
+@media (max-width: 900px) {
+  .head-split, .refs-grid { grid-template-columns: minmax(0, 1fr); }
+  .head-photo { aspect-ratio: 16 / 10; min-height: 0; }
+  .refs-aside { position: static; }
+  .refs-photo { aspect-ratio: 16 / 9; }
+}
 /* ---------- responsive ---------- */
 @media (max-width: 1100px) {
   .nav-links { display: none; }
@@ -737,9 +749,17 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
 
 <!-- ================= ONDERZOEK ================= -->
 <section class="section wrap on-paper" id="onderzoek" aria-labelledby="ozTitle">
-  <span class="kicker">Methode van onderzoek</span>
-  <h2 class="h2 reveal" id="ozTitle">De centrale vraag</h2>
-  <p class="question reveal" style="margin-top:28px">Waarom passen B2B-organisaties waardeverkoop in de praktijk vaak niet toe, terwijl ze weten dat het werkt, en wat is er nodig om die kloof tussen weten en doen te dichten?</p>
+  <div class="head-split">
+    <div>
+      <span class="kicker">Methode van onderzoek</span>
+      <h2 class="h2 reveal" id="ozTitle">De centrale vraag</h2>
+      <p class="question reveal" style="margin-top:28px">Waarom passen B2B-organisaties waardeverkoop in de praktijk vaak niet toe, terwijl ze weten dat het werkt, en wat is er nodig om die kloof tussen weten en doen te dichten?</p>
+    </div>
+    <div class="photo head-photo reveal" data-speed="0.1">
+      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1400&q=80" alt="Laptop, notitieboek en koffie op een bureau" loading="lazy">
+      <span class="cap-in">Van weten naar doen</span>
+    </div>
+  </div>
 
   <div class="split" style="margin-top:clamp(56px,8vw,110px)">
     <div class="reveal">
@@ -1274,6 +1294,7 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
 
 <!-- ================= BRONNEN ================= -->
 <section class="section wrap on-paper" id="bronnen" aria-labelledby="brTitle">
+  <div class="refs-grid">
   <div class="measure" style="max-width:860px">
     <span class="kicker">APA 7</span>
     <h2 class="h2" id="brTitle">Bronnenlijst</h2>
@@ -1311,6 +1332,13 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
       <b>Verantwoording AI</b>
       <p>Bij het maken van dit document heb ik Claude (Anthropic, 2026) gebruikt voor het controleren van de APA-notatie, het verbeteren van opmaak en structuur, meedenken over modellen, het eerste coderen van mijn transcript en conceptteksten. Die heb ik zelf gecontroleerd, aangepast en herschreven. Het interview, de keuze voor de rode draden en modellen, en de conclusies zijn van mijzelf. Alle voorgestelde bronnen heb ik zelf opgezocht en gecontroleerd.</p>
     </div>
+  </div>
+  <aside class="refs-aside">
+    <div class="photo refs-photo" data-speed="0.08">
+      <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1400&q=80" alt="Boekenkasten in een bibliotheek" loading="lazy">
+      <span class="cap-in">21 bronnen, beoordeeld op de AAOCC-criteria</span>
+    </div>
+  </aside>
   </div>
 </section>
 
