@@ -24,7 +24,8 @@ if os.path.exists(video):
 else:
     html = re.sub(r'\s*<!-- Zet de Higgsfield.*?</video>', '', html, flags=re.S)
 
-html = re.sub(r'(src|poster)="(assets/img/[^"]+\.webp)"', lambda m: f'{m.group(1)}="{data_uri(m.group(2), "image/webp")}"', html)
+# afbeeldingen in HTML-attributen én in de JavaScript (bewijs-screenshots)
+html = re.sub(r'(["\'])(assets/img/[^"\']+\.webp)\1', lambda m: f'{m.group(1)}{data_uri(m.group(2), "image/webp")}{m.group(1)}', html)
 left = re.findall(r'assets/[^"\')\s]+', html)
 assert not left, f'Niet ingepakt: {left[:5]}'
 

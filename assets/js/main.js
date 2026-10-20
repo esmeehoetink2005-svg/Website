@@ -79,6 +79,68 @@ const ROUNDS = [
   },
 ];
 
+// Bewijs per ronde. type: 'quote' (letterlijk citaat), 'data' (cijfer uit de export of een grafiek), 'img' (screenshot uit de game)
+const SHOT = {
+  opleiding: { src: ['assets/img/bewijs/opleiding-productie.webp', 'assets/img/bewijs/opleiding-staf.webp', 'assets/img/bewijs/opleiding-sales.webp'], cap: 'Historische data opleidingsbudget (%) voor productie, staf en sales (T-Challenge, 2026)' },
+  werkplek: { src: ['assets/img/bewijs/hrm-werkplek-k3.webp'], cap: 'HRM-marktonderzoek tertiaire arbeidsvoorwaarden, kwartaal 3: alle vier de teams op werkplekpakket C (T-Challenge, 2026)' },
+  bezetting: { src: ['assets/img/bewijs/bezetting-machines.webp'], cap: 'Historische data bezettingsgraad machinecapaciteit (%) (T-Challenge, 2026)' },
+};
+const BG = 'BG-document, kwartaal';
+const LOG = 'Besluitenlogboek';
+const EXP = 'Resultatenexport T-Challenge';
+const PROOF = [
+  [
+    { type: 'quote', src: `${BG} 1, "aan de knoppen"`, text: 'Esmee (CHRO) — het volledige arbeidsvoorwaardenpakket: pensioen, vakantiepakket, verzekeringen, reiskosten, werkplek en winstdeling. Gedachte: alle teams starten op pakket A, dus de eerste stap is spotgoedkoop en levert direct relatief voordeel.' },
+    { type: 'quote', src: `${LOG}, 9 september (opgesteld door Maud)`, text: 'Internationale focus (marketing en logistiek), werknemerstevredenheid, productontwikkeling (kwaliteit)' },
+    { type: 'data', src: 'Grafiek opleidingsbudget', text: 'Opleidingsbudget van 3/4/4 naar 7/7/8% (productie/staf/sales).' },
+    { type: 'data', src: EXP, text: 'Loyaliteit 52,4 naar 65,2; personeelskosten € 755.462 naar € 1.089.920.' },
+    { type: 'img', shot: 'opleiding' },
+  ],
+  [
+    { type: 'quote', src: `${BG} 2, "aan de knoppen"`, text: 'Esmee — extra FTE en werkdrukmaatregelen rond de derde ploeg. Gedachte: elke extra ploeg drijft het verzuim op en elk procentpunt verzuim is circa 150.000 flesjes capaciteit.' },
+    { type: 'data', src: EXP, text: 'Productie-FTE 27 naar 39; werkdruk 105% naar 62%; verzuim 4,0% naar 7,0%.' },
+    { type: 'data', src: 'HRM-marktonderzoek, kwartaal 3', text: 'Na ronde 2 hadden alle vier de teams werkplekpakket C, dat ik in ronde 1 als eerste invoerde.' },
+    { type: 'img', shot: 'werkplek' },
+  ],
+  [
+    { type: 'quote', src: `${BG} 3, "aan de knoppen"`, text: 'Esmee — verzuim teruggebracht van 7,0% naar 6,0% terwijl het personeelsbestand naar 52 FTE groeide.' },
+    { type: 'data', src: EXP, text: 'Productie-FTE 39 naar 52; loyaliteit 67,9 naar 60,9.' },
+    { type: 'data', src: 'Mijn logboek', text: 'Analyse per afdeling: Staf −11,4 en Sales −12,1 zonder nieuwe collega’s. Voor dit kwartaal is geen besluitenlogboek vastgelegd.' },
+  ],
+  [
+    { type: 'quote', src: `${LOG}, 10 september (opgesteld door Maud)`, text: 'Marketingfocusgroep, prijs, voorraad en productie beter berekend, lonen verlaagd en opleidingsbudget verlaagd' },
+    { type: 'quote', src: `${BG} 4, "aan de knoppen"`, text: 'Esmee — loonstijging en opleidingsbudget verlaagd. Gedachte was besparen zonder direct effect; het gemeten effect was loyaliteit van 60,9 naar 55,1 punten.' },
+    { type: 'quote', src: `${BG} 4, Max (CEO)`, text: 'Gaf opdracht de kostenbasis te verlagen om de rentabiliteit te herstellen. Dat besluit was van mij en het was verkeerd; de rest van de directie voerde uit wat ik vroeg.' },
+    { type: 'data', src: EXP, text: 'Productie-FTE 52 naar 40; personeelskosten € 1.849.340 naar € 1.591.441.' },
+    { type: 'data', src: 'Grafiek opleidingsbudget', text: 'Opleidingsbudget van 9/9/9 naar 9/7/5%.' },
+    { type: 'img', shot: 'opleiding' },
+  ],
+  [
+    { type: 'quote', src: `${BG} 5, Max (CEO)`, text: 'Besloot de bezuiniging van kwartaal 4 in één keer terug te draaien in plaats van geleidelijk.' },
+    { type: 'data', src: EXP, text: 'Loyaliteit 55,1 naar 67,1; werkdruk 42% naar 67%; Sales-FTE 4 naar 5.' },
+    { type: 'data', src: 'Grafieken opleidingsbudget en bezetting', text: 'Opleidingsbudget van 9/7/5 naar 5/5/5%; bezettingsgraad machines van circa 23% naar 39%. Voor dit kwartaal is geen besluitenlogboek vastgelegd.' },
+    { type: 'img', shot: 'bezetting' },
+  ],
+  [
+    { type: 'quote', src: `${LOG}, 10 september (opgesteld door Max)`, text: 'RTV aanpassen door deposito te storten. Keuzes in marketing en contracten maken voor groei' },
+    { type: 'quote', src: `${BG} 6, "aan de knoppen"`, text: 'Huyb — deposito van €4,35 naar €8,35 miljoen. […] Daniel — productieopdracht naar 5,65 miljoen stuks […] Raphael — resellermarge op ice tea teruggezet van 22,5% naar 5,0%. […] Esmee — verzuim terug op 4,0%.' },
+    { type: 'data', src: 'Grafiek opleidingsbudget', text: 'Opleidingsbudget van 5/5/5 naar 2/2/2%.' },
+    { type: 'data', src: EXP, text: 'Sales-FTE 5 naar 3; werkdruk 39%; loyaliteit 67,6; KPI 5,03.' },
+    { type: 'img', shot: 'opleiding' },
+  ],
+  [
+    { type: 'quote', src: `${LOG}, 11 september (opgesteld door Max)`, text: 'Ploeg omlaag om op de juiste verhouding te komen, marges voor supermarkten aantrekkelijk maken, maximaal produceren voor optimale bezetting' },
+    { type: 'quote', src: `${BG} 7, "aan de knoppen"`, text: 'Esmee — werkdruk op 96% bewust geaccepteerd voor deze ene ronde, in ruil voor een volle bezetting.' },
+    { type: 'data', src: EXP, text: 'Werkdruk 96%; verzuim 4,0%; personeelskosten + € 47.234; RTV van −6,56% naar 7,86%.' },
+  ],
+  [
+    { type: 'quote', src: `${BG} 8, "aan de knoppen"`, text: 'Esmee — loyaliteit op 67,5 punten gehouden ondanks de afbouw van het personeelsbestand.' },
+    { type: 'data', src: EXP, text: 'Productie-FTE 40 naar 28; loyaliteit 68,6 naar 67,5; tevredenheid 72,9 naar 75,2.' },
+    { type: 'data', src: 'Grafiek opleidingsbudget', text: 'Opleidingsbudget van 2/2/2 naar 5/5/5%.' },
+    { type: 'img', shot: 'opleiding' },
+  ],
+];
+
 const nl = (n, d = 1) => n.toLocaleString('nl-NL', { minimumFractionDigits: d, maximumFractionDigits: d });
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -89,6 +151,19 @@ document.getElementById('weights').innerHTML = WEIGHTS.map(([name, w, mine]) => 
     <span class="weights__bar"><span style="--w:${w / 20}"></span></span>
     <span class="weights__val">${w}%</span>
   </li>`).join('');
+
+/* ---------- Bewijs ---------- */
+const PROOF_LABEL = { quote: 'Citaat', data: 'Cijfer' };
+function shotHTML(key) {
+  const s = SHOT[key];
+  return `<li class="proof__item proof__item--img"><div class="proof__shots">${s.src.map(src =>
+    `<button type="button" class="proof__shot" data-cap="${s.cap}"><img src="${src}" alt="${s.cap}" loading="lazy"><span class="sr-only">Vergroot screenshot</span></button>`).join('')}</div><p class="proof__cap">${s.cap}</p></li>`;
+}
+function proofHTML(list) {
+  const n = list.filter(p => p.type !== 'img').length;
+  return `<details class="proof"><summary>Bewijs <span class="proof__n">${n} bronnen${list.some(p => p.type === 'img') ? ' en screenshot' : ''}</span></summary><ul class="proof__list">${list.map(p => p.type === 'img' ? shotHTML(p.shot) :
+    `<li class="proof__item proof__item--${p.type}"><p class="proof__src"><span class="proof__kind">${PROOF_LABEL[p.type]}</span>${p.src}</p>${p.type === 'quote' ? `<blockquote>${p.text}</blockquote>` : `<p>${p.text}</p>`}</li>`).join('')}</ul></details>`;
+}
 
 /* ---------- Rondes ---------- */
 const SOURCE_LABEL = { plan: 'Uit het plan', moment: 'In het moment', mix: 'Uit de visie' };
@@ -102,6 +177,7 @@ document.getElementById('steps').innerHTML = ROUNDS.map((r, i) => `
       <div><dt>Resultaat</dt><dd>${r.result}</dd></div>
       <div><dt>Bijgesteld</dt><dd>${r.adjust}</dd></div>
     </dl>
+    ${proofHTML(PROOF[i])}
   </li>`).join('');
 
 /* ---------- Grafiek ---------- */
@@ -363,6 +439,20 @@ if (video) {
   }, 1300);
   requestAnimationFrame(frame);
 })();
+
+/* ---------- Screenshot vergroten ---------- */
+const box = document.getElementById('lightbox');
+if (box) {
+  const boxImg = box.querySelector('img'), boxCap = box.querySelector('p');
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.proof__shot');
+    if (b) {
+      const img = b.querySelector('img');
+      boxImg.src = img.src; boxImg.alt = img.alt; boxCap.textContent = b.dataset.cap;
+      box.showModal();
+    } else if (e.target === box || e.target.closest('.lightbox__close')) box.close();
+  });
+}
 
 /* ---------- Intro ---------- */
 if (!reduceMotion) requestAnimationFrame(() => document.body.classList.add('is-loaded'));
