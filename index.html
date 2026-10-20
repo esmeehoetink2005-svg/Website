@@ -9,32 +9,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;0,900;1,400;1,700;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Layout: a bound magazine on a boardroom table; one page at a time, turned from the spine. */
 :root{
+  color-scheme:light;
   --paper:#F6F1E7;
   --paper-2:#EDE5D6;
   --ink:#1A1916;
   --ink-soft:#5B574F;
   --line:#D9CFBE;
-  --clay:#B0502A;       /* clay court surface: white text 5.1:1 */
-  --clay-text:#A64A26;  /* clay for small text on paper: 5.1:1 */
-  --court:#2F5B3F;
-  --court-deep:#1F3F2B;
-  --ball:#D9E44E;
-  --gold:#E8C14A;       /* on green/ink surfaces */
-  --gold-light:#F5DA86; /* on clay surfaces: 3.8:1, large text only */
+  --cognac:#B0502A;       /* leather chair: white text 5.1:1 */
+  --cognac-text:#A64A26;  /* cognac for small text on paper: 5.1:1 */
+  --felt:#2F5B3F;         /* boardroom green */
+  --felt-deep:#1F3F2B;
+  --walnut:#3A2416;       /* the table the magazine lies on */
+  --brass:#E8C14A;        /* on green/ink surfaces */
+  --brass-light:#F5DA86;  /* on cognac and green surfaces */
   --blush:#E9D5C8;
   --white:#FFFDF8;
   --serif:"Playfair Display",Georgia,"Times New Roman",serif;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --shadow:0 30px 60px -20px rgba(30,20,10,.35),0 10px 20px -10px rgba(30,20,10,.2);
+  --shadow:0 30px 60px -20px rgba(20,10,4,.55),0 10px 20px -10px rgba(20,10,4,.35);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
-  background:var(--court-deep);
+  background:var(--walnut);
   background-image:
-    radial-gradient(ellipse at 20% 0%,rgba(217,228,78,.10),transparent 55%),
-    radial-gradient(ellipse at 100% 100%,rgba(201,95,53,.25),transparent 50%);
+    radial-gradient(ellipse at 30% 10%,rgba(245,218,134,.12),transparent 55%),
+    repeating-linear-gradient(97deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px),
+    linear-gradient(160deg,#4A2E1C,#2C1A10);
   color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;
   overflow:hidden;-webkit-font-smoothing:antialiased;
 }
@@ -64,20 +67,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
   pointer-events:none;z-index:2;
 }
-.page.dark{background:var(--court)}
+.page.dark{background:var(--felt)}
 .page.dark,.page.dark .folio{color:var(--paper)}
-.page.clay{background:var(--clay)}
-.page.clay,.page.clay .folio{color:var(--white)}
+.page.cognac{background:var(--cognac)}
+.page.cognac,.page.cognac .folio{color:var(--white)}
+.page.blush{background:var(--blush)}
 
 /* ---------- Typography ---------- */
-.kicker{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--clay-text)}
-.dark .kicker{color:var(--gold)}
-.clay .kicker{color:var(--white)}
-h1,h2,h3{font-family:var(--serif);font-weight:800;line-height:1.05;letter-spacing:-.01em}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--cognac-text)}
+.dark .kicker{color:var(--brass)}
+.cognac .kicker{color:var(--white)}
+h1,h2,h3{font-family:var(--serif);font-weight:800;line-height:1.05;letter-spacing:-.01em;text-wrap:balance}
 .title{font-size:clamp(40px,6vw,84px);font-weight:900;margin:.15em 0 .3em}
-.title em{font-style:italic;font-weight:900;color:var(--clay)}
-.dark .title em{color:var(--ball)}
-.clay .title em{color:var(--gold-light)}
+.title em{font-style:italic;font-weight:900;color:var(--cognac)}
+.dark .title em{color:var(--brass-light)}
+.cognac .title em{color:var(--brass-light)}
 h3{font-size:24px;margin:1.6em 0 .5em}
 .lede{font-family:var(--serif);font-size:clamp(19px,2vw,24px);line-height:1.45;max-width:46ch;margin-bottom:1.6em}
 p+p{margin-top:1em}
@@ -86,46 +90,56 @@ p+p{margin-top:1em}
 .cols h3:first-child{margin-top:0}
 .dropcap::first-letter{
   font-family:var(--serif);font-weight:900;float:left;font-size:4.6em;line-height:.8;
-  padding:.06em .1em 0 0;color:var(--clay);
+  padding:.06em .1em 0 0;color:var(--cognac);
 }
-.dark .dropcap::first-letter{color:var(--ball)}
+.dark .dropcap::first-letter{color:var(--brass-light)}
 .small{font-size:13px;color:var(--ink-soft)}
-.dark .small{color:rgba(246,241,231,.75)}
+.dark .small{color:rgba(246,241,231,.8)}
 .ts{font-variant-numeric:tabular-nums;font-size:.82em;color:var(--ink-soft);white-space:nowrap}
-.dark .ts,.clay .ts{color:inherit;opacity:.75}
+.dark .ts,.cognac .ts{color:inherit;opacity:.8}
 hr.rule{border:0;border-top:1px solid var(--line);margin:40px 0}
 .dark hr.rule{border-color:rgba(246,241,231,.25)}
+.byline{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin:-6px 0 22px;color:var(--ink-soft)}
+.dark .byline{color:rgba(246,241,231,.8)}
 
 .pull{
   font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(24px,3vw,36px);line-height:1.2;
-  border-top:3px solid var(--clay);border-bottom:1px solid var(--line);padding:22px 0;margin:36px 0;max-width:30ch;
+  border-top:3px solid var(--cognac);border-bottom:1px solid var(--line);padding:22px 0;margin:36px 0;max-width:30ch;
 }
-.pull cite{display:block;font-family:var(--sans);font-style:normal;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-top:12px;color:var(--clay-text)}
-.dark .pull{border-top-color:var(--ball);border-bottom-color:rgba(246,241,231,.25)}
-.dark .pull cite{color:var(--ball)}
+.pull cite{display:block;font-family:var(--sans);font-style:normal;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-top:12px;color:var(--cognac-text)}
+.dark .pull{border-top-color:var(--brass-light);border-bottom-color:rgba(246,241,231,.25)}
+.dark .pull cite{color:var(--brass-light)}
+.cognac .pull{border-top-color:var(--brass-light);border-bottom-color:rgba(255,255,255,.3);max-width:none}
+.cognac .pull cite{color:var(--white)}
 
 .question{
   background:var(--ink);color:var(--paper);border-radius:4px;padding:32px 36px;margin:28px 0;
   font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.4vw,28px);line-height:1.35;position:relative;
 }
-.question::before{content:"Hoofdvraag";display:block;font-family:var(--sans);font-style:normal;font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-.question.paa::before{content:"Hoofdvraag plan van aanpak"}
+.question::before{content:attr(data-label);display:block;font-family:var(--sans);font-style:normal;font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+
+/* Sidebar box, like a magazine "kader" */
+.box{border:2px solid var(--ink);border-radius:4px;padding:20px 22px;background:var(--white)}
+.box .kicker{display:block;margin-bottom:8px}
+.box h4{font-family:var(--serif);font-size:20px;line-height:1.25;margin-bottom:6px}
+.dark .box{border-color:var(--brass-light);background:rgba(0,0,0,.14)}
 
 /* ---------- Generic components ---------- */
 .grid{display:grid;gap:20px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
 .g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.card{background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
-.clay .card .small{color:var(--ink-soft)}
+.card{background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:22px 24px;min-width:0}
+.cognac .card .small{color:var(--ink-soft)}
 .card h4{font-family:var(--serif);font-size:20px;font-weight:800;line-height:1.2;margin-bottom:8px}
 .card .tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:var(--paper-2);margin-bottom:12px}
 .dark .card{background:rgba(255,255,255,.07);color:inherit;border-color:rgba(255,255,255,.16)}
-.dark .card .tag{background:rgba(217,228,78,.18);color:var(--ball)}
-.card.clayc{background:var(--clay);color:var(--white);border:0}
-.card.courtc{background:var(--court);color:var(--paper);border:0}
+.dark .card .tag{background:rgba(245,218,134,.18);color:var(--brass-light)}
+.card.cognacc{background:var(--cognac);color:var(--white);border:0}
+.card.feltc{background:var(--felt);color:var(--paper);border:0}
 .card.inkc{background:var(--ink);color:var(--paper);border:0}
-.card.clayc .tag,.card.courtc .tag,.card.inkc .tag{background:rgba(255,255,255,.16)}
+.card.cognacc .tag,.card.feltc .tag,.card.inkc .tag{background:rgba(255,255,255,.16)}
+.card.cognacc .small,.card.feltc .small,.card.inkc .small{color:inherit;opacity:.88}
 
 table.mag{width:100%;border-collapse:collapse;font-size:14.5px;margin:20px 0 8px}
 table.mag th{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-align:left;padding:10px 14px;border-bottom:2px solid var(--ink)}
@@ -135,122 +149,115 @@ table.mag td:first-child{font-weight:600}
 .dark table.mag td{border-color:rgba(246,241,231,.2)}
 .tablewrap{overflow-x:auto}
 .caption{font-size:12px;font-style:italic;color:var(--ink-soft);margin-bottom:24px}
-.dark .caption{color:rgba(246,241,231,.7)}
+.dark .caption{color:rgba(246,241,231,.75)}
 
 .split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
 .sticky{position:sticky;top:0}
 
-.num-big{font-family:var(--serif);font-weight:900;font-size:clamp(64px,9vw,128px);line-height:.85;color:var(--clay)}
-.dark .num-big{color:var(--ball)}
+.num-big{font-family:var(--serif);font-weight:900;font-size:clamp(64px,9vw,128px);line-height:.85;color:var(--cognac)}
+.dark .num-big,.cognac .num-big{color:var(--brass-light)}
 
 /* ---------- Cover ---------- */
-.cover{background:var(--clay);color:var(--white)}
+.cover{background:var(--cognac);color:var(--white)}
 .cover .page-inner{padding:0;overflow:hidden;position:relative}
-.court-lines{position:absolute;inset:0;pointer-events:none;
-  background:
-    linear-gradient(90deg,transparent calc(18% - 2px),rgba(255,255,255,.55) calc(18% - 2px),rgba(255,255,255,.55) 18%,transparent 18%),
-    linear-gradient(90deg,transparent calc(82% - 2px),rgba(255,255,255,.55) calc(82% - 2px),rgba(255,255,255,.55) 82%,transparent 82%),
-    linear-gradient(0deg,transparent calc(62% - 2px),rgba(255,255,255,.55) calc(62% - 2px),rgba(255,255,255,.55) 62%,transparent 62%),
-    linear-gradient(90deg,transparent calc(50% - 1px),rgba(255,255,255,.4) calc(50% - 1px),rgba(255,255,255,.4) calc(50% + 1px),transparent calc(50% + 1px));
-  opacity:.45;-webkit-mask:linear-gradient(180deg,transparent 30%,#000 80%);mask:linear-gradient(180deg,transparent 30%,#000 80%);
-}
-.cover-grain{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(255,220,180,.35),transparent 60%),linear-gradient(180deg,rgba(0,0,0,.05),rgba(60,20,5,.35));}
+.cover-grain{position:absolute;inset:0;background:
+  radial-gradient(ellipse at 72% 52%,rgba(255,220,180,.28),transparent 58%),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px),
+  linear-gradient(180deg,rgba(0,0,0,.04),rgba(50,15,3,.4));}
 .cover-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;padding:28px 44px 0 64px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
 .masthead{
-  position:relative;z-index:2;font-family:var(--serif);font-weight:900;color:var(--gold-light);
+  position:relative;z-index:2;font-family:var(--serif);font-weight:900;color:var(--brass-light);
   font-size:clamp(84px,14.5vw,184px);line-height:.82;letter-spacing:-.02em;padding:6px 0 0 54px;
-  text-shadow:0 6px 30px rgba(80,25,5,.25);
+  text-shadow:0 6px 30px rgba(60,20,5,.3);
 }
 .masthead-sub{position:relative;z-index:2;font-family:var(--serif);font-style:italic;font-size:clamp(16px,1.8vw,22px);padding:6px 0 0 64px;color:var(--white)}
-.ball{
-  position:absolute;z-index:1;right:7%;top:34%;width:min(36vw,400px);aspect-ratio:1;border-radius:50%;
-  background:radial-gradient(circle at 34% 30%,#F4FF9A 0%,var(--ball) 38%,#AEB928 80%,#8E9820 100%);
-  box-shadow:inset -30px -40px 80px rgba(60,70,0,.35),0 50px 80px -30px rgba(60,20,0,.6);
-  overflow:hidden;animation:float 7s ease-in-out infinite;
-}
-.ball::before,.ball::after{content:"";position:absolute;width:100%;height:100%;border-radius:50%;border:clamp(6px,1vw,12px) solid rgba(255,255,250,.92);}
-.ball::before{left:-62%;top:0}
-.ball::after{right:-62%;top:0}
-@keyframes float{50%{transform:translateY(-14px) rotate(6deg)}}
+.table-art{position:absolute;z-index:1;right:4%;top:27%;width:min(40vw,470px);max-width:100%;height:auto;overflow:visible}
+.table-art .seat{animation:seat .7s cubic-bezier(.2,.8,.3,1) both;animation-delay:var(--d)}
+@keyframes seat{from{opacity:.25}to{opacity:1}}
+.table-art .seat-label{font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.06em;fill:var(--white)}
+.table-art .table-num{font-family:var(--serif);font-weight:900;font-size:120px;fill:var(--brass-light)}
+.table-art .table-cap{font-family:var(--serif);font-style:italic;font-size:22px;fill:var(--white)}
 .coverlines{position:absolute;z-index:2;left:64px;bottom:96px;max-width:min(46%,440px)}
-.coverlines .big{font-family:var(--serif);font-weight:900;font-size:clamp(34px,4.6vw,60px);line-height:.95;color:var(--gold-light);text-transform:uppercase}
+.coverlines .big{font-family:var(--serif);font-weight:900;font-size:clamp(34px,4.6vw,60px);line-height:.95;color:var(--brass-light);text-transform:uppercase}
 .coverlines .big em{color:var(--white);font-style:italic;text-transform:none;display:block;font-size:.62em;margin-top:6px}
 .coverlines p{font-size:15px;line-height:1.5;margin-top:16px;max-width:38ch}
 .coverside{position:absolute;z-index:2;right:200px;bottom:30px;text-align:right;font-family:var(--serif)}
-.coverside .ed{font-weight:900;font-size:clamp(22px,2.6vw,34px);line-height:1;color:var(--gold);text-transform:uppercase}
 .coverside .q{font-style:italic;font-size:17px;max-width:22ch;margin:10px 0 0 auto;line-height:1.3}
 .coverbottom{position:absolute;z-index:2;left:64px;right:44px;bottom:28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:13px}
 .barcode{background:var(--white);color:var(--ink);padding:8px 10px 4px;border-radius:2px;text-align:center;font-size:9px;letter-spacing:.2em}
 .barcode i{display:block;width:120px;height:40px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 12px)}
 
 /* ---------- TOC ---------- */
-.toc-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:center;min-height:100%}
-.toc-visual{height:min(560px,calc(100vh - 230px));height:min(560px,calc(100dvh - 230px));border-radius:12px;position:relative;overflow:hidden;background:var(--court)}
-.toc-visual .court{position:absolute;inset:8%;border:3px solid rgba(255,255,255,.8)}
-.toc-visual .court::before{content:"";position:absolute;left:12%;right:12%;top:0;bottom:0;border-left:3px solid rgba(255,255,255,.8);border-right:3px solid rgba(255,255,255,.8)}
-.toc-visual .court::after{content:"";position:absolute;left:12%;right:12%;top:28%;bottom:28%;border-top:3px solid rgba(255,255,255,.8);border-bottom:3px solid rgba(255,255,255,.8);background:linear-gradient(90deg,transparent calc(50% - 1.5px),rgba(255,255,255,.8) calc(50% - 1.5px),rgba(255,255,255,.8) calc(50% + 1.5px),transparent calc(50% + 1.5px))}
-.toc-visual .net{position:absolute;left:4%;right:4%;top:calc(50% - 4px);height:8px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.9) 0 2px,transparent 2px 7px);border-top:3px solid #fff;box-shadow:0 8px 16px rgba(0,0,0,.25)}
-.toc-visual .mini-ball{position:absolute;width:16%;aspect-ratio:1;border-radius:50%;right:20%;top:18%;background:radial-gradient(circle at 35% 30%,#F4FF9A,var(--ball) 45%,#9AA524);box-shadow:0 20px 30px rgba(0,0,0,.35)}
-.toc-visual .label{position:absolute;left:8%;bottom:6%;font-family:var(--serif);font-style:italic;color:var(--gold);font-size:22px}
+.toc-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.toc-visual{position:sticky;top:0;height:min(560px,calc(100vh - 230px));height:min(560px,calc(100dvh - 230px));border-radius:12px;background:var(--felt);display:grid;place-items:center;perspective:900px;overflow:hidden}
+.toc-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(245,218,134,.18),transparent 60%)}
+.placecard{position:relative;width:78%;transform:rotateX(22deg) rotateZ(-4deg);text-align:center}
+.placecard .front{background:var(--white);border-radius:3px;padding:34px 22px 30px;box-shadow:0 30px 40px -18px rgba(0,0,0,.55);border-top:1px solid var(--line)}
+.placecard .front::after{content:"";position:absolute;left:0;right:0;bottom:-26px;height:26px;background:linear-gradient(180deg,#DCD3C4,#C9BFAE);transform:skewX(-8deg);transform-origin:top;border-radius:0 0 3px 3px;z-index:-1}
+.placecard .pk{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--cognac-text);font-weight:600}
+.placecard .pn{font-family:var(--serif);font-style:italic;font-weight:900;font-size:clamp(34px,4vw,52px);line-height:1;margin:10px 0 12px}
+.placecard .pr{font-size:13px;color:var(--ink-soft)}
+.cup{position:absolute;right:12%;bottom:14%;width:74px;height:74px;border-radius:50%;background:radial-gradient(circle,#3B2416 0 52%,#F6F1E7 53% 66%,#E4DBCB 67% 100%);box-shadow:0 14px 24px rgba(0,0,0,.4)}
+.cup::after{content:"";position:absolute;right:-16px;top:26px;width:20px;height:22px;border:6px solid #E4DBCB;border-left:0;border-radius:0 12px 12px 0}
+.pen{position:absolute;left:14%;bottom:18%;width:150px;height:9px;border-radius:5px;background:linear-gradient(90deg,var(--ink) 0 82%,var(--brass) 82% 90%,var(--ink) 90%);transform:rotate(-28deg);box-shadow:0 8px 12px rgba(0,0,0,.35)}
 .toc-title{font-family:var(--serif);font-style:italic;font-weight:900;font-size:clamp(48px,6vw,80px);margin-bottom:24px}
 .toc{list-style:none}
 .toc li{border-bottom:1px solid var(--line)}
 .toc a{display:grid;grid-template-columns:72px 1fr auto;align-items:baseline;gap:12px;padding:12px 4px;text-decoration:none;transition:padding .2s,color .2s}
-.toc a:hover,.toc a:focus-visible{padding-left:12px;color:var(--clay-text)}
+.toc a:hover,.toc a:focus-visible{padding-left:12px;color:var(--cognac-text)}
 .toc .n{font-family:var(--serif);font-weight:900;font-size:30px;line-height:1}
 .toc .t{font-size:15px;font-weight:500}
+.toc .t small{display:block;font-size:13px;color:var(--ink-soft);font-weight:400}
 .toc .arrow{opacity:0;transition:opacity .2s}
 .toc a:hover .arrow{opacity:1}
 
-/* ---------- Timeline steps ---------- */
-.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;margin:24px 0;border-top:2px solid var(--ink)}
+/* ---------- Route steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;margin:24px 0;border-top:2px solid var(--ink)}
 .steps li{list-style:none;padding:18px 16px 18px 0;border-right:1px solid var(--line);margin-right:16px}
 .steps li:last-child{border-right:0}
-.steps .sn{font-family:var(--serif);font-weight:900;font-size:40px;line-height:1;color:var(--clay)}
+.steps .sn{font-family:var(--serif);font-weight:900;font-size:40px;line-height:1;color:var(--cognac)}
 .steps .sw{font-weight:600;margin:8px 0 2px;line-height:1.35}
-.dark .steps{border-color:var(--paper)}
-.dark .steps li{border-color:rgba(246,241,231,.2)}
-.dark .steps .sn{color:var(--ball)}
 
-/* ---------- Players ---------- */
+/* ---------- Guests ---------- */
 .player{display:flex;gap:16px;align-items:flex-start}
+.player>div{min-width:0}
 .avatar{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:19px;color:var(--white)}
-.r1 .avatar{background:var(--clay)}
-.r2 .avatar{background:var(--court)}
+.r1 .avatar{background:var(--cognac)}
+.r2 .avatar{background:var(--felt)}
 .player b{display:block;font-family:var(--serif);font-size:18px;line-height:1.2}
 .player span{display:block;font-size:13.5px;color:var(--ink-soft);line-height:1.45}
 .legend{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;margin:6px 0 20px}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px}
 
-/* ---------- Versus (set 1 / set 2) ---------- */
+/* ---------- Round 1 vs round 2 ---------- */
 .vs{display:grid;grid-template-columns:1fr 1fr;border-radius:14px;overflow:hidden;border:1px solid var(--line);margin:20px 0}
 .vs .head{padding:16px 22px;font-family:var(--serif);font-weight:900;font-size:22px;color:var(--white)}
-.vs .head.a{background:var(--clay)}
-.vs .head.b{background:var(--court)}
-.vs .row{display:contents}
+.vs .head.a{background:var(--cognac)}
+.vs .head.b{background:var(--felt)}
 .vs .cell{padding:14px 22px;border-top:1px solid var(--line);font-size:14.5px;background:var(--white)}
 .vs .cell:nth-child(odd){border-right:1px solid var(--line)}
-.vs .lbl{grid-column:1/-1;padding:10px 22px 0;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--clay-text);background:var(--white);border-top:1px solid var(--line)}
+.vs .lbl{grid-column:1/-1;padding:10px 22px 0;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cognac-text);background:var(--white);border-top:1px solid var(--line)}
 .vs .lbl+.cell,.vs .lbl+.cell+.cell{border-top:0}
 
-/* ---------- Codes ---------- */
+/* ---------- Chips ---------- */
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
 .chip{padding:8px 14px;border-radius:99px;border:1px solid var(--ink);font-size:13.5px;font-weight:500}
 .dark .chip{border-color:rgba(246,241,231,.5)}
 
-/* ---------- Scoreboard ---------- */
-.scoreboard{background:var(--ink);color:var(--paper);border-radius:14px;padding:6px 0;margin:20px 0;font-variant-numeric:tabular-nums}
-.scoreboard .srow{display:grid;grid-template-columns:150px 170px 1fr;gap:16px;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.1);align-items:baseline}
-.scoreboard .srow:last-child{border-bottom:0}
-.scoreboard .time{font-family:ui-monospace,"SF Mono",Menlo,monospace;color:var(--ball);font-size:15px}
-.scoreboard .what{font-weight:600}
-.scoreboard .desc{font-size:14px;opacity:.8}
+/* ---------- Agenda (draaiboek) ---------- */
+.agenda{background:var(--white);border:1px solid var(--line);border-radius:4px;margin:20px 0;font-variant-numeric:tabular-nums;
+  background-image:linear-gradient(90deg,transparent 150px,rgba(176,80,42,.35) 150px,rgba(176,80,42,.35) 151px,transparent 151px)}
+.agenda .arow{display:grid;grid-template-columns:150px 180px 1fr;gap:16px;padding:14px 24px;border-bottom:1px solid var(--line);align-items:baseline}
+.agenda .arow:last-child{border-bottom:0}
+.agenda .time{font-family:ui-monospace,"SF Mono",Menlo,monospace;color:var(--cognac-text);font-size:14px}
+.agenda .what{font-weight:700;font-family:var(--serif);font-size:17px}
+.agenda .desc{font-size:14px;color:var(--ink-soft)}
 
 .verdict{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:99px;margin-bottom:12px}
-.v-eens{background:var(--court);color:var(--paper)}
-.v-oneens{background:var(--clay);color:var(--white)}
-.v-verdeeld{background:var(--gold);color:var(--ink)}
-.stelling .code{font-family:var(--serif);font-weight:900;font-size:15px;color:var(--clay-text);display:block;margin-bottom:4px}
+.v-eens{background:var(--felt);color:var(--paper)}
+.v-oneens{background:var(--cognac);color:var(--white)}
+.v-verdeeld{background:var(--brass);color:var(--ink)}
+.stelling .code{font-family:var(--serif);font-weight:900;font-size:15px;color:var(--cognac-text);display:block;margin-bottom:4px}
 .stelling h4{font-size:19px}
 .stelling .theory{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-soft)}
 .stelling p{font-size:14.5px}
@@ -262,7 +269,7 @@ table.mag td:first-child{font-weight:600}
 /* ---------- Votes ---------- */
 .votes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0}
 .vote{border-radius:14px;padding:22px;position:relative;min-height:220px;display:flex;flex-direction:column}
-.vote.win{background:var(--ball);color:var(--ink)}
+.vote.win{background:var(--brass-light);color:var(--ink)}
 .vote.lose{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
 .vote .rn{font-family:var(--serif);font-weight:900;font-size:15px;letter-spacing:.06em;text-transform:uppercase}
 .vote h4{font-family:var(--serif);font-size:19px;line-height:1.25;margin:8px 0 16px;font-weight:700}
@@ -270,10 +277,11 @@ table.mag td:first-child{font-weight:600}
 .vote .who span{font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:99px;background:rgba(0,0,0,.12)}
 .vote.lose .who span{background:rgba(255,255,255,.14)}
 .vote .count{position:absolute;right:20px;top:14px;font-family:var(--serif);font-weight:900;font-size:44px;line-height:1;opacity:.9}
-.vote .win-badge{position:absolute;right:20px;bottom:-12px;background:var(--ink);color:var(--ball);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:99px}
+.vote .win-badge{position:absolute;right:20px;bottom:-12px;background:var(--ink);color:var(--brass-light);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:99px}
 
 /* ---------- Lessons ---------- */
 .lesson{display:grid;grid-template-columns:110px 1fr;gap:28px;padding:30px 0;border-top:1px solid var(--line)}
+.blush .lesson{border-color:rgba(0,0,0,.15)}
 .lesson .num-big{font-size:96px}
 .lesson h3{margin-top:0}
 
@@ -285,25 +293,25 @@ table.mag td:first-child{font-weight:600}
 
 /* ---------- Back cover ---------- */
 .back .page-inner{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative}
-.back .masthead{color:var(--gold);padding:0;font-size:clamp(70px,12vw,170px)}
+.back .masthead{color:var(--brass-light);padding:0;font-size:clamp(70px,12vw,170px)}
 
 /* ---------- Controls ---------- */
 .bar{
-  position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:10;
+  position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:10;
   display:flex;align-items:center;gap:6px;padding:6px;border-radius:99px;
-  background:rgba(20,30,22,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  color:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.12);
+  background:rgba(26,16,10,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  color:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12);
 }
 .bar button{height:44px;min-width:44px;touch-action:manipulation;padding:0 14px;border-radius:99px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em}
 .bar button:hover{background:rgba(255,255,255,.12)}
 .bar button:disabled{opacity:.35;cursor:default;background:none}
 .bar .counter{font-variant-numeric:tabular-nums;font-size:13px;min-width:70px;text-align:center;letter-spacing:.08em}
-.bar .counter b{color:var(--ball)}
+.bar .counter b{color:var(--brass-light)}
 .bar svg{width:18px;height:18px}
 .progress{position:fixed;left:0;right:0;bottom:0;height:3px;z-index:10;background:rgba(255,255,255,.08)}
-.progress i{display:block;height:100%;width:0;background:var(--ball);transition:width .5s ease}
-.hint{position:fixed;right:24px;bottom:28px;z-index:9;font-size:12px;color:rgba(246,241,231,.6);letter-spacing:.06em}
-:focus-visible{outline:2px solid var(--ball);outline-offset:3px}
+.progress i{display:block;height:100%;width:0;background:var(--brass);transition:width .5s ease}
+.hint{position:fixed;right:24px;bottom:28px;z-index:9;font-size:12px;color:rgba(246,241,231,.65);letter-spacing:.06em}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
 .page-inner:focus{outline:none}
 
 /* ---------- Responsive ---------- */
@@ -318,22 +326,22 @@ table.mag td:first-child{font-weight:600}
   .vote{min-height:0}
   .lesson{grid-template-columns:1fr;gap:6px}
   .lesson .num-big{font-size:64px}
-  .scoreboard .srow{grid-template-columns:1fr;gap:2px}
+  .agenda{background-image:none}
+  .agenda .arow{grid-template-columns:1fr;gap:2px}
   .vs{grid-template-columns:1fr}
-  .vs .head.b{order:0}
   .vs .cell:nth-child(odd){border-right:0}
   .masthead{padding-left:22px;font-size:clamp(56px,18vw,120px)}
   .back .masthead{padding-left:0}
   .masthead-sub,.cover-top{padding-left:30px;padding-right:20px}
-  .ball{width:62vw;right:-12%;top:30%}
-  .coverlines{left:30px;bottom:100px;max-width:70%}
+  .table-art{width:60vw;right:-12%;top:21%}
+  .coverlines{left:30px;bottom:100px;max-width:72%}
   .coverside{display:none}
   .coverbottom{left:30px;right:20px;font-size:11px}
   .hint{display:none}
   .bar .lbl{display:none}
 }
 @media (prefers-reduced-motion:reduce){
-  .ball{animation:none}
+  .table-art .seat{animation:none}
   .progress i{transition:none}
 }
 </style>
@@ -346,17 +354,53 @@ table.mag td:first-child{font-weight:600}
 <section class="page cover" data-title="Cover" aria-label="Cover">
   <div class="page-inner">
     <div class="cover-grain"></div>
-    <div class="court-lines"></div>
     <div class="cover-top"><span>Sales Edition · Nr. 01</span><span>Oktober Editie 2026</span></div>
     <h1 class="masthead">WAARDE</h1>
     <div class="masthead-sub">Het magazine over waardeverkoop in de zakelijke markt</div>
-    <div class="ball" aria-hidden="true"></div>
+    <svg class="table-art" viewBox="0 0 600 600" role="img" aria-label="Een ronde tafel van bovenaf met negen stoelen: vijf voor de gasten van ronde 1 en vier voor de gasten van ronde 2.">
+<defs><radialGradient id="wood" cx="42%" cy="38%" r="70%"><stop offset="0" stop-color="#9A6845"/><stop offset=".55" stop-color="#76492C"/><stop offset="1" stop-color="#4E2F1C"/></radialGradient><filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#2a1205" flood-opacity=".45"/></filter></defs>
+<g class="seat" style="--d:0ms" transform="translate(300.0 38.0) rotate(0)"><rect x="-34" y="-24" width="68" height="48" rx="16" fill="#C8673D" stroke="rgba(255,253,248,.55)" stroke-width="2"/></g>
+<text x="300.0" y="44.0" text-anchor="middle" class="seat-label">JA</text>
+<g class="seat" style="--d:70ms" transform="translate(468.4 99.3) rotate(40)"><rect x="-34" y="-24" width="68" height="48" rx="16" fill="#C8673D" stroke="rgba(255,253,248,.55)" stroke-width="2"/></g>
+<text x="468.4" y="105.3" text-anchor="middle" class="seat-label">BK</text>
+<g class="seat" style="--d:140ms" transform="translate(558.0 254.5) rotate(80)"><rect x="-34" y="-24" width="68" height="48" rx="16" fill="#C8673D" stroke="rgba(255,253,248,.55)" stroke-width="2"/></g>
+<text x="558.0" y="260.5" text-anchor="middle" class="seat-label">WA</text>
+<g class="seat" style="--d:210ms" transform="translate(526.9 431.0) rotate(120)"><rect x="-34" y="-24" width="68" height="48" rx="16" fill="#C8673D" stroke="rgba(255,253,248,.55)" stroke-width="2"/></g>
+<text x="526.9" y="437.0" text-anchor="middle" class="seat-label">DK</text>
+<g class="seat" style="--d:280ms" transform="translate(389.6 546.2) rotate(160)"><rect x="-34" y="-24" width="68" height="48" rx="16" fill="#C8673D" stroke="rgba(255,253,248,.55)" stroke-width="2"/></g>
+<text x="389.6" y="552.2" text-anchor="middle" class="seat-label">RL</text>
+<g class="seat" style="--d:350ms" transform="translate(210.4 546.2) rotate(200)"><rect x="-34" y="-24" width="68" height="48" rx="16" fill="#2F5B3F" stroke="rgba(255,253,248,.55)" stroke-width="2"/></g>
+<text x="210.4" y="552.2" text-anchor="middle" class="seat-label">RR</text>
+<g class="seat" style="--d:420ms" transform="translate(73.1 431.0) rotate(240)"><rect x="-34" y="-24" width="68" height="48" rx="16" fill="#2F5B3F" stroke="rgba(255,253,248,.55)" stroke-width="2"/></g>
+<text x="73.1" y="437.0" text-anchor="middle" class="seat-label">CM</text>
+<g class="seat" style="--d:490ms" transform="translate(42.0 254.5) rotate(280)"><rect x="-34" y="-24" width="68" height="48" rx="16" fill="#2F5B3F" stroke="rgba(255,253,248,.55)" stroke-width="2"/></g>
+<text x="42.0" y="260.5" text-anchor="middle" class="seat-label">SW</text>
+<g class="seat" style="--d:560ms" transform="translate(131.6 99.3) rotate(320)"><rect x="-34" y="-24" width="68" height="48" rx="16" fill="#2F5B3F" stroke="rgba(255,253,248,.55)" stroke-width="2"/></g>
+<text x="131.6" y="105.3" text-anchor="middle" class="seat-label">JB</text>
+<circle cx="300" cy="300" r="212" fill="url(#wood)" filter="url(#sh)"/>
+<circle cx="300" cy="300" r="196" fill="none" stroke="#2a1205" stroke-opacity="0.18" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="168" fill="none" stroke="#2a1205" stroke-opacity="0.1" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="132" fill="none" stroke="#2a1205" stroke-opacity="0.08" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="90" fill="none" stroke="#2a1205" stroke-opacity="0.07" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="206" fill="none" stroke="#F5DA86" stroke-width="3" stroke-opacity=".8"/>
+<g transform="translate(300.0 130.0) rotate(0)"><rect x="-17" y="-12" width="34" height="24" rx="2" fill="#FFFDF8" opacity=".92"/><line x1="-11" y1="-4" x2="11" y2="-4" stroke="#B9AE9C" stroke-width="1.5"/><line x1="-11" y1="2" x2="6" y2="2" stroke="#B9AE9C" stroke-width="1.5"/></g>
+<g transform="translate(409.3 169.8) rotate(40)"><rect x="-17" y="-12" width="34" height="24" rx="2" fill="#FFFDF8" opacity=".92"/><line x1="-11" y1="-4" x2="11" y2="-4" stroke="#B9AE9C" stroke-width="1.5"/><line x1="-11" y1="2" x2="6" y2="2" stroke="#B9AE9C" stroke-width="1.5"/></g>
+<g transform="translate(467.4 270.5) rotate(80)"><rect x="-17" y="-12" width="34" height="24" rx="2" fill="#FFFDF8" opacity=".92"/><line x1="-11" y1="-4" x2="11" y2="-4" stroke="#B9AE9C" stroke-width="1.5"/><line x1="-11" y1="2" x2="6" y2="2" stroke="#B9AE9C" stroke-width="1.5"/></g>
+<g transform="translate(447.2 385.0) rotate(120)"><rect x="-17" y="-12" width="34" height="24" rx="2" fill="#FFFDF8" opacity=".92"/><line x1="-11" y1="-4" x2="11" y2="-4" stroke="#B9AE9C" stroke-width="1.5"/><line x1="-11" y1="2" x2="6" y2="2" stroke="#B9AE9C" stroke-width="1.5"/></g>
+<g transform="translate(358.1 459.7) rotate(160)"><rect x="-17" y="-12" width="34" height="24" rx="2" fill="#FFFDF8" opacity=".92"/><line x1="-11" y1="-4" x2="11" y2="-4" stroke="#B9AE9C" stroke-width="1.5"/><line x1="-11" y1="2" x2="6" y2="2" stroke="#B9AE9C" stroke-width="1.5"/></g>
+<g transform="translate(241.9 459.7) rotate(200)"><rect x="-17" y="-12" width="34" height="24" rx="2" fill="#FFFDF8" opacity=".92"/><line x1="-11" y1="-4" x2="11" y2="-4" stroke="#B9AE9C" stroke-width="1.5"/><line x1="-11" y1="2" x2="6" y2="2" stroke="#B9AE9C" stroke-width="1.5"/></g>
+<g transform="translate(152.8 385.0) rotate(240)"><rect x="-17" y="-12" width="34" height="24" rx="2" fill="#FFFDF8" opacity=".92"/><line x1="-11" y1="-4" x2="11" y2="-4" stroke="#B9AE9C" stroke-width="1.5"/><line x1="-11" y1="2" x2="6" y2="2" stroke="#B9AE9C" stroke-width="1.5"/></g>
+<g transform="translate(132.6 270.5) rotate(280)"><rect x="-17" y="-12" width="34" height="24" rx="2" fill="#FFFDF8" opacity=".92"/><line x1="-11" y1="-4" x2="11" y2="-4" stroke="#B9AE9C" stroke-width="1.5"/><line x1="-11" y1="2" x2="6" y2="2" stroke="#B9AE9C" stroke-width="1.5"/></g>
+<g transform="translate(190.7 169.8) rotate(320)"><rect x="-17" y="-12" width="34" height="24" rx="2" fill="#FFFDF8" opacity=".92"/><line x1="-11" y1="-4" x2="11" y2="-4" stroke="#B9AE9C" stroke-width="1.5"/><line x1="-11" y1="2" x2="6" y2="2" stroke="#B9AE9C" stroke-width="1.5"/></g>
+<text x="300" y="294" text-anchor="middle" class="table-num">9</text>
+<text x="300" y="334" text-anchor="middle" class="table-cap">gasten · 2 rondes</text>
+</svg>
     <div class="coverside">
-            <div class="q">“Een directeur met het mandaat van een zak chips”</div>
+      <div class="q">“Een directeur met het mandaat van een zak chips”</div>
     </div>
     <div class="coverlines">
-      <div class="big">Van verkennen naar toetsen<em>Twee rondetafels, één richting</em></div>
-      <p>Hoe negen professionals uit de praktijk het onderzoek naar waardeverkoop een richting gaven: klantbelang gaat vóór klanttevredenheid.</p>
+      <div class="big">Aan tafel!<em>Negen professionals, twee rondes, één richting</em></div>
+      <p>Wat gebeurt er als je mensen uit de bouw, de bank, de cloud en de groothandel samen laat praten over waarde? Je hoort dingen die je in geen enkel interview hoort.</p>
     </div>
     <div class="coverbottom">
       <span>Door Esmee Hoetink</span>
@@ -370,8 +414,8 @@ table.mag td:first-child{font-weight:600}
   <div class="page-inner">
     <div class="toc-wrap">
       <div class="toc-visual" aria-hidden="true">
-        <div class="court"></div><div class="net"></div><div class="mini-ball"></div>
-        <div class="label">Set, game, richting.</div>
+        <div class="placecard"><div class="front"><div class="pk">Gereserveerd voor</div><div class="pn">de lezer</div><div class="pr">Tafel 1 · stoel 10 · koffie staat klaar</div></div></div>
+        <div class="cup"></div><div class="pen"></div>
       </div>
       <div>
         <div class="kicker">In deze editie</div>
@@ -383,52 +427,55 @@ table.mag td:first-child{font-weight:600}
   <div class="folio"><span>Pagina 2</span><span>Waarde</span></div>
 </section>
 
-<!-- 3 IN HET KORT / INLEIDING -->
-<section class="page" data-title="Van de redactie" data-toc="Inleiding: waarom twee rondetafels" aria-label="Inleiding">
+<!-- 3 VAN DE HOOFDREDACTIE -->
+<section class="page" data-title="Van de hoofdredactie" data-toc="Van de hoofdredactie" data-sub="Waarom we de praktijk aan tafel vroegen" aria-label="Van de hoofdredactie">
   <div class="page-inner">
-    <div class="kicker">Hoofdstuk 1 · Inleiding</div>
-    <h2 class="title">Van product naar <em>waarde</em></h2>
-    <p class="lede">Ons afstudeeronderzoek gaat over de overgang van productverkoop naar waardeverkoop in de zakelijke markt (B2B). Vier rode draden waren nog te breed voor een adviesmodel. Dus legden we ze voor aan de praktijk.</p>
+    <div class="kicker">Van de hoofdredactie</div>
+    <h2 class="title">Schuif maar <em>aan</em></h2>
+    <p class="byline">Door Esmee Hoetink</p>
+    <p class="lede">Iedereen in sales roept dat je waarde moet verkopen in plaats van producten. Maar wat betekent dat eigenlijk op maandagochtend, met een klant aan de lijn die vooral naar de prijs vraagt?</p>
     <div class="cols">
-      <h3>Aanleiding</h3>
-      <p class="dropcap">In mijn individuele strategische koersopdracht (ISK) heb ik met de zes expertinterviews van mijn HUB-groep en deskresearch vier rode draden in kaart gebracht: <strong>de klant bepaalt wat waarde is</strong>, <strong>zonder waarde wordt alles prijs</strong>, <strong>weten is geen doen</strong>, en <strong>waarde moet na de verkoop zichtbaar blijven</strong>. Die rode draden waren nog te breed om een adviesmodel op te bouwen. Daarom hebben we ze in twee online rondetafelgesprekken voorgelegd aan mensen uit de praktijk.</p>
-      <p>De eerste rondetafel op 1 oktober 2026 was verkennend: vijf deelnemers uit verschillende branches bespraken vier thema’s. Uit de conclusies volgden twee conceptadviezen. Die hebben we op 6 oktober 2026 in een tweede rondetafel getoetst bij vier nieuwe deelnemers. Op basis daarvan koos de groep de richting <em>klantbelang → klanttevredenheid</em>, die de basis werd voor de hoofdvraag van ons plan van aanpak.</p>
-      <h3>Doel en leeswijzer</h3>
-      <p>Het doel van dit stuk is laten zien hoe we met twee rondetafels van een breed onderwerp tot een onderbouwde onderzoeksrichting zijn gekomen, en welke rol ik daarin had. Eerst de literatuur over een goede online rondetafel, dan onze aanpak, de bevindingen van ronde 1, de evaluatie en bijstelling, de resultaten van ronde 2, en tot slot conclusies, advies, groepsbesluit en reflectie.</p>
+      <p class="dropcap">Met die vraag begon ons afstudeeronderzoek: de overgang van productverkoop naar waardeverkoop in de zakelijke markt (B2B). Mijn HUB-groep had al zes experts geïnterviewd. Samen met deskresearch leverde dat vier rode draden op.</p>
+      <p><strong>Eén:</strong> de klant bepaalt wat waarde is. <strong>Twee:</strong> zonder waarde wordt alles prijs. <strong>Drie:</strong> weten is nog geen doen. <strong>Vier:</strong> waarde moet ook na de verkoop zichtbaar blijven.</p>
+      <p>Mooie inzichten, maar te breed om er een adviesmodel op te bouwen. Dus deden we wat je doet als je vastloopt: we vroegen het aan de mensen die het elke dag doen. We nodigden ze uit voor twee online rondetafelgesprekken.</p>
+      <p>Op 1 oktober 2026 schoven vijf professionals aan om vier thema’s te verkennen. Daaruit kwamen twee conceptadviezen, die we op 6 oktober voorlegden aan vier nieuwe gasten. Een dag later hakte de projectgroep de knoop door: <em>klantbelang → klanttevredenheid</em>. Die richting werd de hoofdvraag van ons plan van aanpak.</p>
+      <p>In dit magazine lees je hoe dat ging. Wat de literatuur zegt over een goed gesprek, wie er aan tafel zaten, wat er goed en fout ging, en welke rol ik zelf speelde. Pak er een kop koffie bij.</p>
     </div>
     <hr class="rule">
-    <div class="kicker">De lijn van dit magazine</div>
+    <div class="kicker">De route in vijf stappen</div>
     <ol class="steps">
-      <li><div class="sn">1</div><div class="sw">Rondetafel 1</div><div class="small">Verkennen van vier thema’s</div></li>
+      <li><div class="sn">1</div><div class="sw">Ronde 1</div><div class="small">Vier thema’s verkennen</div></li>
       <li><div class="sn">2</div><div class="sw">Conclusies</div><div class="small">En twee conceptadviezen</div></li>
-      <li><div class="sn">3</div><div class="sw">Evaluatie</div><div class="small">Bijstelling van de aanpak</div></li>
-      <li><div class="sn">4</div><div class="sw">Rondetafel 2</div><div class="small">Toetsen van advies A en B</div></li>
-      <li><div class="sn">5</div><div class="sw">Besluit</div><div class="small">Advies, groepsbesluit en hoofdvraag</div></li>
+      <li><div class="sn">3</div><div class="sw">Evaluatie</div><div class="small">Wat moest er anders?</div></li>
+      <li><div class="sn">4</div><div class="sw">Ronde 2</div><div class="small">Advies A en B toetsen</div></li>
+      <li><div class="sn">5</div><div class="sw">Besluit</div><div class="small">Advies, keuze en hoofdvraag</div></li>
     </ol>
   </div>
-  <div class="folio"><span>Pagina 3</span><span>Inleiding</span></div>
+  <div class="folio"><span>Pagina 3</span><span>Hoofdredactie</span></div>
 </section>
 
 <!-- 4 MIJN ROL -->
-<section class="page" data-title="Mijn rol" data-toc="Mijn rol in het team" aria-label="Mijn rol">
+<section class="page" data-title="Achter de schermen" data-toc="Achter de schermen" data-sub="Het team en mijn rol" aria-label="Achter de schermen: mijn rol">
   <div class="page-inner">
     <div class="split">
       <div class="sticky">
-        <div class="kicker">1.3 · Profiel</div>
-        <h2 class="title">Mijn <em>rol</em></h2>
-        <p class="lede">Zes studenten, twee rondetafels, vaste rollen. Mijn bijdrage zat vooral in de inhoudelijke voorbereiding en in het doorvragen tijdens de gesprekken.</p>
-        <div class="pull">“Een leidraad is een hulpmiddel en geen vast script.”<cite>Esmee Hoetink, reflectie</cite></div>
+        <div class="kicker">Achter de schermen</div>
+        <h2 class="title">Wie doet <em>wat?</em></h2>
+        <p class="lede">Zes studenten, twee gesprekken, vaste rollen. Mijn werk zat vooral in de voorbereiding en in het doorvragen aan tafel.</p>
+        <div class="pull">“Een leidraad is een hulpmiddel en geen vast script.”<cite>Esmee Hoetink</cite></div>
       </div>
       <div>
-        <h3 style="margin-top:0">Voor rondetafel 1</h3>
-        <p>In het teamoverleg op 29 september stelde ik voor om ook te toetsen of waardeverkoop altijd werkt, omdat de expertinterviews daar wisselende antwoorden op gaven. Ik opperde om bedrijven en klanten daarvoor in typen of persona’s in te delen <span class="ts">(6:03–6:32)</span>. Ook stelde ik voor om per thema eerst vast te leggen welke vraag we na de rondetafel beantwoord wilden hebben, en de thema’s zo eenvoudig te formuleren dat iemand buiten het vak ze begrijpt.</p>
-        <p>Bij de eerste rondetafel maakte en presenteerde ik de Mentimeter waarmee we het gesprek openden. Ik was doorvrager bij thema 1 (de vraag achter de vraag) en thema 3 (na de handtekening). Ik zocht thema 4 (van weten naar doen) uit, vond de bron voor de expertcriteria en schreef het stuk over betrouwbaarheid en validiteit in het groepsverslag.</p>
-        <h3>Voor rondetafel 2</h3>
-        <p>Op 5 oktober koos ik samen met Max de onderwerpen en stellingen. Als toets stelde ik bij elke stelling de vraag wat we met het antwoord konden. Ik werkte de opzet en het draaiboek uit, wierf Corné Maas als deelnemer en leidde thema 2 met drie bewust prikkelende stellingen. Toen de meningen sterk uiteenliepen, paste ik een stelling ter plekke aan <span class="ts">(44:32)</span> en koppelde ik de uitkomst later terug aan de eerste stelling <span class="ts">(49:51)</span>.</p>
-        <h3>Rolverdeling</h3>
+        <h3 style="margin-top:0">Vóór ronde 1</h3>
+        <p>In het teamoverleg van 29 september gooide ik een vraag op tafel: werkt waardeverkoop eigenlijk altijd? De experts gaven daar wisselende antwoorden op. Mijn voorstel was om bedrijven en klanten in typen of persona’s in te delen <span class="ts">(6:03–6:32)</span>. Dat idee komt later in dit magazine nog terug.</p>
+        <p>Ik stelde ook voor om per thema vooraf op te schrijven welke vraag we na afloop beantwoord wilden hebben. En om de thema’s zo simpel te formuleren dat iemand buiten het vak ze snapt. Verder maakte en presenteerde ik de Mentimeter waarmee we openden, en was ik doorvrager bij thema 1 (de vraag achter de vraag) en thema 3 (na de handtekening).</p>
+        <p>Op de achtergrond zocht ik thema 4 (van weten naar doen) uit, vond ik de bron voor de criteria waaraan een expert moest voldoen, en schreef ik het stuk over betrouwbaarheid en validiteit in het groepsverslag.</p>
+        <h3>Vóór en tijdens ronde 2</h3>
+        <p>Op 5 oktober koos ik samen met Max de onderwerpen en stellingen. Bij elke stelling stelde ik dezelfde toetsvraag: wat kunnen we straks met het antwoord? Ik werkte de opzet en het draaiboek uit en nodigde Corné Maas uit, die ik op een event had ontmoet.</p>
+        <p>Aan tafel leidde ik thema 2 met drie bewust prikkelende stellingen. Toen de meningen bij de eerste stelling alle kanten op gingen, paste ik die ter plekke aan <span class="ts">(44:32)</span>. Aan het eind koppelde ik de laatste stelling terug aan de eerste: is het borgen van training dan niet juist een taak van het management <span class="ts">(49:51)</span>?</p>
+        <h3>De rolverdeling</h3>
         <div class="tablewrap">
         <table class="mag">
-          <thead><tr><th>Rol</th><th>Rondetafel 1</th><th>Rondetafel 2</th></tr></thead>
+          <thead><tr><th>Rol</th><th>Ronde 1</th><th>Ronde 2</th></tr></thead>
           <tbody>
             <tr><td>Gespreksleider / host</td><td>Daniël van den Brink</td><td>Daniël van den Brink</td></tr>
             <tr><td>Moderator</td><td>Maud Kemperman, Max van der Weijden, Huyb Wentink</td><td>Maud Kemperman</td></tr>
@@ -438,266 +485,268 @@ table.mag td:first-child{font-weight:600}
           </tbody>
         </table>
         </div>
-        <p class="caption">Rolverdeling in beide rondetafels (bron: groepsverslag)</p>
+        <p class="caption">Bron: groepsverslag</p>
       </div>
     </div>
   </div>
-  <div class="folio"><span>Pagina 4</span><span>Mijn rol</span></div>
+  <div class="folio"><span>Pagina 4</span><span>Achter de schermen</span></div>
 </section>
 
 <!-- 5 THEORIE -->
-<section class="page dark" data-title="Theorie" data-toc="Een goede rondetafel volgens de literatuur" aria-label="Theoretisch kader">
+<section class="page dark" data-title="De kunst van de rondetafel" data-toc="De kunst van de rondetafel" data-sub="Vijf lessen uit de literatuur" aria-label="De kunst van de rondetafel">
   <div class="page-inner">
-    <div class="kicker">Hoofdstuk 2 · Theoretisch kader</div>
-    <h2 class="title">De kunst van de <em>rondetafel</em></h2>
-    <p class="lede">Een rondetafelgesprek is methodisch een focusgroep: een geleid groepsgesprek over een afgebakend onderwerp, met een kleine groep deelnemers die er verstand van hebben (Krueger &amp; Casey, 2015).</p>
+    <div class="kicker">Theorie · Zo zet je een goede tafel neer</div>
+    <h2 class="title">Vijf regels voor een <em>goed gesprek</em></h2>
+    <p class="lede">Een rondetafel is meer dan een paar mensen in een Teams-call. Methodisch is het een focusgroep: een geleid groepsgesprek over één onderwerp, met deelnemers die er verstand van hebben (Krueger &amp; Casey, 2015).</p>
     <div class="cols">
-      <h3>De rondetafel als focusgroep</h3>
-      <p>Het verschil met een individueel interview is de interactie. Deelnemers reageren op elkaar, vullen elkaar aan of spreken elkaar tegen. Daardoor zie je niet alleen wat iemand vindt, maar ook waar mensen uit de praktijk het met elkaar over eens en oneens zijn.</p>
-      <p>In rondetafel 2 werd dat goed zichtbaar bij de stelling dat het gat tussen weten en doen bij het management ligt. Sven en Corné wezen naar de kaders van het management, Jeroen legde het bij de verkoper, en Remco stelde dat het bij allebei ligt <span class="ts">(39:07–44:32)</span>. Die nuance hadden we in losse interviews niet gekregen.</p>
-      <p>Bij een <strong>verkennend</strong> doel passen open vragen; bij een <strong>toetsend</strong> doel helpt een strakkere opzet met concrete stellingen waarop deelnemers kant moeten kiezen. Ronde 1 was verkennend. Achteraf kwam de interactie daar onvoldoende op gang: zonder die interactie levert een focusgroep weinig meer op dan losse interviews (Kitzinger, 1994). Daarom kozen we voor een tweede, toetsende ronde.</p>
-      <h3>Online voorbereiden</h3>
-      <p>Beide rondetafels vonden bewust online plaats via Microsoft Teams. Ervaren professionals hebben drukke agenda’s en werken verspreid over het land. Online kun je deelnemers bij elkaar brengen die anders moeilijk te bereiken zijn (Stewart &amp; Shamdasani, 2017). Het nadeel: minder lichaamstaal, door elkaar praten en techniek. In ronde 2 werkte een microfoon eerst niet, zat een deelnemer in de auto en moest er één eerder weg.</p>
-      <h3>Groepsgrootte en kwaliteit</h3>
-      <p>Vijf deelnemers in ronde 1, vier in ronde 2. Kleine focusgroepen zijn geschikt wanneer deelnemers veel kennis hebben, omdat iedereen meer spreektijd krijgt (Toner, 2009). Risico’s zoals dominante sprekers en sociaal wenselijke antwoorden vingen we op met moderatie en een member check achteraf (Lincoln &amp; Guba, 1985).</p>
-      <h3>Data analyseren</h3>
-      <p>De gesprekken zijn opgenomen, getranscribeerd en nagelopen. Daarna is gecodeerd met hetzelfde schema als de expertinterviews: deductief met zeven hoofdcodes, en inductief voor nieuwe inzichten (Bingham, 2023), gebundeld tot thema’s (Braun &amp; Clarke, 2006).</p>
+      <h3>1. Het draait om interactie</h3>
+      <p>Het verschil met een interview is dat deelnemers op elkaar reageren. Ze vullen elkaar aan of spreken elkaar tegen. Zonder die interactie heb je eigenlijk gewoon een reeks losse interviews (Kitzinger, 1994).</p>
+      <p>In ronde 2 zagen we dat live gebeuren. Bij de stelling dat het gat tussen weten en doen bij het management ligt, wezen Sven en Corné naar het management, legde Jeroen het bij de verkoper en vond Remco dat het bij allebei ligt <span class="ts">(39:07–44:32)</span>. Die nuance had geen enkel los interview opgeleverd.</p>
+      <h3>2. Kies: verkennen of toetsen</h3>
+      <p>Wil je zoveel mogelijk ideeën ophalen, dan stel je open vragen. Wil je weten of een idee overeind blijft, dan leg je concrete stellingen voor waarop mensen kant moeten kiezen. Ronde 1 was verkennend, ronde 2 toetsend.</p>
+      <h3>3. Online kan prima, als je strak modereert</h3>
+      <p>Ervaren professionals hebben volle agenda’s en wonen niet allemaal om de hoek in Nijmegen. Online kun je ze toch bij elkaar brengen, en dat levert vergelijkbare informatie op als een fysiek gesprek (Stewart &amp; Shamdasani, 2017). De keerzijde: minder lichaamstaal en meer techniekgedoe. In ronde 2 deed een microfoon het eerst niet, zat er iemand in de auto en moest een gast eerder weg.</p>
+      <h3>4. Klein is niet te klein</h3>
+      <p>Vijf gasten in ronde 1, vier in ronde 2. Kleine groepen werken juist goed als de deelnemers veel kennis hebben, omdat iedereen meer spreektijd krijgt (Toner, 2009). Let wel op de spraakwaterval en op sociaal wenselijke antwoorden.</p>
+      <h3>5. Leg alles vast en check het</h3>
+      <p>Beide gesprekken zijn opgenomen, uitgeschreven en nagelopen. Daarna is gecodeerd met hetzelfde schema als de expertinterviews: eerst met zeven vaste codes, daarna met nieuwe codes voor wat we niet hadden verwacht (Bingham, 2023; Braun &amp; Clarke, 2006). Na afloop kregen de deelnemers een samenvatting om te checken (Lincoln &amp; Guba, 1985).</p>
     </div>
     <hr class="rule">
-    <div class="kicker">Inzichten die we toepasten</div>
+    <div class="kicker">Wat we er concreet mee deden</div>
     <div class="grid g3" style="margin-top:18px">
       <div class="card"><span class="tag">Krueger &amp; Casey, 2015</span><h4>Vaste leidraad, neutrale doorvragen</h4><p class="small">Per thema drie stellingen met een vaste doorvraag.</p></div>
-      <div class="card"><span class="tag">Stalmeijer et al., 2014</span><h4>Rollen scheiden, proefronde houden</h4><p class="small">Rollen gescheiden; geen proefronde gehouden, een verbeterpunt.</p></div>
-      <div class="card"><span class="tag">Stewart &amp; Shamdasani, 2017</span><h4>Online: strakke moderatie</h4><p class="small">Deelnemers bij naam aangesproken en uitgenodigd elkaar te onderbreken.</p></div>
-      <div class="card"><span class="tag">Toner, 2009</span><h4>Kleine groep verantwoorden</h4><p class="small">Vier deskundige deelnemers uit vier branches, plus triangulatie.</p></div>
+      <div class="card"><span class="tag">Stalmeijer et al., 2014</span><h4>Rollen scheiden, proefronde houden</h4><p class="small">Rollen gescheiden. Een proefronde hebben we niet gehouden: een verbeterpunt.</p></div>
+      <div class="card"><span class="tag">Stewart &amp; Shamdasani, 2017</span><h4>Online strak modereren</h4><p class="small">Gasten bij naam aangesproken en uitgenodigd elkaar te onderbreken.</p></div>
+      <div class="card"><span class="tag">Toner, 2009</span><h4>Kleine groep verantwoorden</h4><p class="small">Vier deskundige gasten uit vier branches, plus triangulatie.</p></div>
       <div class="card"><span class="tag">Onwuegbuzie et al., 2009</span><h4>Interactie meenemen in de analyse</h4><p class="small">Per stelling vastgelegd wie het eens of oneens was.</p></div>
     </div>
   </div>
   <div class="folio"><span>Pagina 5</span><span>Theorie</span></div>
 </section>
 
-<!-- 6 AANPAK + SPELERS -->
-<section class="page" data-title="De spelers" data-toc="Aanpak en de negen spelers" aria-label="Aanpak en deelnemers">
+<!-- 6 DE GASTEN -->
+<section class="page" data-title="De gasten" data-toc="De gastenlijst" data-sub="Negen professionals, vier deelvragen" aria-label="De gasten aan tafel">
   <div class="page-inner">
-    <div class="kicker">Hoofdstuk 3 · Aanpak</div>
-    <h2 class="title">De <em>spelers</em> op de baan</h2>
-    <div class="question">Welke onderzoeksrichting voor het adviesmodel sluit het best aan op de uitkomsten van de expertinterviews en de rondetafelgesprekken, en wordt gedragen door de praktijk en de projectgroep?</div>
+    <div class="kicker">De gastenlijst</div>
+    <h2 class="title">Wie zaten er <em>aan tafel?</em></h2>
+    <p class="lede">Eerst de vraag die we wilden beantwoorden. Daarna de mensen die ons hielpen.</p>
+    <div class="question" data-label="De vraag van dit onderzoek">Welke onderzoeksrichting voor het adviesmodel sluit het best aan op de uitkomsten van de expertinterviews en de rondetafelgesprekken, en wordt gedragen door de praktijk en de projectgroep?</div>
     <div class="tablewrap">
     <table class="mag">
-      <thead><tr><th>Deelvraag</th><th>Methode</th><th>Waar</th></tr></thead>
+      <thead><tr><th>Deelvraag</th><th>Hoe</th><th>Lees het op</th></tr></thead>
       <tbody>
-        <tr><td>1. Hoe bereid je een rondetafel voor, voer je hem uit en analyseer je hem, zodat de uitkomsten betrouwbaar en bruikbaar zijn?</td><td>Deskresearch</td><td>Theorie</td></tr>
-        <tr><td>2. Welke thema’s en knelpunten rond waardeverkoop herkennen praktijkdeelnemers?</td><td>Rondetafel 1</td><td>Set 1</td></tr>
-        <tr><td>3. Wat moest er na rondetafel 1 anders om de conceptadviezen betrouwbaar te toetsen?</td><td>Evaluatie, getoetst aan literatuur</td><td>Evaluatie</td></tr>
-        <tr><td>4. Hoe beoordelen praktijkdeelnemers de twee conceptadviezen op relevantie, haalbaarheid en draagvlak?</td><td>Rondetafel 2, gecodeerd transcript</td><td>Set 2</td></tr>
-        <tr><td>5. Welke richting kiest de projectgroep, en herkennen de deelnemers zich daarin?</td><td>Groepsbesluit en member check</td><td>Matchpoint</td></tr>
+        <tr><td>1. Hoe bereid je een rondetafel voor, voer je hem uit en analyseer je hem, zodat de uitkomsten betrouwbaar en bruikbaar zijn?</td><td>Deskresearch</td><td>Pagina 5</td></tr>
+        <tr><td>2. Welke thema’s en knelpunten rond waardeverkoop herkennen praktijkdeelnemers?</td><td>Rondetafel 1</td><td>Pagina 8</td></tr>
+        <tr><td>3. Wat moest er na rondetafel 1 anders om de conceptadviezen betrouwbaar te toetsen?</td><td>Evaluatie, getoetst aan literatuur</td><td>Pagina 9</td></tr>
+        <tr><td>4. Hoe beoordelen praktijkdeelnemers de twee conceptadviezen op relevantie, haalbaarheid en draagvlak?</td><td>Rondetafel 2, gecodeerd transcript</td><td>Pagina 10–11</td></tr>
+        <tr><td>5. Welke richting kiest de projectgroep, en herkennen de deelnemers zich daarin?</td><td>Groepsbesluit en member check</td><td>Pagina 13–14</td></tr>
       </tbody>
     </table>
     </div>
     <hr class="rule">
     <div class="split">
       <div>
-        <div class="kicker">3.2 · Deelnemers en selectie</div>
-        <h3 style="margin-top:8px">Doelgericht gekozen, bewust gemixt</h3>
-        <p>De deelnemers zijn doelgericht geselecteerd (purposive sampling; Patton, 2002). Een expert is iemand met specifieke, functiegebonden kennis van het vakgebied (Meuser &amp; Nagel, 2009). We zochten bewust spreiding in branche en perspectief, en voor ronde 2 een andere mix dan in ronde 1.</p>
-        <p>Alle deelnemers gaven toestemming voor de opname en het gebruik van de uitkomsten.</p>
-        <div class="legend"><span><i style="background:var(--clay)"></i>Rondetafel 1 · 1 oktober</span><span><i style="background:var(--court)"></i>Rondetafel 2 · 6 oktober</span></div>
+        <h3 style="margin-top:0">Een bewust gemixt gezelschap</h3>
+        <p>We zochten mensen met echte, functiegebonden kennis van het vak (Meuser &amp; Nagel, 2009), en we kozen ze doelgericht (Patton, 2002). Belangrijk was spreiding: verschillende branches, verschillende rollen. Ronde 2 kreeg bewust een andere mix dan ronde 1.</p>
+        <p>Iedereen gaf toestemming voor de opname en voor het gebruik van de uitkomsten.</p>
+        <div class="legend"><span><i style="background:var(--cognac)"></i>Ronde 1 · 1 oktober</span><span><i style="background:var(--felt)"></i>Ronde 2 · 6 oktober</span></div>
       </div>
       <div class="grid g2">
         <div class="player r1"><div class="avatar">JA</div><div><b>Joris Asmans</b><span>Crossdock manager · VOS Transport, farmalogistiek</span></div></div>
         <div class="player r1"><div class="avatar">BK</div><div><b>Bas Kievits</b><span>Directeur en mede-eigenaar · Kievits Group, bouwmaterialen</span></div></div>
-        <div class="player r1"><div class="avatar">WA</div><div><b>Wendy Austermann</b><span>Head of Customer Engineering · Google Cloud, software en cloud</span></div></div>
+        <div class="player r1"><div class="avatar">WA</div><div><b>Wendy Austermann</b><span>Head of Customer Engineering · Google Cloud</span></div></div>
         <div class="player r1"><div class="avatar">DK</div><div><b>David Kemperman</b><span>Inside sales · 24-7 TailorSteel, lasersnijden</span></div></div>
         <div class="player r1"><div class="avatar">RL</div><div><b>Reinier Liesker</b><span>Mede-eigenaar · Rockwood, buitenmeubilair</span></div></div>
-        <div class="player r2"><div class="avatar">RR</div><div><b>Remco Reinhardt</b><span>Managing partner, salestrainer · Concept Sales, ICT</span></div></div>
+        <div class="player r2"><div class="avatar">RR</div><div><b>Remco Reinhardt</b><span>Managing partner en salestrainer · Concept Sales, ICT</span></div></div>
         <div class="player r2"><div class="avatar">CM</div><div><b>Corné Maas</b><span>Senior adviseur vermogen · financiële dienstverlening</span></div></div>
         <div class="player r2"><div class="avatar">SW</div><div><b>Sven Wienholts</b><span>Interne accountmanager · Kramp, technische groothandel</span></div></div>
         <div class="player r2"><div class="avatar">JB</div><div><b>Jeroen van der Brink</b><span>Inkoper, category management · Lekkerland / VOS-groep</span></div></div>
       </div>
     </div>
   </div>
-  <div class="folio"><span>Pagina 6</span><span>Aanpak</span></div>
+  <div class="folio"><span>Pagina 6</span><span>De gasten</span></div>
 </section>
 
-<!-- 7 VOORBEREIDING & ANALYSE -->
-<section class="page" data-title="Voorbereiding" data-toc="Voorbereiding, analyse en kwaliteit" aria-label="Voorbereiding en analyse">
+<!-- 7 DRAAIBOEK -->
+<section class="page" data-title="Het draaiboek" data-toc="Het draaiboek" data-sub="Voorbereiding, analyse en kwaliteit" aria-label="Het draaiboek">
   <div class="page-inner">
-    <div class="kicker">3.3 – 3.5 · Achter de schermen</div>
-    <h2 class="title">Set 1 <em>vs</em> set 2</h2>
-    <p class="lede">Wat we na de feedback op ronde 1 in de voorbereiding van ronde 2 hebben aangepast, naast elkaar.</p>
+    <div class="kicker">Het draaiboek</div>
+    <h2 class="title">Ronde 1 <em>vs</em> ronde 2</h2>
+    <p class="lede">Na de eerste ronde gooiden we het draaiboek flink om. Hier zie je naast elkaar wat er veranderde.</p>
     <div class="vs">
       <div class="head a">Ronde 1 · 1 oktober</div><div class="head b">Ronde 2 · 6 oktober</div>
       <div class="lbl">Inhoud</div>
-      <div class="cell">Themadocument met de rode draad uit de expertinterviews en vier thema’s, elk met een centrale vraag en hulpvragen</div>
-      <div class="cell">Twee conceptadviezen uit de conclusies van ronde 1, met per thema drie stellingen en een haakje naar ronde 1</div>
+      <div class="cell">Een themadocument met de rode draad uit de interviews en vier thema’s, elk met een centrale vraag en hulpvragen</div>
+      <div class="cell">Twee conceptadviezen uit ronde 1, met per thema drie stellingen die elk teruggrijpen op ronde 1</div>
       <div class="lbl">Vraagvorm</div>
       <div class="cell">Open vragen; vanaf thema 3 stellingen</div>
-      <div class="cell">Vanaf het begin bewust prikkelende stellingen met een vaste doorvraag</div>
+      <div class="cell">Vanaf de eerste minuut prikkelende stellingen met een vaste doorvraag</div>
       <div class="lbl">Opening</div>
-      <div class="cell">Mentimeter-woordwolk over de betekenis van waardeverkoop</div>
-      <div class="cell">Openingsvraag, gevolgd door de definitie die wij hanteren <span class="ts">(12:12)</span></div>
-      <div class="lbl">Rollen en draaiboek</div>
-      <div class="cell">Rollen verdeeld en draaiboek gemaakt</div>
-      <div class="cell">Zelfde rollen, per thema een vaste themaleider en twintig minuten per thema</div>
-      <div class="lbl">Deelnemers</div>
+      <div class="cell">Een Mentimeter-woordwolk: wat betekent waardeverkoop voor jou?</div>
+      <div class="cell">Dezelfde openingsvraag, gevolgd door onze eigen definitie <span class="ts">(12:12)</span></div>
+      <div class="lbl">Regie</div>
+      <div class="cell">Rollen verdeeld en een draaiboek gemaakt</div>
+      <div class="cell">Zelfde rollen, een vaste themaleider per thema en twintig minuten per thema</div>
+      <div class="lbl">Gasten</div>
       <div class="cell">Vijf: logistiek, bouw, software, maakindustrie, buitenmeubilair</div>
       <div class="cell">Vier nieuwe: ICT, financiële dienstverlening, groothandel, inkoop</div>
     </div>
 
-    <h3>De gespreksleidraad in vier stappen</h3>
+    <h3>Zo kwamen de stellingen tot stand</h3>
     <div class="grid g4">
-      <div class="card"><span class="tag">Stap 1</span><h4>Conclusies als vertrekpunt</h4><p class="small">Conclusie 2 werd conceptadvies A, conclusie 3 werd conceptadvies B.</p></div>
-      <div class="card"><span class="tag">Stap 2</span><h4>Stellingen kiezen</h4><p class="small">Per advies drie stellingen, elk met een haakje naar ronde 1. Te sturende stellingen vielen af.</p></div>
-      <div class="card"><span class="tag">Stap 3</span><h4>Doorvragen toevoegen</h4><p class="small">“Hoe is dat bij jullie? Waar merk je dat aan?”</p></div>
-      <div class="card"><span class="tag">Stap 4</span><h4>Controle door de groep</h4><p class="small">De groep bekeek de stellingen vooraf en ging akkoord.</p></div>
+      <div class="card"><span class="tag">Stap 1</span><h4>Conclusies als basis</h4><p class="small">Conclusie 2 uit ronde 1 werd advies A, conclusie 3 werd advies B.</p></div>
+      <div class="card"><span class="tag">Stap 2</span><h4>Streng selecteren</h4><p class="small">Twee stellingen sneuvelden: één was te sturend, op de ander verwachtten we geen bruikbaar antwoord.</p></div>
+      <div class="card"><span class="tag">Stap 3</span><h4>Doorvragen</h4><p class="small">Bij elke stelling dezelfde vraag: “Hoe is dat bij jullie? Waar merk je dat aan?”</p></div>
+      <div class="card"><span class="tag">Stap 4</span><h4>Groepscheck</h4><p class="small">De hele groep keek de stellingen vooraf na en ging akkoord.</p></div>
     </div>
+    <p style="margin-top:18px;max-width:70ch">Drie bewuste keuzes: de stellingen waren prikkelend zodat mensen kant moesten kiezen, de doorvragen bleven neutraal zodat we niemand een kant op duwden, en beide adviezen kregen precies drie stellingen en evenveel tijd. Zo kreeg geen van de twee een voorsprong.</p>
 
     <hr class="rule">
     <div class="split">
       <div>
-        <div class="kicker">3.4 · Analyse</div>
-        <h3 style="margin-top:8px">Van opname tot triangulatie</h3>
-        <ol style="padding-left:1.2em">
-          <li><strong>Vastleggen:</strong> opname in Teams, getranscribeerd en nagelopen.</li>
-          <li><strong>Per stelling analyseren:</strong> wie is het eens of oneens, en wat is het sterkste argument.</li>
-          <li><strong>Coderen:</strong> op relevantie, haalbaarheid en draagvlak, en met het HUB-codeerschema.</li>
+        <div class="kicker">Na het gesprek</div>
+        <h3 style="margin-top:8px">Van opname tot conclusie</h3>
+        <ol style="padding-left:1.2em;display:grid;gap:6px">
+          <li><strong>Vastleggen:</strong> opname in Teams, uitgeschreven en nagelopen.</li>
+          <li><strong>Per stelling:</strong> wie is het eens, wie niet, en wat is het sterkste argument?</li>
+          <li><strong>Coderen:</strong> op relevantie, haalbaarheid en draagvlak, en met het codeerschema van het HUB-team.</li>
           <li><strong>Vergelijken:</strong> ronde 1 naast ronde 2.</li>
           <li><strong>Trianguleren:</strong> naast de expertinterviews en de deskresearch.</li>
         </ol>
-        <p class="small" style="margin-top:14px">De zeven hoofdcodes van het HUB-team:</p>
+        <p class="small" style="margin-top:14px">De zeven vaste codes:</p>
         <div class="chips"><span class="chip">Klantwaarde</span><span class="chip">Rol van de verkoper</span><span class="chip">Organisatie en ondersteuning</span><span class="chip">Klant en aankoopsituatie</span><span class="chip">Sturing, KPI’s en beloning</span><span class="chip">Knelpunten en belemmeringen</span><span class="chip">Nieuwe inzichten</span></div>
       </div>
       <div class="grid" style="gap:16px">
-        <div class="card courtc"><span class="tag">3.5.1</span><h4>Betrouwbaarheid</h4><p class="small" style="color:inherit;opacity:.85">Letterlijk uitgeschreven en nagelopen; twee notulisten die los van elkaar aantekeningen maakten (onderzoekerstriangulatie; Denzin, 1978).</p></div>
-        <div class="card clayc"><span class="tag">3.5.2</span><h4>Validiteit</h4><p class="small" style="color:inherit;opacity:.9">Eén definitie van waardeverkoop in ronde 2, triangulatie van bronnen en een member check bij de deelnemers.</p></div>
-        <div class="card inkc"><span class="tag">3.5.3</span><h4>Saturatie</h4><p class="small" style="color:inherit;opacity:.85">Op het niveau van hoofdthema’s lijkt saturatie bereikt, op subthema’s nog niet: nieuw waren klantbelang vs. klanttevredenheid, mandaat en AI.</p></div>
+        <div class="kicker">Hoe weet je dat het klopt?</div>
+        <div class="card feltc"><span class="tag">Betrouwbaarheid</span><h4>Niet op ons geheugen vertrouwen</h4><p class="small">Alles letterlijk uitgeschreven en nagelopen, plus twee notulisten die los van elkaar aantekeningen maakten (Denzin, 1978).</p></div>
+        <div class="card cognacc"><span class="tag">Validiteit</span><h4>Iedereen over hetzelfde laten praten</h4><p class="small">In ronde 2 eerst één definitie van waardeverkoop, bronnen naast elkaar gelegd en een member check bij de gasten.</p></div>
+        <div class="card inkc"><span class="tag">Saturatie</span><h4>Komt er nog iets nieuws bij?</h4><p class="small">De hoofdthema’s kwamen steeds terug. Op detailniveau nog niet: nieuw waren klantbelang tegenover klanttevredenheid, het gebrek aan mandaat en de rol van AI.</p></div>
       </div>
     </div>
   </div>
-  <div class="folio"><span>Pagina 7</span><span>Aanpak</span></div>
+  <div class="folio"><span>Pagina 7</span><span>Draaiboek</span></div>
 </section>
 
-<!-- 8 RONDETAFEL 1 -->
-<section class="page clay" data-title="Set 1" data-toc="Set 1: rondetafel 1, verkennen" aria-label="Rondetafel 1">
+<!-- 8 RONDE 1 -->
+<section class="page cognac" data-title="Ronde 1" data-toc="Ronde 1: vier vragen, vijf gasten" data-sub="Wat de eerste tafel opleverde" aria-label="Rondetafel 1">
   <div class="page-inner">
-    <div class="kicker">Hoofdstuk 4 · Rondetafel 1</div>
-    <h2 class="title">Set 1: <em>verkennen</em></h2>
-    <p class="lede">Donderdag 1 oktober 2026, 13.30 uur, online. Vijf praktijkdeelnemers, vier thema’s, één uur. We openden met een Mentimeter-woordwolk: wat betekent waardeverkoop voor jou?</p>
+    <div class="kicker">Ronde 1 · Donderdag 1 oktober, 13.30 uur</div>
+    <h2 class="title">Vier vragen, <em>vijf gasten</em></h2>
+    <p class="lede">Een uur, online, met een woordwolk als warming-up. Daarna vier thema’s. Dit is wat er bleef hangen.</p>
     <div class="grid g2">
-      <div class="card"><span class="tag">Thema 1</span><h4>De vraag achter de vraag</h4><p>Achter een productaanvraag liggen bredere doelen; verkopers moeten doorvragen en aannames toetsen.</p><p class="small" style="margin-top:10px">Achter isolatie zit de wens om stookkosten te verlagen (Bas Kievits); minimaal drie keer ‘waarom’ vragen (Wendy Austermann).</p></div>
-      <div class="card"><span class="tag">Thema 2</span><h4>Waarde of prijs</h4><p>Betrouwbaarheid en ontzorging wegen zwaarder dan korting als fouten grote gevolgen hebben; bij een eerste aankoop weegt prijs zwaarder.</p><p class="small" style="margin-top:10px">Bederf bij temperatuurschommelingen in farmalogistiek (Joris Asmans); stilstand van een bakkerijlijn (David Kemperman).</p></div>
-      <div class="card"><span class="tag">Thema 3</span><h4>Na de handtekening</h4><p>Geen klachten betekent niet dat een klant tevreden is; beloning alleen op nieuwe klanten verwaarloost bestaande.</p><p class="small" style="margin-top:10px">Een klant die na een prijsverhoging niet klaagde, maar ook niet meer bestelde (Bas Kievits).</p></div>
-      <div class="card"><span class="tag">Thema 4</span><h4>Van weten naar doen</h4><p>Verkopers moeten weten wat de organisatie kan waarmaken; tools en training ondersteunen.</p><p class="small" style="margin-top:10px">Meelopen bij logistiek en administratie (Joris Asmans, Bas Kievits); waardecalculators en referenties (Wendy Austermann).</p></div>
+      <div class="card"><span class="tag">Thema 1</span><h4>De vraag achter de vraag</h4><p>Achter een productaanvraag zit bijna altijd een groter doel. Verkopers moeten doorvragen en hun aannames toetsen.</p><p class="small" style="margin-top:10px">Wie isolatie vraagt, wil eigenlijk lagere stookkosten (Bas Kievits). Vraag minstens drie keer ‘waarom’ (Wendy Austermann).</p></div>
+      <div class="card"><span class="tag">Thema 2</span><h4>Waarde of prijs?</h4><p>Als een fout grote gevolgen heeft, wegen betrouwbaarheid en ontzorging zwaarder dan korting. Bij een eerste aankoop telt de prijs wel zwaarder.</p><p class="small" style="margin-top:10px">Denk aan bederf door temperatuurschommelingen in de farmalogistiek (Joris Asmans) of een stilstaande bakkerijlijn (David Kemperman).</p></div>
+      <div class="card"><span class="tag">Thema 3</span><h4>Na de handtekening</h4><p>Geen klachten betekent niet dat een klant tevreden is. En wie alleen beloont op nieuwe klanten, laat de bestaande liggen.</p><p class="small" style="margin-top:10px">Een klant klaagde niet na een prijsverhoging, maar bestelde ook nooit meer (Bas Kievits).</p></div>
+      <div class="card"><span class="tag">Thema 4</span><h4>Van weten naar doen</h4><p>Verkopers moeten weten wat hun organisatie echt kan waarmaken. Tools en training helpen daarbij.</p><p class="small" style="margin-top:10px">Meelopen bij logistiek en administratie (Joris Asmans, Bas Kievits); waardecalculators en referenties (Wendy Austermann).</p></div>
     </div>
-    <div class="pull" style="border-top-color:var(--gold-light);border-bottom-color:rgba(255,255,255,.3);max-width:none">Een stille klant is niet automatisch een tevreden klant.<cite style="color:var(--white)">Les uit rondetafel 1</cite></div>
+    <div class="pull">Een stille klant is niet automatisch een tevreden klant.<cite>De les van ronde 1</cite></div>
     <h3>Drie conclusies</h3>
     <div class="grid g3">
-      <div><div class="num-big" style="color:var(--gold-light)">1</div><p>Waardeverkoop begint bij de vraag achter de vraag en draait om betrouwbaarheid en ontzorging, niet om de laagste prijs.</p></div>
-      <div><div class="num-big" style="color:var(--gold-light)">2</div><p>Waarde wordt zichtbaar als de klant de meerwaarde zelf benoemt en je na de verkoop blijft opvolgen.</p></div>
-      <div><div class="num-big" style="color:var(--gold-light)">3</div><p>Verkopers kunnen waarde alleen waarmaken als de hele organisatie meedoet: meelopen, trainingen, rekentools en de juiste beloning.</p></div>
+      <div><div class="num-big">1</div><p>Waardeverkoop begint bij de vraag achter de vraag, en draait om betrouwbaarheid en ontzorging. Niet om de laagste prijs.</p></div>
+      <div><div class="num-big">2</div><p>Waarde wordt zichtbaar als de klant de meerwaarde zelf benoemt en jij na de verkoop blijft opvolgen.</p></div>
+      <div><div class="num-big">3</div><p>Een verkoper kan waarde alleen waarmaken als de hele organisatie meedoet: meelopen, trainingen, rekentools en de juiste beloning.</p></div>
     </div>
-    <h3>Twee conceptadviezen</h3>
+    <h3>Daaruit volgden twee conceptadviezen</h3>
     <div class="grid g2">
-      <div class="card courtc"><span class="tag">Advies A · uit conclusie 2</span><h4>Waarde meetbaar en zichtbaar maken</h4><p>Hoe maken organisaties hun meerwaarde concreet en zichtbaar voor de klant?</p></div>
+      <div class="card feltc"><span class="tag">Advies A · uit conclusie 2</span><h4>Waarde meetbaar en zichtbaar maken</h4><p>Hoe maken organisaties hun meerwaarde concreet en zichtbaar voor de klant?</p></div>
       <div class="card inkc"><span class="tag">Advies B · uit conclusie 3</span><h4>Van weten naar doen</h4><p>Hoe landt een waardegerichte strategie op de salesvloer?</p></div>
     </div>
   </div>
-  <div class="folio"><span>Pagina 8</span><span>Set 1</span></div>
+  <div class="folio"><span>Pagina 8</span><span>Ronde 1</span></div>
 </section>
 
 <!-- 9 EVALUATIE -->
-<section class="page" data-title="Evaluatie" data-toc="Evaluatie: wat we anders deden" aria-label="Evaluatie en bijstelling">
+<section class="page" data-title="Tips en tops" data-toc="Tips en tops" data-sub="Wat er na ronde 1 anders moest" aria-label="Evaluatie en bijstelling">
   <div class="page-inner">
     <div class="split">
       <div class="sticky">
-        <div class="kicker">Hoofdstuk 5 · Evaluatie</div>
-        <h2 class="title">Tips, tops en een <em>nieuwe</em> opzet</h2>
-        <p class="lede">Direct na rondetafel 1 hielden we een feedbackmoment. De belangrijkste les: het begin leek meer op een interview dan op een gesprek.</p>
-        <p>De deelnemers beantwoordden om de beurt onze vragen, maar reageerden weinig op elkaar. Toen we vanaf thema 3 overschakelden op stellingen, ontstond er wel echte discussie.</p>
-        <p>Daarom werden we in ronde 2 specifieker: twee conceptthema’s in plaats van vier brede thema’s, en vanaf het begin stellingen. Zo moesten deelnemers kant kiezen, en konden we afwegen welke richting het sterkst was.</p>
+        <div class="kicker">Evaluatie</div>
+        <h2 class="title">Eerlijk is <em>eerlijk</em></h2>
+        <p class="lede">Ronde 1 voelde meer als een interview dan als een gesprek. Dat zagen we zelf ook.</p>
+        <p>Direct na afloop hielden we een feedbackmoment met tips en tops. De gasten beantwoordden om de beurt onze vragen, maar reageerden nauwelijks op elkaar. Pas toen we bij thema 3 overstapten op stellingen, kwam er echte discussie op gang.</p>
+        <p>Dus werden we in ronde 2 scherper. Twee thema’s in plaats van vier. Stellingen vanaf de eerste minuut. Zo moesten de gasten kant kiezen, en konden wij zien welke richting het sterkst stond.</p>
+        <div class="box" style="margin-top:22px"><span class="kicker">In één zin</span><h4>Minder thema’s, meer discussie.</h4><p class="small">Dat was de belangrijkste les uit de eerste ronde.</p></div>
       </div>
       <div class="tablewrap">
         <table class="mag">
-          <thead><tr><th>Wat beter kon</th><th>Aanpassing</th><th>Effect in ronde 2</th></tr></thead>
+          <thead><tr><th>Wat beter kon</th><th>Wat we deden</th><th>Werkte het?</th></tr></thead>
           <tbody>
-            <tr><td>Het begin leek op een interview <span class="small">(Huyb, Raphaël, Maud)</span></td><td>Vanaf het begin stellingen; deelnemers uitgenodigd elkaar te onderbreken</td><td>Duidelijke discussie en tegenstellingen, vooral bij thema 2</td></tr>
-            <tr><td>Vragen pasten vooral bij accountmanagers <span class="small">(Max)</span></td><td>Algemene stellingen met een doorvraag naar de eigen praktijk</td><td>Iedereen kon vanuit de eigen rol reageren</td></tr>
-            <tr><td>Voorstelronde te lang: gesprek begon op minuut 17 <span class="small">(Esmee)</span></td><td>Kortere opening</td><td>Eerste stelling al op 13:01</td></tr>
-            <tr><td>Lastig het woord over te nemen <span class="small">(Esmee)</span></td><td>Twintig minuten per thema en een tijdbewaker</td><td>Thema 1 liep toch uit: blijft een verbeterpunt</td></tr>
-            <tr><td>Een deelnemer kon niet inloggen <span class="small">(Maud)</span></td><td>Gecheckt of deelnemers vaker met Teams werken</td><td>Alle vier deelnemers aanwezig</td></tr>
-            <tr><td>Waardeverkoop niet gedefinieerd</td><td>Definitie na de openingsvraag</td><td>Iedereen sprak vanuit hetzelfde begrip</td></tr>
-            <tr><td>Vier brede thema’s</td><td>Twee conceptadviezen als thema</td><td>Diepere discussie per thema</td></tr>
-            <tr><td>Geen meetbare toetsing</td><td>Poll op relevantie, haalbaarheid en draagvlak gepland</td><td>Niet afgenomen</td></tr>
+            <tr><td>Het begin leek op een interview <span class="small">(Huyb, Raphaël, Maud)</span></td><td>Stellingen vanaf het begin; gasten uitgenodigd elkaar te onderbreken</td><td>Ja, duidelijke discussie, vooral bij thema 2</td></tr>
+            <tr><td>Vragen pasten vooral bij accountmanagers <span class="small">(Max)</span></td><td>Algemene stellingen met een doorvraag naar de eigen praktijk</td><td>Ja, iedereen kon vanuit de eigen rol reageren</td></tr>
+            <tr><td>Voorstelronde te lang: pas op minuut 17 echt beginnen <span class="small">(Esmee)</span></td><td>Kortere opening</td><td>Ja, de eerste stelling viel al op 13:01</td></tr>
+            <tr><td>Lastig om het woord over te nemen <span class="small">(Esmee)</span></td><td>Twintig minuten per thema en een tijdbewaker</td><td>Deels: thema 1 liep toch uit</td></tr>
+            <tr><td>Een gast kon niet inloggen <span class="small">(Maud)</span></td><td>Vooraf gecheckt of gasten vaker met Teams werken</td><td>Ja, alle vier waren erbij</td></tr>
+            <tr><td>Waardeverkoop was niet gedefinieerd</td><td>Definitie direct na de openingsvraag</td><td>Ja, iedereen sprak over hetzelfde</td></tr>
+            <tr><td>Vier brede thema’s</td><td>Twee conceptadviezen als thema</td><td>Ja, meer diepgang per thema</td></tr>
+            <tr><td>Geen meetbare toetsing</td><td>Een poll gepland op relevantie, haalbaarheid en draagvlak</td><td>Nee, de poll is niet afgenomen</td></tr>
           </tbody>
         </table>
-        <p class="caption">Evaluatie van ronde 1, aanpassingen en het effect in ronde 2</p>
       </div>
     </div>
   </div>
   <div class="folio"><span>Pagina 9</span><span>Evaluatie</span></div>
 </section>
 
-<!-- 10 RONDETAFEL 2 -->
-<section class="page" data-title="Set 2" data-toc="Set 2: rondetafel 2, het scorebord" aria-label="Rondetafel 2">
+<!-- 10 RONDE 2 -->
+<section class="page" data-title="Ronde 2" data-toc="Ronde 2: zes stellingen" data-sub="Wie was het eens, wie niet?" aria-label="Rondetafel 2">
   <div class="page-inner">
-    <div class="kicker">Hoofdstuk 6 · Rondetafel 2</div>
-    <h2 class="title">Set 2: het <em>scorebord</em></h2>
-    <p class="lede">Dinsdag 6 oktober 2026, 09.00–10.00 uur. Vier nieuwe deelnemers, twee thema’s, zes stellingen.</p>
-    <div class="scoreboard" aria-label="Verloop rondetafel 2">
-      <div class="srow"><span class="time">0:00–8:52</span><span class="what">Opening</span><span class="desc">Voorstelronde; uitnodiging om elkaar te onderbreken</span></div>
-      <div class="srow"><span class="time">8:54–12:51</span><span class="what">Thema’s en begrip</span><span class="desc">Openingsvraag ‘wat betekent waardeverkoop voor jou?’; definitie gegeven</span></div>
-      <div class="srow"><span class="time">13:01–37:16</span><span class="what">Thema 1 · Max</span><span class="desc">Drie stellingen over waarde meetbaar en zichtbaar maken</span></div>
-      <div class="srow"><span class="time">38:00–53:13</span><span class="what">Thema 2 · Esmee</span><span class="desc">Drie stellingen over van weten naar doen</span></div>
-      <div class="srow"><span class="time">53:21–57:31</span><span class="what">Slotvraag</span><span class="desc">Welk onderwerp is het interessantst om te onderzoeken?</span></div>
-      <div class="srow"><span class="time">57:33–59:53</span><span class="what">Afsluiting</span><span class="desc">Bedanken en samenvatting</span></div>
+    <div class="kicker">Ronde 2 · Dinsdag 6 oktober, 09.00 uur</div>
+    <h2 class="title">Zes stellingen, <em>vier meningen</em></h2>
+    <p class="lede">Nieuwe gasten, een strakkere agenda en stellingen die schuren. Zo verliep het uur.</p>
+    <div class="agenda" aria-label="Agenda rondetafel 2">
+      <div class="arow"><span class="time">0:00–8:52</span><span class="what">Opening</span><span class="desc">Voorstelronde en de uitnodiging om elkaar gerust te onderbreken</span></div>
+      <div class="arow"><span class="time">8:54–12:51</span><span class="what">Begrippen</span><span class="desc">‘Wat betekent waardeverkoop voor jou?’ en daarna onze definitie</span></div>
+      <div class="arow"><span class="time">13:01–37:16</span><span class="what">Thema 1 · Max</span><span class="desc">Drie stellingen over waarde meetbaar en zichtbaar maken</span></div>
+      <div class="arow"><span class="time">38:00–53:13</span><span class="what">Thema 2 · Esmee</span><span class="desc">Drie stellingen over van weten naar doen</span></div>
+      <div class="arow"><span class="time">53:21–57:31</span><span class="what">Slotvraag</span><span class="desc">Welk onderwerp is het interessantst om te onderzoeken?</span></div>
+      <div class="arow"><span class="time">57:33–59:53</span><span class="what">Afsluiting</span><span class="desc">Bedanken en samenvatten</span></div>
     </div>
 
-    <h3>Herkenning van ronde 1</h3>
-    <p>De conclusies van ronde 1 zijn aan het begin niet expliciet getoond, maar kwamen alle drie terug. Bij de eerste stelling sloten alle vier deelnemers aan bij het beginnen vanuit de klantbehoefte; de moderator noemde dat ‘een mooie bevestiging’ <span class="ts">(17:55)</span>.</p>
+    <p style="max-width:70ch">We lieten de conclusies van ronde 1 aan het begin niet zien. Toch kwamen ze alle drie vanzelf terug. Bij de eerste stelling begonnen alle vier de gasten bij de behoefte van de klant. De moderator noemde dat ‘een mooie bevestiging’ <span class="ts">(17:55)</span>.</p>
 
-    <h3>Resultaten per stelling</h3>
+    <h3>De uitslag per stelling</h3>
     <div class="grid g2">
-      <article class="card stelling"><span class="code">T1.1</span><span class="verdict v-eens">Eens · alle vier</span><h4>De meeste bedrijven kunnen hun waardepropositie niet uitleggen in de woorden van de klant.</h4><p>Technisch gedreven bedrijven praten over features; de klant wil zijn probleem opgelost (Remco). Klanten hebben latente behoeften die je samen moet onderzoeken (Corné).</p><p class="theory">Terho et al. (2012): het bedrijfsmodel van de klant begrijpen</p></article>
-      <article class="card stelling"><span class="code">T1.2</span><span class="verdict v-oneens">Oneens met beide</span><h4>Een klantcase overtuigt meer dan een ROI-berekening.</h4><p>“Die waarde gaat niet zitten in de ROI-berekening, maar echt naast die klant staan.” Een referentie is hooguit een bevestiging aan het eind.</p><p class="theory">Nuanceert Hinterhuber (2017); sluit aan bij Pöyry et al. (2021)</p></article>
-      <article class="card stelling"><span class="code">T1.3</span><span class="verdict v-eens">Eens, met nuance</span><h4>Of je waarde hebt geleverd, weet je pas na de aankoop.</h4><p>De klant kan de waarde vooraf voelen via een gedegen diagnose (Remco). “Wat gebeurt er als je niets verandert?” (Corné)</p><p class="theory">Implicatievragen uit het SPIN-model (Rackham, 1988)</p></article>
-      <article class="card stelling"><span class="code">T2.1</span><span class="verdict v-verdeeld">Verdeeld</span><h4>Het gat tussen weten en doen ligt niet bij de verkoper, maar bij het management.</h4><p>“Een directeur met het mandaat van een zak chips” (Corné). Jeroen legt het bij de verkoper; Remco ziet het bij allebei.</p><p class="theory">Rolconflict (Rizzo et al., 1970); waardeverkoop als organisatievermogen (Töytäri &amp; Rajala, 2015)</p></article>
-      <article class="card stelling"><span class="code">T2.2</span><span class="verdict v-oneens">Oneens · combinatie</span><h4>Een goede tool helpt verkopers meer dan een extra training.</h4><p>Zonder training is gereedschap “in mijn handen een moordwapen” (Remco). De human touch is het uitgangspunt, tooling ondersteunt (Corné).</p><p class="theory">Sales enablement: mensen, processen en tools (Rangarajan et al., 2020)</p></article>
-      <article class="card stelling"><span class="code">T2.3</span><span class="verdict v-eens">Eens · alle vier</span><h4>Na een training valt het grootste deel van de verkopers binnen drie maanden terug.</h4><p>Zonder borging in het CRM en een coachende manager “gaat 80% verloren” (Remco). Elk kwartaal een casus oefenen houdt het warm (Sven).</p><p class="theory">Transfer van training hangt af van de werkomgeving (Blume et al., 2010)</p></article>
+      <article class="card stelling"><span class="code">Stelling 1.1</span><span class="verdict v-eens">Eens · alle vier</span><h4>De meeste bedrijven kunnen hun waardepropositie niet uitleggen in de woorden van de klant.</h4><p>Technische bedrijven praten over features, terwijl de klant gewoon zijn probleem opgelost wil hebben (Remco). Klanten hebben behoeften die ze zelf nog niet zien, en die moet je samen ontdekken (Corné).</p><p class="theory">Past bij Terho et al. (2012): begrijp het bedrijfsmodel van de klant</p></article>
+      <article class="card stelling"><span class="code">Stelling 1.2</span><span class="verdict v-oneens">Oneens met allebei</span><h4>Een klantcase overtuigt meer dan een ROI-berekening.</h4><p>“Die waarde gaat niet zitten in de ROI-berekening, maar echt naast die klant staan.” Een referentie is hooguit een bevestiging aan het eind.</p><p class="theory">Nuanceert Hinterhuber (2017); past bij Pöyry et al. (2021)</p></article>
+      <article class="card stelling"><span class="code">Stelling 1.3</span><span class="verdict v-eens">Eens, met een maar</span><h4>Of je waarde hebt geleverd, weet je pas na de aankoop.</h4><p>Met een goede diagnose kan de klant de waarde al vooraf voelen (Remco). De vraag die helpt: “Wat gebeurt er als je niets verandert?” (Corné)</p><p class="theory">De implicatievragen uit SPIN Selling (Rackham, 1988)</p></article>
+      <article class="card stelling"><span class="code">Stelling 2.1</span><span class="verdict v-verdeeld">Verdeeld</span><h4>Het gat tussen weten en doen ligt niet bij de verkoper, maar bij het management.</h4><p>“Een directeur met het mandaat van een zak chips” (Corné). Jeroen legt het bij de verkoper, Remco bij allebei.</p><p class="theory">Rolconflict door gebrek aan mandaat (Rizzo et al., 1970); waardeverkoop als vermogen van de hele organisatie (Töytäri &amp; Rajala, 2015)</p></article>
+      <article class="card stelling"><span class="code">Stelling 2.2</span><span class="verdict v-oneens">Oneens · het is allebei</span><h4>Een goede tool helpt verkopers meer dan een extra training.</h4><p>Zonder training is gereedschap “in mijn handen een moordwapen” (Remco). De menselijke aandacht komt eerst, de tool ondersteunt (Corné).</p><p class="theory">Sales enablement: mensen, processen en tools samen (Rangarajan et al., 2020)</p></article>
+      <article class="card stelling"><span class="code">Stelling 2.3</span><span class="verdict v-eens">Eens · alle vier</span><h4>Na een training valt het grootste deel van de verkopers binnen drie maanden terug.</h4><p>Zonder borging in het CRM en een coachende manager “gaat 80% verloren” (Remco). Elk kwartaal een casus oefenen houdt het warm (Sven).</p><p class="theory">Of een training beklijft, hangt af van de werkomgeving (Blume et al., 2010)</p></article>
     </div>
   </div>
-  <div class="folio"><span>Pagina 10</span><span>Set 2</span></div>
+  <div class="folio"><span>Pagina 10</span><span>Ronde 2</span></div>
 </section>
 
 <!-- 11 GECODEERD -->
-<section class="page dark" data-title="Gecodeerd" data-toc="Relevantie, haalbaarheid en draagvlak" aria-label="Gecodeerde uitkomsten">
+<section class="page dark" data-title="64 fragmenten later" data-toc="64 fragmenten later" data-sub="Wat de codering liet zien" aria-label="Gecodeerde uitkomsten">
   <div class="page-inner">
-    <div class="kicker">6.4 – 6.5 · Analyse</div>
-    <h2 class="title">64 fragmenten, één <em>patroon</em></h2>
-    <p class="lede">De uitspraken uit het transcript zijn gecodeerd op drie toetscriteria en met het codeerschema van het HUB-team. Bij waarde spraken deelnemers vanuit de klant; bij de organisatie vooral over obstakels.</p>
+    <div class="kicker">Analyse</div>
+    <h2 class="title">64 fragmenten <em>later</em></h2>
+    <p class="lede">We hakten het transcript in 64 stukjes en gaven elk stukje een code. Het patroon was duidelijk: over waarde praatten de gasten vanuit de klant, over de organisatie vooral over obstakels.</p>
     <div class="grid g4" style="margin:8px 0 34px">
       <div class="stat"><div class="v">64</div><div class="l">fragmenten gecodeerd</div></div>
       <div class="stat"><div class="v">11</div><div class="l">over klantwaarde bij thema 1, de grootste code</div></div>
       <div class="stat"><div class="v">9</div><div class="l">over organisatie en ondersteuning bij thema 2</div></div>
-      <div class="stat"><div class="v">1</div><div class="l">keer ging het over sturing, KPI en beloning</div></div>
+      <div class="stat"><div class="v">1</div><div class="l">keer ging het over sturing, KPI’s en beloning</div></div>
     </div>
     <div class="tablewrap">
     <table class="mag">
-      <thead><tr><th>Deelnemer</th><th>Relevantie</th><th>Haalbaarheid</th><th>Draagvlak en richting</th></tr></thead>
+      <thead><tr><th>Gast</th><th>Is het relevant?</th><th>Is het haalbaar?</th><th>Wat is de richting?</th></tr></thead>
       <tbody>
-        <tr><td>Remco Reinhardt</td><td>Hoog: zijn bedrijf bestaat al twintig jaar om techniek te vertalen naar klantwaarde</td><td>Alleen met borging: ‘anders gaat 80% verloren’</td><td>Waarde zit in de business impact voor de klant, op te halen via diagnose</td></tr>
-        <tr><td>Corné Maas</td><td>Hoog: klanten zien hun latente behoefte vaak niet</td><td>Beperkt door ontbrekend mandaat</td><td>Onderscheid klantbelang en klanttevredenheid; veranderen met mensen die willen</td></tr>
-        <tr><td>Sven Wienholts</td><td>Hoog: eerst horen wat de klant verwacht, dan pas services</td><td>Kaders van het management beperken de verkoper</td><td>Periodiek oefenen houdt het warm</td></tr>
-        <tr><td>Jeroen van der Brink</td><td>Hoog: de vertegenwoordiger bespreekt behoeften en problemen</td><td>De verkoper weet het best wat de klant wil</td><td>Op tijd leveren en beloftes waarmaken houdt de klant</td></tr>
+        <tr><td>Remco Reinhardt</td><td>Ja: zijn bedrijf vertaalt al twintig jaar techniek naar klantwaarde</td><td>Alleen met borging: ‘anders gaat 80% verloren’</td><td>Waarde zit in de impact op het bedrijf van de klant, op te halen via een diagnose</td></tr>
+        <tr><td>Corné Maas</td><td>Ja: klanten zien hun eigen behoefte vaak niet</td><td>Lastig zonder mandaat</td><td>Klantbelang is iets anders dan klanttevredenheid; verander met mensen die willen</td></tr>
+        <tr><td>Sven Wienholts</td><td>Ja: eerst horen wat de klant verwacht, dan pas services</td><td>De kaders van het management beperken de verkoper</td><td>Periodiek oefenen houdt het warm</td></tr>
+        <tr><td>Jeroen van der Brink</td><td>Ja: de vertegenwoordiger bespreekt behoeften en problemen</td><td>De verkoper weet zelf het best wat de klant wil</td><td>Op tijd leveren en je beloftes waarmaken houdt de klant</td></tr>
       </tbody>
     </table>
     </div>
-    <p class="caption">Gecodeerde uitspraken per deelnemer op de drie toetscriteria</p>
+    <p class="caption">Gecodeerd op relevantie, haalbaarheid en draagvlak</p>
     <div class="split" style="margin-top:28px">
       <div class="pull" style="margin-top:0">“Er bestaat niet zoiets als dé verkoop.”<cite>Remco Reinhardt · 11:25</cite></div>
       <div>
-        <h3 style="margin-top:0">De weg naar de gekozen richting</h3>
-        <p>De geplande keuzevraag tussen advies A en B is niet gesteld, omdat thema 1 uitliep en een deelnemer eerder weg moest. Aan het eind noemde Corné de rol van AI tegenover de persoonlijke aandacht van de adviseur; dat thema lieten we bewust liggen, omdat het buiten ons onderwerp valt.</p>
-        <p>De richting <em>klanttypen</em> koos de groep pas in de Teams-meeting na de rondetafel. De groep zag die terug in de uitspraken: het onderscheid tussen klantbelang en klanttevredenheid van Corné, Remco’s nadruk op een goede diagnose, en het beginnen bij de vraag van de klant bij Sven en Jeroen. Geen letterlijke keuze voor A of B dus, maar een verbinding van conclusie 1 en 2 uit ronde 1.</p>
+        <h3 style="margin-top:0">En de keuze tussen A en B?</h3>
+        <p>Die vraag hebben we nooit gesteld. Thema 1 liep uit en een gast moest eerder weg. Wel vroegen we aan het eind welk onderwerp ze het interessantst vonden. Alleen Corné antwoordde: de rol van AI tegenover de persoonlijke aandacht van een adviseur. Interessant, maar buiten ons onderwerp, dus dat lieten we liggen.</p>
+        <p>De uiteindelijke richting, <em>klanttypen</em>, koos de groep pas in een Teams-meeting na afloop. Die richting zat al in de uitspraken van de gasten: klantbelang tegenover klanttevredenheid (Corné), de nadruk op een goede diagnose (Remco), en beginnen bij de vraag van de klant (Sven en Jeroen). Het werd dus geen A of B, maar een combinatie van conclusie 1 en 2 uit ronde 1.</p>
       </div>
     </div>
   </div>
@@ -705,82 +754,83 @@ table.mag td:first-child{font-weight:600}
 </section>
 
 <!-- 12 CONCLUSIES -->
-<section class="page" data-title="Conclusies" data-toc="Conclusies naast alle bronnen" aria-label="Conclusies">
+<section class="page" data-title="Wat blijft er over?" data-toc="Wat blijft er over?" data-sub="Drie conclusies, vier bronnen" aria-label="Conclusies">
   <div class="page-inner">
-    <div class="kicker">7.1 · Conclusies</div>
-    <h2 class="title">Drie conclusies, <em>vier</em> bronnen</h2>
-    <p class="lede">Elke conclusie naast rondetafel 1, rondetafel 2, de expertinterviews en de deskresearch: triangulatie.</p>
+    <div class="kicker">Conclusies</div>
+    <h2 class="title">Wat blijft er <em>over?</em></h2>
+    <p class="lede">Drie conclusies die overeind bleven, gecheckt bij vier bronnen: ronde 1, ronde 2, de expertinterviews en de literatuur.</p>
     <div class="lesson">
       <div class="num-big">01</div>
-      <div><h3>Klantbelang gaat vóór klanttevredenheid</h3><p>Wie alleen levert wat gevraagd wordt, mist de latente behoefte.</p>
-      <div class="chips"><span class="chip">R1: vraag achter de vraag; stille klant is niet tevreden</span><span class="chip">R2: Corné (30:11), Remco: diagnose</span><span class="chip">ISK: alle zes experts</span><span class="chip">Terho et al. (2012); Rackham (1988)</span></div></div>
+      <div><h3>Klantbelang gaat vóór klanttevredenheid</h3><p>Wie alleen levert wat gevraagd wordt, mist wat de klant echt nodig heeft.</p>
+      <div class="chips"><span class="chip">Ronde 1: de vraag achter de vraag; een stille klant is niet tevreden</span><span class="chip">Ronde 2: Corné (30:11), Remco over diagnose</span><span class="chip">Interviews: alle zes experts</span><span class="chip">Terho et al. (2012); Rackham (1988)</span></div></div>
     </div>
     <div class="lesson">
       <div class="num-big">02</div>
-      <div><h3>Waarde overtuigt via een gezamenlijke diagnose</h3><p>Niet via een ROI of klantcase vooraf, maar door samen de business impact te onderzoeken.</p>
-      <div class="chips"><span class="chip">R1: waardecalculators als hulpmiddel</span><span class="chip">R2: Remco en Corné</span><span class="chip">ISK: rode draad 2</span><span class="chip">Hinterhuber (2017); Pöyry et al. (2021)</span></div></div>
+      <div><h3>Waarde overtuig je met een gezamenlijke diagnose</h3><p>Niet met een ROI-berekening of klantcase vooraf, maar door samen te onderzoeken wat het voor het bedrijf van de klant betekent.</p>
+      <div class="chips"><span class="chip">Ronde 1: waardecalculators als hulpmiddel</span><span class="chip">Ronde 2: Remco en Corné</span><span class="chip">Interviews: rode draad 2</span><span class="chip">Hinterhuber (2017); Pöyry et al. (2021)</span></div></div>
     </div>
     <div class="lesson">
       <div class="num-big">03</div>
-      <div><h3>Training zonder borging verdwijnt</h3><p>Binnen enkele maanden, als de organisatie het niet vasthoudt.</p>
-      <div class="chips"><span class="chip">R1: meelopen, trainingen, beloning</span><span class="chip">R2: alle vier eens</span><span class="chip">ISK: terugval na anderhalve week</span><span class="chip">Töytäri &amp; Rajala (2015); Blume et al. (2010)</span></div></div>
+      <div><h3>Een training zonder borging verdampt</h3><p>Binnen een paar maanden, als de organisatie het niet vasthoudt.</p>
+      <div class="chips"><span class="chip">Ronde 1: meelopen, trainingen, beloning</span><span class="chip">Ronde 2: alle vier eens</span><span class="chip">Interviews: terugval na anderhalve week</span><span class="chip">Töytäri &amp; Rajala (2015); Blume et al. (2010)</span></div></div>
     </div>
-    <div class="card" style="background:var(--blush);border:0;margin-top:20px">
-      <span class="tag" style="background:var(--white)">Spanningsveld</span>
-      <h4>ROI vooraf, of vertrouwen eerst?</h4>
-      <p>In de expertinterviews rekende Wendy Austermann de waarde juist vooraf door, bijvoorbeeld dat medewerkers 30% sneller werken. In ronde 2 zagen Remco en Corné weinig in een ROI-berekening vooraf. Het verschil zit in het type product en de klant: clouddiensten met technische klanten die cijfers willen zien, tegenover advisering waar de waarde soms pas na jaren zichtbaar wordt. <strong>Welke onderbouwing overtuigt, hangt dus af van het type klant</strong>, en dat sluit precies aan op de gekozen richting.</p>
+    <div class="box" style="margin-top:20px;background:var(--blush);border-color:var(--cognac)">
+      <span class="kicker">Discussie</span>
+      <h4>Cijfers vooraf, of eerst vertrouwen?</h4>
+      <p>In de expertinterviews rekende Wendy Austermann de waarde juist vooraf voor, bijvoorbeeld dat medewerkers 30% sneller werken. In ronde 2 zagen Remco en Corné daar weinig in. Hoe kan dat? Wendy verkoopt clouddiensten aan technische klanten die cijfers willen zien. Remco en Corné werken in de advisering, waar de waarde soms pas na jaren zichtbaar wordt en klanten eerst vertrouwen willen. <strong>Welk bewijs overtuigt, hangt dus af van het type klant.</strong> En daar gaat de gekozen richting precies over.</p>
     </div>
   </div>
   <div class="folio"><span>Pagina 12</span><span>Conclusies</span></div>
 </section>
 
-<!-- 13 ADVIES & BESLUIT -->
-<section class="page dark" data-title="Matchpoint" data-toc="Matchpoint: advies en groepsbesluit" aria-label="Advies en besluit">
+<!-- 13 BESLUIT -->
+<section class="page dark" data-title="De knoop doorgehakt" data-toc="De knoop doorgehakt" data-sub="Mijn advies en het groepsbesluit" aria-label="Advies en besluit">
   <div class="page-inner">
-    <div class="kicker">7.2 – 7.3 · Advies en besluit</div>
-    <h2 class="title"><em>Matchpoint</em></h2>
-    <p class="lede">Na rondetafel 2 lagen er drie richtingen op tafel. Op 7 oktober 2026 koos de projectgroep in een Teams-meeting; ieder groepslid gaf zijn voorkeur in de chat.</p>
+    <div class="kicker">Het besluit · 7 oktober 2026</div>
+    <h2 class="title">De knoop <em>doorgehakt</em></h2>
+    <p class="lede">Drie richtingen op tafel, zes stemmen in de Teams-chat. Maud zette de opties op papier, daarna gaf iedereen een voorkeur.</p>
     <div class="votes">
       <div class="vote lose"><span class="rn">Richting 1</span><span class="count">1</span><h4>Waardeverkoop borgen in de organisatie na een verkooptraining</h4><div class="who"><span>Huyb</span></div></div>
-      <div class="vote win"><span class="rn">Richting 2</span><span class="count">3</span><h4>Herkennen wat verschillende typen klanten belangrijk vinden, en de waardeverkoop daarop aanpassen</h4><div class="who"><span>Max</span><span>Raphaël</span><span>Maud</span><span>Daniël · combi 2+3</span></div><span class="win-badge">Gekozen</span></div>
+      <div class="vote win"><span class="rn">Richting 2</span><span class="count">3</span><h4>Herkennen wat verschillende typen klanten belangrijk vinden, en de waardeverkoop daarop afstemmen</h4><div class="who"><span>Max</span><span>Raphaël</span><span>Maud</span><span>Daniël · combi 2+3</span></div><span class="win-badge">Gekozen</span></div>
       <div class="vote lose"><span class="rn">Richting 3</span><span class="count">1</span><h4>Waarde meetbaar en toepasbaar maken</h4><div class="who"><span>Esmee</span><span>Daniël · combi 2+3</span></div></div>
     </div>
     <div class="cols" style="margin-top:34px">
       <h3>Mijn advies</h3>
-      <p class="dropcap">Mijn advies was om te kiezen tussen richting 2 of 3, en richting 1 te laten vallen. In ronde 2 waren alle vier deelnemers het erover eens dat training zonder borging verloren gaat; daar viel weinig nieuws meer te ontdekken. Bovendien gaat die richting vooral over de invoering in de organisatie, en die valt buiten de afbakening van ons onderzoek.</p>
-      <p>Richting 2 sloot aan op mijn eigen eerdere voorstel om klanten in typen of persona’s in te delen. Ronde 2 bevestigde dat: wat werkt, hangt af van wat je verkoopt en aan wie. Richting 3 volgde uit conclusie 2 van ronde 1. In de stemming koos ik zelf voor richting 3, uit persoonlijke voorkeur: die ligt dicht bij het verkoopgesprek zelf. Inhoudelijk stond ik achter beide.</p>
+      <p class="dropcap">Ik adviseerde om te kiezen tussen richting 2 en 3, en richting 1 te laten vallen. Waarom? In ronde 2 waren alle vier de gasten het er al over eens dat training zonder borging verloren gaat. Daar viel weinig nieuws meer te ontdekken. Bovendien gaat die richting vooral over invoering in de organisatie, en dat valt buiten ons onderzoek.</p>
+      <p>Richting 2 sloot aan op mijn eigen voorstel van 29 september om klanten in typen in te delen. Ronde 2 bevestigde dat: wat werkt, hangt af van wat je verkoopt en aan wie. Richting 3 volgde uit conclusie 2 van ronde 1. Zelf stemde ik op 3, uit persoonlijke interesse: die ligt dicht bij het verkoopgesprek zelf. Inhoudelijk stond ik achter allebei.</p>
       <h3>Het groepsbesluit</h3>
-      <p>Richting 2 kreeg de meerderheid: <em>klantbelang → klanttevredenheid</em>. Uit de interviews en rondetafels bleek niet dat B2B-organisaties geen waarde te bieden hebben, maar dat zij onvoldoende herkennen welke waarde welk type klant zoekt: technologisch zelfstandige bedrijven tegenover traditionele organisaties, en eigenaar tegenover inkoper en gebruiker.</p>
-      <p>De keuze is gemaakt op persoonlijke voorkeur, niet op vooraf afgesproken criteria. Dat was verdedigbaar, omdat alle drie de richtingen onderbouwd waren, maar vaste criteria waren beter navolgbaar geweest.</p>
+      <p>Richting 2 won: <em>klantbelang → klanttevredenheid</em>. Het probleem van B2B-organisaties is niet dat ze geen waarde te bieden hebben. Het probleem is dat ze niet goed herkennen welke waarde welk type klant zoekt. Een technologisch zelfstandig bedrijf wil iets anders dan een traditionele organisatie die veel begeleiding nodig heeft. En een eigenaar wil iets anders dan een inkoper of een gebruiker.</p>
+      <p>Eerlijk is eerlijk: we kozen op voorkeur, niet op vooraf afgesproken criteria. Dat kon, omdat alle drie de richtingen goed onderbouwd waren. Maar met criteria was de keuze beter te volgen geweest.</p>
     </div>
     <div class="tablewrap">
     <table class="mag" style="margin-top:30px">
       <thead><tr><th>Onderdeel</th><th>Mijn advies</th><th>Groepsbesluit</th><th>Overgenomen?</th></tr></thead>
       <tbody>
-        <tr><td>Richting</td><td>Kiezen tussen 2 en 3; zelf gestemd op 3</td><td>Richting 2: klanttypen herkennen</td><td>Deels: richting 2 komt voort uit mijn persona-voorstel</td></tr>
+        <tr><td>Richting</td><td>Kiezen tussen 2 en 3; zelf gestemd op 3</td><td>Richting 2: klanttypen herkennen</td><td>Deels: richting 2 komt uit mijn persona-voorstel</td></tr>
         <tr><td>Richting 1</td><td>Laten vallen</td><td>Niet gekozen (één stem)</td><td>Overgenomen</td></tr>
         <tr><td>Richting 3</td><td>Waarde meetbaar en toepasbaar maken</td><td>Niet gekozen als hoofdrichting</td><td>Aangepast: meetbaarheid komt terug in subvraag 4</td></tr>
       </tbody>
     </table>
     </div>
   </div>
-  <div class="folio"><span>Pagina 13</span><span>Matchpoint</span></div>
+  <div class="folio"><span>Pagina 13</span><span>Het besluit</span></div>
 </section>
 
 <!-- 14 HOOFDVRAAG -->
-<section class="page" data-title="De hoofdvraag" data-toc="Van besluit naar hoofdvraag" aria-label="Van besluit naar hoofdvraag">
+<section class="page" data-title="De nieuwe vraag" data-toc="De nieuwe vraag" data-sub="Hoofdvraag, member check en kleine lettertjes" aria-label="Van besluit naar hoofdvraag">
   <div class="page-inner">
-    <div class="kicker">7.4 – 7.6 · Van besluit naar hoofdvraag</div>
+    <div class="kicker">Van besluit naar hoofdvraag</div>
     <h2 class="title">De <em>nieuwe</em> vraag</h2>
-    <div class="question paa">Hoe kunnen B2B-organisaties hun omzet laten groeien door te herkennen wat verschillende typen klanten waardevol vinden en hun waardeverkoop daarop af te stemmen?</div>
+    <p class="lede">Alles uit de rondetafels kwam samen in één zin. Die staat nu bovenaan ons plan van aanpak.</p>
+    <div class="question" data-label="Hoofdvraag plan van aanpak">Hoe kunnen B2B-organisaties hun omzet laten groeien door te herkennen wat verschillende typen klanten waardevol vinden en hun waardeverkoop daarop af te stemmen?</div>
     <div class="tablewrap">
     <table class="mag">
-      <thead><tr><th>Uitkomst rondetafels</th><th>Terug te zien in het plan van aanpak</th></tr></thead>
+      <thead><tr><th>Wat de rondetafels opleverden</th><th>Waar je het terugziet in het plan van aanpak</th></tr></thead>
       <tbody>
-        <tr><td>Klantbelang gaat vóór klanttevredenheid <span class="small">(ronde 2)</span></td><td>Urgentie in de aanleiding, onderbouwd met Oliver (1980)</td></tr>
-        <tr><td>Een stille klant is niet automatisch tevreden <span class="small">(ronde 1)</span></td><td>Voorbeeld van de klant die na een prijsverhoging niet meer bestelde</td></tr>
-        <tr><td>Eigenaar, inkoper of gebruiker maakt uit <span class="small">(ronde 1)</span></td><td>Subvraag 2: welke waarde zoeken eigenaren, inkopers en gebruikers?</td></tr>
-        <tr><td>Waarde ontdek je in een gezamenlijke diagnose <span class="small">(ronde 2)</span></td><td>Subvraag 6: verkoopactiviteiten in de behoefteanalyse en na de verkoop per klanttype</td></tr>
+        <tr><td>Klantbelang gaat vóór klanttevredenheid <span class="small">(ronde 2)</span></td><td>De urgentie in de aanleiding, onderbouwd met Oliver (1980)</td></tr>
+        <tr><td>Een stille klant is niet automatisch tevreden <span class="small">(ronde 1)</span></td><td>Het voorbeeld van de klant die na een prijsverhoging niet meer bestelde</td></tr>
+        <tr><td>Eigenaar, inkoper of gebruiker maakt verschil <span class="small">(ronde 1)</span></td><td>Subvraag 2: welke waarde zoeken eigenaren, inkopers en gebruikers?</td></tr>
+        <tr><td>Waarde ontdek je samen in een diagnose <span class="small">(ronde 2)</span></td><td>Subvraag 6: verkoopactiviteiten in de behoefteanalyse en na de verkoop, per klanttype</td></tr>
         <tr><td>Klanten indelen in typen of persona’s <span class="small">(mijn voorstel, 29 sept.)</span></td><td>Subvraag 3 en 5: typen B2B-klanten onderscheiden en vroeg herkennen</td></tr>
       </tbody>
     </table>
@@ -788,62 +838,63 @@ table.mag td:first-child{font-weight:600}
     <hr class="rule">
     <div class="split">
       <div>
-        <div class="kicker">7.5 · Member check</div>
-        <h3 style="margin-top:8px">Terug naar de deelnemers</h3>
-        <p>Op 17 oktober 2026 kregen Corné Maas en Remco Reinhardt een mail met een korte samenvatting en de hoofdvraag, met de vraag of zij zich daarin herkennen en of zij de hoofdvraag zien als een belangrijk vraagstuk in hun praktijk. Bewust deze twee: hun uitspraken bepaalden de richting het sterkst. Een samenvatting in plaats van het volledige transcript, omdat deelnemers daar eerder op reageren (Birt et al., 2016).</p>
-        <div class="pending" style="margin-top:18px"><strong>Reacties volgen.</strong> <span class="small">Zodra Corné en Remco hebben gereageerd, komen hun reacties hier te staan.</span></div>
+        <div class="kicker">Member check</div>
+        <h3 style="margin-top:8px">Herkennen jullie dit?</h3>
+        <p>Op 17 oktober 2026 mailde ik Corné Maas en Remco Reinhardt een korte samenvatting en de hoofdvraag. Twee vragen: herkennen jullie je hierin, en is dit een belangrijk vraagstuk in jullie praktijk? Bewust deze twee, omdat hun uitspraken de richting het sterkst bepaalden. Een samenvatting in plaats van het hele transcript, omdat mensen daar eerder op reageren (Birt et al., 2016).</p>
+        <div class="pending" style="margin-top:18px"><strong>De reacties volgen nog.</strong> <span class="small">Zodra Corné en Remco reageren, komen hun antwoorden hier te staan.</span></div>
       </div>
       <div>
-        <div class="kicker">7.6 · Beperkingen</div>
-        <h3 style="margin-top:8px">Eerlijk over de zwaktes</h3>
+        <div class="kicker">De kleine lettertjes</div>
+        <h3 style="margin-top:8px">Waar je rekening mee moet houden</h3>
         <div class="grid" style="gap:12px">
-          <div class="card"><h4>Weinig interactie in ronde 1</h4><p class="small">Conclusies van ronde 1 alleen als richting gebruikt, pas na ronde 2 als basis voor de keuze.</p></div>
-          <div class="card"><h4>Poll niet afgenomen</h4><p class="small">Geen scores per advies; de keuze rust op inhoudelijke argumenten.</p></div>
-          <div class="card"><h4>Ongelijke spreektijd</h4><p class="small">Corné en Remco samen 47 van de 64 fragmenten, Sven 9 en Jeroen 4. Het perspectief van de dienstverleners klinkt zwaarder door.</p></div>
-          <div class="card"><h4>Kleine groepen uit eigen netwerk</h4><p class="small">Uitkomsten niet zonder meer geldig voor alle B2B-organisaties.</p></div>
-          <div class="card"><h4>Geen proefronde</h4><p class="small">Thema 1 liep uit; een verbeterpunt voor de volgende keer.</p></div>
+          <div class="card"><h4>Weinig interactie in ronde 1</h4><p class="small">De conclusies van ronde 1 gebruikten we alleen als richting, pas na ronde 2 als basis voor de keuze.</p></div>
+          <div class="card"><h4>De poll is niet afgenomen</h4><p class="small">Er zijn geen scores per advies; de keuze rust op inhoudelijke argumenten.</p></div>
+          <div class="card"><h4>Niet iedereen sprak evenveel</h4><p class="small">Corné en Remco samen 47 van de 64 fragmenten, Sven 9 en Jeroen 4. De stem van de dienstverleners klinkt dus harder door.</p></div>
+          <div class="card"><h4>Kleine groepen uit ons eigen netwerk</h4><p class="small">De uitkomsten gelden niet zomaar voor alle B2B-organisaties.</p></div>
+          <div class="card"><h4>Geen proefronde</h4><p class="small">Thema 1 liep daardoor uit. Volgende keer eerst oefenen.</p></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="folio"><span>Pagina 14</span><span>Hoofdvraag</span></div>
+  <div class="folio"><span>Pagina 14</span><span>De nieuwe vraag</span></div>
 </section>
 
-<!-- 15 REFLECTIE -->
-<section class="page" data-title="Reflectie" data-toc="Reflectie: wat ik meeneem" aria-label="Reflectie" style="background:var(--blush)">
+<!-- 15 COLUMN REFLECTIE -->
+<section class="page blush" data-title="Column" data-toc="Column: wat ik meeneem" data-sub="Drie lessen en mijn AI-gebruik" aria-label="Column: wat ik meeneem">
   <div class="page-inner">
-    <div class="kicker">Hoofdstuk 8 · Reflectie</div>
+    <div class="kicker">Column</div>
     <h2 class="title">Wat ik <em>meeneem</em></h2>
-    <p class="lede">Drie leerpunten uit twee rondetafels.</p>
-    <div class="lesson" style="border-color:rgba(0,0,0,.15)">
+    <p class="byline">Door Esmee Hoetink</p>
+    <p class="lede">Twee rondetafels later weet ik meer over waardeverkoop. Maar ik heb vooral veel geleerd over gesprekken voeren.</p>
+    <div class="lesson">
       <div class="num-big">01</div>
-      <div><h3>Doorvragen en bijsturen in het moment</h3><p>Na ronde 1 kreeg ik de feedback dat Max en ik onze manier van vragen tijdens het gesprek hadden bijgesteld. In ronde 2 deed ik dat bewuster: ik paste een stelling ter plekke aan en koppelde de laatste stelling terug aan de eerste. Goed luisteren naar wat er al is gezegd, levert betere vervolgvragen op dan de volgende vraag van het lijstje afwerken.</p></div>
+      <div><h3>Luister, en durf bij te sturen</h3><p>Na ronde 1 kreeg ik van Daniël terug dat Max en ik onze manier van vragen tijdens het gesprek hadden bijgesteld. In ronde 2 deed ik dat bewuster. Ik merkte dat een deel van het antwoord al eerder was gegeven, en dat juist de verschillende meningen het gesprek op gang brachten. Dus paste ik de stelling ter plekke aan. Mijn les: wie goed luistert naar wat er al gezegd is, stelt betere vervolgvragen dan wie gewoon het lijstje afwerkt.</p></div>
     </div>
-    <div class="lesson" style="border-color:rgba(0,0,0,.15)">
+    <div class="lesson">
       <div class="num-big">02</div>
-      <div><h3>Iedereen aan het woord laten</h3><p>Dat vond ik het lastigst. Een deelnemer die de stellingen niet helemaal begreep, bleef wat op de achtergrond. Volgende keer bereid ik bij elke stelling een eenvoudige uitleg met een voorbeeld voor, en ga ik kort alle deelnemers langs.</p></div>
+      <div><h3>Laat iedereen aan het woord</h3><p>Dit vond ik het lastigst. In ronde 1 kreeg ik het woord moeilijk terug van een spraakzame gast. In ronde 2 had ik het idee dat iemand de stellingen niet helemaal begreep, waardoor die wat op de achtergrond bleef. Volgende keer bereid ik bij elke stelling een simpele uitleg met een voorbeeld voor, en ga ik kort alle gasten langs.</p></div>
     </div>
-    <div class="lesson" style="border-color:rgba(0,0,0,.15)">
+    <div class="lesson">
       <div class="num-big">03</div>
-      <div><h3>Adviseren in een groep</h3><p>Ik stemde anders dan de meerderheid, terwijl de gekozen richting juist voortkwam uit mijn eigen voorstel. Een advies staat sterker als je het vooraf uitschrijft en inhoudelijke argumenten scheidt van persoonlijke voorkeur. Volgende keer stel ik voor om vooraf criteria af te spreken, en deel ik mijn advies met onderbouwing vóór het overleg.</p></div>
+      <div><h3>Adviseren in een groep is een vak apart</h3><p>Grappig genoeg stemde ik anders dan de meerderheid, terwijl de gekozen richting uit mijn eigen voorstel kwam. Ik liet mijn persoonlijke interesse meewegen. Het groepsbesluit kon ik goed accepteren en ik heb meegeholpen het uit te werken. Mijn les: schrijf je advies vooraf uit, houd argumenten en voorkeur gescheiden, en spreek vooraf criteria af.</p></div>
     </div>
     <hr class="rule" style="border-color:rgba(0,0,0,.15)">
-    <div class="kicker">8.3 · Verantwoording van AI-gebruik</div>
-    <p style="margin:10px 0 16px;max-width:70ch">Volgens het AI-beleid van de HAN ben ik transparant over mijn gebruik van AI. Bij dit bewijsstuk heb ik Claude op vier manieren ingezet.</p>
+    <div class="kicker">Transparant over AI</div>
+    <p style="margin:10px 0 16px;max-width:70ch">Volgens het AI-beleid van de HAN ben ik open over mijn gebruik van AI. Bij dit bewijsstuk heb ik Claude op vier manieren ingezet. De keuzes, de inhoud en de onderbouwing zijn van mij.</p>
     <div class="grid g4">
-      <div class="card"><span class="tag">Opzet</span><h4>Brainstorm</h4><p class="small">Hoofdstukindeling gebrainstormd. Keuzes, inhoud en onderbouwing zijn van mij.</p></div>
-      <div class="card"><span class="tag">Literatuur</span><h4>Bronnen en citaten</h4><p class="small">Literatuur en citaten opgezocht; bronnen zelf gecontroleerd tegen de opname.</p></div>
-      <div class="card"><span class="tag">Codering</span><h4>Eerste voorzet</h4><p class="small">Eerste codering als voorzet; elke code zelf nagekeken en aangepast (Christou, 2023).</p></div>
-      <div class="card"><span class="tag">Schrijven</span><h4>Schrijfhulp</h4><p class="small">Hulp bij zinsopbouw, spelling en mails; tekst in eigen woorden herschreven.</p></div>
+      <div class="card"><span class="tag">Opzet</span><h4>Brainstorm</h4><p class="small">Samen de hoofdstukindeling bedacht. De opbouw heb ik zelf gekozen.</p></div>
+      <div class="card"><span class="tag">Literatuur</span><h4>Bronnen en citaten</h4><p class="small">Bronnen en citaten opgezocht. Ik heb ze zelf gecontroleerd, ook tegen de opname.</p></div>
+      <div class="card"><span class="tag">Codering</span><h4>Eerste voorzet</h4><p class="small">Een eerste codering als voorzet. Elke code heb ik zelf nagekeken en waar nodig aangepast (Christou, 2023).</p></div>
+      <div class="card"><span class="tag">Schrijven</span><h4>Schrijfhulp</h4><p class="small">Hulp bij zinsbouw, spelling en de mails. De tekst heb ik in mijn eigen woorden herschreven.</p></div>
     </div>
   </div>
-  <div class="folio"><span>Pagina 15</span><span>Reflectie</span></div>
+  <div class="folio"><span>Pagina 15</span><span>Column</span></div>
 </section>
 
 <!-- 16 BRONNEN -->
-<section class="page" data-title="Bronnen" data-toc="Bronnenlijst" aria-label="Bronnenlijst">
+<section class="page" data-title="Bronnen" data-toc="Bronnen" data-sub="Voor wie verder wil lezen" aria-label="Bronnenlijst">
   <div class="page-inner">
-    <div class="kicker">Colofon · Bronnen</div>
+    <div class="kicker">Verder lezen</div>
     <h2 class="title">Bronnen<em>lijst</em></h2>
     <div class="refs">
       <p>Bergen, A., &amp; Labonté, R. (2020). ‘Everything is perfect, and we have no problems’: Detecting and limiting social desirability bias in qualitative research. <i>Qualitative Health Research, 30</i>(5), 783–792.</p>
@@ -913,8 +964,9 @@ table.mag td:first-child{font-weight:600}
   pages.forEach((p,i)=>{
     if(!p.dataset.toc) return;
     const li=document.createElement('li');
-    li.innerHTML=`<a href="#p${i+1}" data-goto="${i+1}"><span class="n">${pad(i+1)}</span><span class="t"></span><span class="arrow">→</span></a>`;
-    li.querySelector('.t').textContent=p.dataset.toc;
+    li.innerHTML=`<a href="#p${i+1}" data-goto="${i+1}"><span class="n">${pad(i+1)}</span><span class="t"><span></span><small></small></span><span class="arrow" aria-hidden="true">→</span></a>`;
+    li.querySelector('.t span').textContent=p.dataset.toc;
+    li.querySelector('.t small').textContent=p.dataset.sub||'';
     toc.appendChild(li);
   });
 
@@ -924,7 +976,7 @@ table.mag td:first-child{font-weight:600}
     document.getElementById('prev').disabled=cur===0;
     document.getElementById('next').disabled=cur===total-1;
     document.title=(cur===0?'':pages[cur].dataset.title+' · ')+'WAARDE Magazine';
-    if(location.hash!=='#p'+(cur+1)) history.replaceState(null,'','#p'+(cur+1));
+    try{ if(location.hash!=='#p'+(cur+1)) history.replaceState(null,'','#p'+(cur+1)); }catch(e){}
   }
 
   function show(i){
