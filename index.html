@@ -515,6 +515,70 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
   .refs-aside { position: static; }
   .refs-photo { aspect-ratio: 16 / 9; }
 }
+
+/* ---------- context, aanleiding, urgentie, focus ---------- */
+.ctx { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.ctx-body { display: grid; gap: 18px; }
+.ctx-body p { max-width: 62ch; }
+.ctx-body p + p { color: var(--paper-mute); }
+.route-path { list-style: none; margin: clamp(48px, 7vw, 88px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--line-paper); counter-reset: rp; }
+.route-path li { border-right: 1px solid var(--line-paper); }
+.route-path li:last-child { border-right: 0; }
+.route-path a { display: grid; gap: 8px; padding: 22px 20px 6px 0; text-decoration: none; height: 100%; transition: background .4s; }
+.route-path li + li a { padding-left: 20px; }
+.route-path a:hover b { color: var(--paper-ink); text-decoration: underline; text-decoration-color: var(--brass); text-underline-offset: 5px; }
+.route-path .no { font-size: 12px; color: var(--paper-mute); font-variant-numeric: tabular-nums; }
+.route-path b { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 26px; line-height: 1.05; }
+.route-path span:last-child { font-size: 13.5px; color: var(--paper-mute); }
+
+.beats { display: grid; gap: 22px; margin-top: 36px; max-width: 60ch; }
+.beat { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 16px; }
+.beat .bl { font-size: 13px; color: var(--paper-mute); padding-top: 3px; }
+.beat .bl b { display: block; font-family: var(--display); font-style: italic; font-weight: 400; font-size: 20px; color: var(--paper-ink); line-height: 1.1; }
+
+.versus { margin-top: clamp(56px, 8vw, 104px); display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1fr) minmax(0, 1fr); border-top: 1px solid var(--line-paper); }
+.versus > div { padding: 16px 18px 16px 0; border-bottom: 1px solid var(--line-paper); font-size: 15px; }
+.versus .vh { font-family: var(--display); font-style: italic; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.1; padding-top: 22px; }
+.versus .vh.val { color: var(--paper-ink); }
+.versus .vh.val::after { content: ""; display: block; width: 40px; height: 1px; background: var(--brass); margin-top: 10px; }
+.versus .rl { font-size: 13px; color: var(--paper-mute); }
+.versus .pv { color: var(--paper-mute); }
+.versus .wv { color: var(--paper-ink); }
+
+.urg-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 80px); align-items: end; }
+.reasons { list-style: none; margin: clamp(40px, 6vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); }
+.reason { background: var(--ink); padding: clamp(22px, 3vw, 36px); display: grid; gap: 14px; align-content: start; }
+.reason .top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.reason .no { font-size: 13px; color: var(--brass); font-variant-numeric: tabular-nums; }
+.reason .big { font-family: var(--display); font-style: italic; font-size: clamp(48px, 5vw, 72px); line-height: .9; font-variant-numeric: tabular-nums; }
+.reason h3 { font-size: clamp(26px, 2.4vw, 34px); }
+.reason p { color: var(--mist); font-size: 15px; }
+.reason .so { color: var(--bone); font-size: 15px; padding-top: 12px; border-top: 1px solid var(--line-dark); }
+.reason .so span { color: var(--brass); margin-right: 8px; }
+.reason .fig { margin-top: 6px; }
+
+.spiral { margin-top: clamp(48px, 7vw, 88px); }
+.spiral ol { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+.spiral li { position: relative; padding: 18px 28px 18px 0; border-top: 1px solid var(--bone); font-size: 15px; display: grid; gap: 4px; }
+.spiral li + li { padding-left: 20px; }
+.spiral li:not(:last-child)::after { content: ""; position: absolute; right: 8px; top: -5px; width: 9px; height: 9px; border-top: 1px solid var(--bone); border-right: 1px solid var(--bone); transform: rotate(45deg); }
+.spiral li:last-child { border-top-color: var(--brass); color: var(--brass); }
+.spiral li small { color: var(--mist); font-size: 12.5px; }
+.kortom { margin-top: clamp(48px, 7vw, 88px); display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: clamp(24px, 5vw, 72px); align-items: end; }
+.kortom p.k { font-family: var(--display); font-style: italic; font-size: clamp(32px, 4vw, 56px); line-height: 1.06; }
+.kortom p.k em { font-style: italic; color: var(--brass); }
+
+.funnel { display: grid; gap: 6px; justify-items: center; align-content: center; }
+.funnel > div { width: var(--fw); padding: 18px 22px; background: var(--ink); color: var(--bone); display: grid; gap: 4px; text-align: center; transition: transform .8s var(--ease-out); }
+.funnel > div small { font-size: 12px; color: var(--mist); }
+.funnel > div span { font-size: 14.5px; }
+.funnel > div.me { background: var(--brass); color: var(--ink); }
+.funnel > div.me small { color: var(--ink); opacity: .75; }
+.funnel > div.me span { font-family: var(--display); font-style: italic; font-size: 22px; line-height: 1.15; }
+.out { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.out li { font-size: 13.5px; padding: 6px 14px; border: 1px dashed var(--line-paper); border-radius: 999px; color: var(--paper-mute); text-decoration: line-through; text-decoration-color: rgba(94, 97, 82, .5); }
+.bridge { margin-top: 26px; font-size: 15px; color: var(--paper-mute); }
+.bridge a { color: var(--paper-ink); text-underline-offset: 4px; text-decoration-color: var(--brass); }
 /* ---------- responsive ---------- */
 @media (max-width: 1100px) {
   .nav-links { display: none; }
@@ -568,6 +632,25 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
   .photo img { transform: none !important; }
   .panel.grow { transform: none; }
 }
+/* story sections: phone overrides (kept last so they win) */
+@media (max-width: 900px) {
+  .ctx, .urg-head, .kortom { grid-template-columns: minmax(0, 1fr); }
+  .route-path { grid-template-columns: minmax(0, 1fr); }
+  .route-path li { border-right: 0; border-bottom: 1px solid var(--line-paper); }
+  .route-path li + li a { padding-left: 0; }
+  .route-path a { padding: 16px 0; }
+  .reasons { grid-template-columns: minmax(0, 1fr); }
+  .spiral ol { grid-template-columns: minmax(0, 1fr); }
+  .spiral li, .spiral li + li { padding: 14px 0 14px 0; }
+  .spiral li:not(:last-child)::after { right: auto; left: 0; top: auto; bottom: -5px; transform: rotate(135deg); }
+  .versus { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .versus .rl { grid-column: 1 / -1; padding-bottom: 0; border-bottom: 0; padding-top: 18px; }
+  .versus .corner { display: none; }
+  .funnel > div { width: 100% !important; }
+}
+@media (max-width: 600px) {
+  .beat { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
 </style>
 </head>
 <body>
@@ -585,7 +668,7 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
   <a class="brand" href="#top" aria-label="Esmee Hoetink, naar boven">Esmee Hoetink</a>
   <nav aria-label="Hoofdstukken">
     <ul class="nav-links">
-      <li><a href="#aanleiding">Aanleiding</a></li>
+      <li><a href="#context">Aanleiding</a></li>
       <li><a href="#onderzoek">Onderzoek</a></li>
       <li><a href="#interview">Interview</a></li>
       <li><a href="#experts">Experts</a></li>
@@ -601,7 +684,7 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
 
 <div class="sheet" id="sheet" aria-hidden="true">
   <ol>
-    <li><a href="#aanleiding">Aanleiding</a></li>
+    <li><a href="#context">Aanleiding</a></li>
     <li><a href="#onderzoek">Onderzoek</a></li>
     <li><a href="#interview">Interview</a></li>
     <li><a href="#experts">Experts</a></li>
@@ -624,7 +707,7 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
       <div>
         <h1><span class="ln"><span>Weten.</span></span><span class="ln"><span>Doen.</span></span><span class="ln"><span>Borgen.</span></span></h1>
         <p class="hero-sub">Van productverkoop naar waardeverkoop</p>
-        <a class="btn" href="#aanleiding">Lees mijn koers</a>
+        <a class="btn" href="#context">Lees mijn verhaal</a>
       </div>
     </div>
     <aside class="hero-card" aria-label="Over dit onderzoek">
@@ -650,16 +733,40 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
   </div>
 </section>
 
+<!-- ================= CONTEXT ================= -->
+<section class="section wrap on-paper" id="context" aria-labelledby="ctxTitle">
+  <div class="ctx">
+    <div class="reveal">
+      <span class="kicker">Individuele strategische koersopdracht</span>
+      <h2 class="h2" id="ctxTitle">Waar gaat dit over?</h2>
+    </div>
+    <div class="ctx-body reveal">
+      <p class="lede">Met zes studenten van onze HUB-groep onderzoeken we in ons afstudeeronderzoek de overgang van <b style="font-weight:500">productverkoop naar waardeverkoop</b>. Dat onderwerp is breed. Daarom interviewde ieder van ons een expert, en kiest ieder op basis van die interviews en literatuur een eigen, scherpe richting: een strategische koers.</p>
+      <p>Ik sprak salestrainer Hans Goossens, legde zijn uitspraken naast de vijf andere interviews en toetste ze aan wetenschappelijke artikelen. Mijn koers is mijn inbreng voor het rondetafelgesprek en voor de keuze van het thema waarop we ons adviesmodel schrijven.</p>
+      <p>Op deze pagina neem ik je stap voor stap mee: waarom dit onderwerp nu speelt, hoe ik het heb onderzocht, wat de experts en de literatuur zeggen, en welke koers ik daaruit kies.</p>
+    </div>
+  </div>
+  <ol class="route-path reveal" aria-label="Het verhaal in vijf stappen">
+    <li><a href="#aanleiding"><span class="no">1</span><b>Aanleiding en urgentie</b><span>Waarom dit onderwerp nu speelt</span></a></li>
+    <li><a href="#onderzoek"><span class="no">2</span><b>Onderzoek</b><span>Centrale vraag en aanpak</span></a></li>
+    <li><a href="#interview"><span class="no">3</span><b>Interviews</b><span>Hans Goossens en vijf andere experts</span></a></li>
+    <li><a href="#literatuur"><span class="no">4</span><b>Literatuur</b><span>Wat bevestigt en wat nuanceert</span></a></li>
+    <li><a href="#koers"><span class="no">5</span><b>Koers</b><span>Van weten naar doen</span></a></li>
+  </ol>
+</section>
+
 <!-- ================= AANLEIDING ================= -->
 <section class="section wrap on-paper" id="aanleiding">
   <div class="intro-grid">
     <div class="reveal">
-      <span class="kicker">Aanleiding</span>
+      <span class="kicker">1 · Aanleiding</span>
       <p class="quote-xl">“Iets verkopen zonder waarde is slechts een prijsje.”</p>
       <p class="quote-by">Hans Goossens, salestrainer met 45 jaar ervaring</p>
-      <div class="body-cols measure">
-        <p>Stel: je wilt een pot verf kopen. Bij twee winkels liggen precies dezelfde potten. De ene kost tien euro, de andere negen. Grote kans dat je de goedkoopste kiest. Het product is hetzelfde, dus het enige verschil is de prijs.</p>
-        <p>Dat is het risico van productverkoop. Bij waardeverkoop kijkt de verkoper naar wat een oplossing de klant oplevert: tijd, geld, gemak of minder zorgen. Samen met de klant begrijpen wat die écht nodig heeft, en laten zien wat de oplossing daarvoor oplevert (Terho et al., 2012).</p>
+      <div class="beats">
+        <div class="beat"><span class="bl"><b>Stel</b>de situatie</span><p>Je wilt een pot verf kopen. Bij twee winkels liggen precies dezelfde potten. De ene kost tien euro, de andere negen. Grote kans dat je de goedkoopste kiest. Het product is hetzelfde, dus het enige verschil is de prijs.</p></div>
+        <div class="beat"><span class="bl"><b>Het risico</b>productverkoop</span><p>Een verkoper vertelt vooral wat een product is en wat het kost. Biedt een concurrent hetzelfde product goedkoper aan, dan verlies je de klant.</p></div>
+        <div class="beat"><span class="bl"><b>Het alternatief</b>waardeverkoop</span><p>De verkoper kijkt naar wat een oplossing de klant oplevert: tijd, geld, gemak of minder zorgen. Hij probeert samen met de klant te begrijpen wat die écht nodig heeft, en laat zien wat zijn oplossing daarvoor oplevert (Terho et al., 2012).</p></div>
+        <div class="beat"><span class="bl"><b>Waar</b>het speelt</span><p>Vooral bij bedrijven die aan andere bedrijven verkopen: business to business, of B2B. Daar richt dit onderzoek zich op.</p></div>
       </div>
       <figure class="fig" style="margin-top:36px;max-width:440px">
         <svg class="ill draw" viewBox="0 0 400 190" role="img" aria-label="Twee identieke potten verf, één van tien euro en één van negen euro">
@@ -724,25 +831,101 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
       <p class="scale-caption" id="scaleCaption" aria-live="polite">Staat er niets tegenover de prijs, dan weegt die loeizwaar. De klant kiest de pot van negen euro.</p>
     </div>
   </div>
+  <div class="versus reveal" role="table" aria-label="Productverkoop en waardeverkoop vergeleken">
+    <div class="corner" role="columnheader"></div>
+    <div class="vh" role="columnheader">Productverkoop</div>
+    <div class="vh val" role="columnheader">Waardeverkoop</div>
+    <div class="rl" role="rowheader">Het gesprek gaat over</div><div class="pv" role="cell">De eigenschappen, de kwaliteit en de prijs van het product</div><div class="wv" role="cell">Wat de oplossing de klant oplevert: tijd, geld, gemak of minder zorgen</div>
+    <div class="rl" role="rowheader">De verkoper</div><div class="pv" role="cell">Vertelt wat het product is en wat het kost</div><div class="wv" role="cell">Begrijpt samen met de klant wat die echt nodig heeft</div>
+    <div class="rl" role="rowheader">De klant vergelijkt op</div><div class="pv" role="cell">Prijs, want de producten lijken op elkaar</div><div class="wv" role="cell">Wat het hem oplevert, waardoor hij minder prijsgevoelig wordt</div>
+    <div class="rl" role="rowheader">Als een concurrent goedkoper is</div><div class="pv" role="cell">Verlies je de klant</div><div class="wv" role="cell">Weegt de prijs minder zwaar dan de waarde</div>
+  </div>
 </section>
 
 <!-- ================= URGENTIE ================= -->
-<section class="wrap" aria-labelledby="urgTitle">
+<section class="wrap" id="urgentie" aria-labelledby="urgTitle">
   <div class="panel grow panel-pad">
-    <span class="kicker">Urgentie</span>
-    <h2 class="h2" id="urgTitle">Waarom juist nu?</h2>
-    <div class="facts">
-      <div class="fact reveal"><span class="n">17%</span><span class="t">Bedrijven weten het, maar doen het niet</span><span class="d">Gemiddeld baseert maar 17% van de bedrijven de prijs op de waarde voor de klant (Hinterhuber, 2008, in Töytäri et al., 2015).</span></div>
-      <div class="fact reveal"><span class="n">5–25×</span><span class="t">Klanten kwijtraken is duur</span><span class="d">Een nieuwe klant binnenhalen kost vijf tot vijfentwintig keer zoveel als een bestaande behouden (Gallo, 2014).</span></div>
-      <div class="fact reveal"><span class="n">1,5 wk</span><span class="t">Terug in oude patronen</span><span class="d">Zonder begeleiding vallen verkopers na een training binnen anderhalve week terug, ziet Hans Goossens.</span></div>
-      <div class="fact reveal"><span class="n">4 → 8</span><span class="t">Producten lijken op elkaar</span><span class="d">Vier verkopers van één bedrijf gaven samen acht verschillende antwoorden op de vraag wat hun toegevoegde waarde is.</span></div>
+    <div class="urg-head">
+      <div>
+        <span class="kicker">1 · Urgentie</span>
+        <h2 class="h2" id="urgTitle">Waarom juist nu?</h2>
+      </div>
+      <p class="lede" style="color:var(--mist)">Waardeverkoop klinkt logisch. Toch is het juist nu dringend, om vier redenen die elkaar versterken.</p>
     </div>
-    <figure class="fig" style="margin-top:clamp(40px,6vw,72px);max-width:760px">
-      <svg class="ill draw on-dark" viewBox="0 0 520 170" role="img" aria-label="Vier verkopers met elk twee verschillende antwoorden, acht in totaal"><circle class="s" cx="80" cy="112" r="13"/><path class="s" d="M50 162 Q50 132 80 132 Q110 132 110 162"/><rect class="s" x="34" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M60 70 L70.9 94"/><circle class="s" cx="54" cy="54" r="7"/><rect class="s" x="86" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M100 54 L89.1 94"/><rect class="s" x="99.5" y="31.5" width="13" height="13"/><circle class="s" cx="200" cy="112" r="13"/><path class="s" d="M170 162 Q170 132 200 132 Q230 132 230 162"/><rect class="s" x="154" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M180 70 L190.9 94"/><path class="s" d="M174 46 L182 60 H166 Z"/><rect class="s" x="206" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M220 54 L209.1 94"/><path class="s" d="M226 30 L234 38 L226 46 L218 38 Z"/><circle class="s" cx="320" cy="112" r="13"/><path class="s" d="M290 162 Q290 132 320 132 Q350 132 350 162"/><rect class="s" x="274" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M300 70 L310.9 94"/><path class="s" d="M287 54 H301 M294 47 V61"/><rect class="s" x="326" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M340 54 L329.1 94"/><circle class="s" cx="346" cy="38" r="7"/><circle class="accf" cx="346" cy="38" r="2.2"/><circle class="s" cx="440" cy="112" r="13"/><path class="s" d="M410 162 Q410 132 440 132 Q470 132 470 162"/><rect class="s" x="394" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M420 70 L430.9 94"/><path class="s" d="M405 54 q3 -6 6 0 t6 0 t6 0"/><rect class="s" x="446" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M460 54 L449.1 94"/><path class="s" d="M466 30 L468.5 35.5 L474 38 L468.5 40.5 L466 46 L463.5 40.5 L458 38 L463.5 35.5 Z"/></svg>
-      <figcaption>Vier verkopers van hetzelfde bedrijf schreven elk twee punten op over hun toegevoegde waarde. Het leverde acht verschillende antwoorden op. Volgens Hans is dat gokken.</figcaption>
-    </figure>
+
+    <ol class="reasons">
+      <li class="reason reveal">
+        <div class="top"><span class="no">Reden 1</span></div>
+        <h3>Producten lijken steeds meer op elkaar</h3>
+        <p>Klanten vergelijken producten en prijzen tegenwoordig makkelijk online. Als producten op elkaar lijken en klanten veel macht hebben, bepalen bedrijven hun prijs vaak op basis van hun kosten of de prijs van de concurrent (Töytäri et al., 2015, p. 53).</p>
+        <p class="so"><span>Gevolg</span>Bedrijven verdienen minder dan ze willen.</p>
+      </li>
+      <li class="reason reveal">
+        <div class="top"><span class="no">Reden 2</span></div>
+        <h3>Verkopers geven steeds meer korting</h3>
+        <p>Onder druk van concurrentie voelen veel verkopers zich gedwongen steeds meer korting te geven om klanten te houden of binnen te halen (Colias et al., 2021).</p>
+        <p class="so"><span>Gevolg</span>Korting lijkt een snelle oplossing, maar het kost het bedrijf geld.</p>
+      </li>
+      <li class="reason reveal">
+        <div class="top"><span class="no">Reden 3</span><span class="big">5–25×</span></div>
+        <h3>Klanten kwijtraken is duur</h3>
+        <p>Een nieuwe klant binnenhalen kost, afhankelijk van het onderzoek en de branche, vijf tot vijfentwintig keer zoveel als een bestaande klant behouden (Gallo, 2014).</p>
+        <p class="so"><span>Gevolg</span>Wie alleen op prijs concurreert, verliest klanten zodra een ander goedkoper is.</p>
+      </li>
+      <li class="reason reveal">
+        <div class="top"><span class="no">Reden 4</span><span class="big">17%</span></div>
+        <h3>Bedrijven weten het, maar doen het niet</h3>
+        <p>Gemiddeld gebruikt maar 17% van de bedrijven de waarde voor de klant als basis voor hun prijs (Hinterhuber, 2008, zoals geciteerd in Töytäri et al., 2015, p. 53). Hans ziet hetzelfde in zijn trainingen: bedrijven zeggen dat ze op waarde verkopen, maar als verkopers oefenen, doet bijna niemand het.</p>
+        <figure class="fig">
+          <svg class="ill draw on-dark" viewBox="0 0 520 170" role="img" aria-label="Vier verkopers met elk twee verschillende antwoorden, acht in totaal"><circle class="s" cx="80" cy="112" r="13"/><path class="s" d="M50 162 Q50 132 80 132 Q110 132 110 162"/><rect class="s" x="34" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M60 70 L70.9 94"/><circle class="s" cx="54" cy="54" r="7"/><rect class="s" x="86" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M100 54 L89.1 94"/><rect class="s" x="99.5" y="31.5" width="13" height="13"/><circle class="s" cx="200" cy="112" r="13"/><path class="s" d="M170 162 Q170 132 200 132 Q230 132 230 162"/><rect class="s" x="154" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M180 70 L190.9 94"/><path class="s" d="M174 46 L182 60 H166 Z"/><rect class="s" x="206" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M220 54 L209.1 94"/><path class="s" d="M226 30 L234 38 L226 46 L218 38 Z"/><circle class="s" cx="320" cy="112" r="13"/><path class="s" d="M290 162 Q290 132 320 132 Q350 132 350 162"/><rect class="s" x="274" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M300 70 L310.9 94"/><path class="s" d="M287 54 H301 M294 47 V61"/><rect class="s" x="326" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M340 54 L329.1 94"/><circle class="s" cx="346" cy="38" r="7"/><circle class="accf" cx="346" cy="38" r="2.2"/><circle class="s" cx="440" cy="112" r="13"/><path class="s" d="M410 162 Q410 132 440 132 Q470 132 470 162"/><rect class="s" x="394" y="38" width="40" height="32" rx="8"/><path class="s mute" d="M420 70 L430.9 94"/><path class="s" d="M405 54 q3 -6 6 0 t6 0 t6 0"/><rect class="s" x="446" y="22" width="40" height="32" rx="8"/><path class="s mute" d="M460 54 L449.1 94"/><path class="s" d="M466 30 L468.5 35.5 L474 38 L468.5 40.5 L466 46 L463.5 40.5 L458 38 L463.5 35.5 Z"/></svg>
+          <figcaption>Vier verkopers van hetzelfde bedrijf gaven samen acht verschillende antwoorden op de vraag wat hun toegevoegde waarde is.</figcaption>
+        </figure>
+        <p class="so"><span>Gevolg</span>De kennis is er, maar de praktijk blijft achter.</p>
+      </li>
+    </ol>
+
+    <div class="spiral reveal">
+      <span class="kicker">Samen vormen ze een prijsspiraal</span>
+      <ol>
+        <li>Producten lijken op elkaar<small>reden 1</small></li>
+        <li>De klant vergelijkt op prijs<small>reden 1</small></li>
+        <li>De verkoper geeft korting<small>reden 2</small></li>
+        <li>Minder winst, en de klant vertrekt naar wie goedkoper is<small>reden 2 en 3</small></li>
+      </ol>
+    </div>
+
+    <div class="kortom reveal">
+      <p class="k">Kortom: bedrijven die de stap naar waardeverkoop niet maken, dreigen alleen nog op <em>prijs</em> te kunnen concurreren. Dat kost ze winst en klanten.</p>
+      <p style="color:var(--mist);font-size:15px">Daarom is het belangrijk om eerst te verkennen welke thema's hierbij spelen. Zo kunnen we gericht kiezen waar ons adviesmodel zich op richt.</p>
+    </div>
+
     <div class="photo urg-photo" data-speed="0.12">
       <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80" alt="Kantoorgebouwen van onderaf gezien" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOCUS ================= -->
+<section class="section wrap on-paper" id="focus" aria-labelledby="focusTitle">
+  <div class="split">
+    <div class="reveal">
+      <span class="kicker">Afbakening en focus</span>
+      <h2 class="h2" id="focusTitle">Van een breed onderwerp naar één vraag</h2>
+      <p class="measure" style="margin-top:22px">Uit mijn interview met Hans kwam één observatie het sterkst naar voren: organisaties weten dat ze op waarde moeten verkopen, maar doen het niet. Verkopers zeggen het te doen, en vallen binnen anderhalve week na een training terug in oude patronen.</p>
+      <p class="measure" style="margin-top:14px;color:var(--paper-mute)">Toen ik de vijf andere interviews ernaast legde, bleek dat geen toeval. Alle experts noemen de organisatie als voorwaarde, maar ze verschillen sterk in hoe ver waardeverkoop bij hen is verankerd. Terho et al. (2012) beschrijven wát waardeverkoop is. Mijn focus ligt op de stap daarna: van weten naar doen.</p>
+      <span class="kicker" style="margin-top:32px;margin-bottom:0">Buiten mijn afbakening</span>
+      <ul class="out" aria-label="Buiten de afbakening">
+        <li>Prijsstrategie en prijsmodellen</li>
+        <li>Waardeverkoop aan consumenten (B2C)</li>
+        <li>De vraag óf waardeverkoop werkt</li>
+      </ul>
+      <p class="bridge">Beloning en type klant komen alleen aan bod waar ze raken aan het toepassen en vasthouden van waardeverkoop. Daaruit volgt <a href="#onderzoek">mijn centrale vraag</a>.</p>
+    </div>
+    <div class="funnel reveal" role="list" aria-label="Van breed onderwerp naar mijn focus">
+      <div role="listitem" style="--fw:100%"><small>Breed onderwerp</small><span>De overgang van productverkoop naar waardeverkoop</span></div>
+      <div role="listitem" style="--fw:88%"><small>Zes expertinterviews</small><span>Ieder lid van de HUB-groep sprak één expert</span></div>
+      <div role="listitem" style="--fw:76%"><small>Sterkste observatie</small><span>Organisaties weten het, maar doen het niet</span></div>
+      <div role="listitem" class="me" style="--fw:64%"><small>Mijn focus</small><span>Waarom komt waardeverkoop niet van de grond, en wat is nodig om het vast te houden?</span></div>
     </div>
   </div>
 </section>
@@ -751,7 +934,7 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
 <section class="section wrap on-paper" id="onderzoek" aria-labelledby="ozTitle">
   <div class="head-split">
     <div>
-      <span class="kicker">Methode van onderzoek</span>
+      <span class="kicker">2 · Methode van onderzoek</span>
       <h2 class="h2 reveal" id="ozTitle">De centrale vraag</h2>
       <p class="question reveal" style="margin-top:28px">Waarom passen B2B-organisaties waardeverkoop in de praktijk vaak niet toe, terwijl ze weten dat het werkt, en wat is er nodig om die kloof tussen weten en doen te dichten?</p>
     </div>
@@ -891,7 +1074,7 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
       </div>
       <div class="detail-body">
         <div>
-          <span class="kicker">Expertinterview</span>
+          <span class="kicker">3 · Expertinterview</span>
           <h2 class="h2" id="hgTitle">Hans Goossens</h2>
           <p style="margin-top:10px;font-size:17px">Salestrainer, eigenaar van SalesOpa</p>
         </div>
@@ -1052,7 +1235,7 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
 <section class="section wrap on-paper" id="literatuur" aria-labelledby="litTitle">
   <div class="draden">
     <div class="draden-nav">
-      <span class="kicker">Deskresearch</span>
+      <span class="kicker">4 · Deskresearch</span>
       <h2 class="h2" id="litTitle">Wat zegt de literatuur?</h2>
       <p style="margin-top:18px;color:var(--paper-mute);max-width:40ch">Per rode draad toets ik de uitspraken van Hans en de andere experts aan peer-reviewed onderzoek, beoordeeld op de AAOCC-criteria.</p>
       <ol id="dradenNav">
@@ -1206,7 +1389,7 @@ footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 40px); }
       <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=2000&q=80" alt="Teamoverleg in een lichte vergaderruimte" loading="lazy">
     </div>
     <div class="in">
-      <span class="kicker" style="color:var(--bone);opacity:.8">Mijn strategische koers</span>
+      <span class="kicker" style="color:var(--bone);opacity:.8">5 · Mijn strategische koers</span>
       <h2 id="koersTitle">Van weten naar doen.</h2>
       <p>Door waardeverkoop te verankeren in de organisatie. Ik richt me op B2B-organisaties die zeggen op waarde te verkopen, maar waar het afhangt van individuele verkopers.</p>
     </div>
