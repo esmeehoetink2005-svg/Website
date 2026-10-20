@@ -15,12 +15,13 @@
   --ink:#1A1916;
   --ink-soft:#5B574F;
   --line:#D9CFBE;
-  --clay:#C95F35;
-  --clay-deep:#A64A26;
+  --clay:#B0502A;       /* clay court surface: white text 5.1:1 */
+  --clay-text:#A64A26;  /* clay for small text on paper: 5.1:1 */
   --court:#2F5B3F;
   --court-deep:#1F3F2B;
   --ball:#D9E44E;
-  --gold:#E8C14A;
+  --gold:#E8C14A;       /* on green/ink surfaces */
+  --gold-light:#F5DA86; /* on clay surfaces: 3.8:1, large text only */
   --blush:#E9D5C8;
   --white:#FFFDF8;
   --serif:"Playfair Display",Georgia,"Times New Roman",serif;
@@ -60,7 +61,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .folio{
   position:absolute;left:0;right:0;bottom:0;height:44px;padding:0 72px 0 84px;align-items:center;background:inherit;
   border-radius:0 0 14px 6px;display:flex;justify-content:space-between;
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
   pointer-events:none;z-index:2;
 }
 .page.dark{background:var(--court)}
@@ -69,13 +70,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .page.clay,.page.clay .folio{color:var(--white)}
 
 /* ---------- Typography ---------- */
-.kicker{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--clay)}
-.dark .kicker,.clay .kicker{color:var(--gold)}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--clay-text)}
+.dark .kicker{color:var(--gold)}
+.clay .kicker{color:var(--white)}
 h1,h2,h3{font-family:var(--serif);font-weight:800;line-height:1.05;letter-spacing:-.01em}
 .title{font-size:clamp(40px,6vw,84px);font-weight:900;margin:.15em 0 .3em}
 .title em{font-style:italic;font-weight:900;color:var(--clay)}
 .dark .title em{color:var(--ball)}
-.clay .title em{color:var(--gold)}
+.clay .title em{color:var(--gold-light)}
 h3{font-size:24px;margin:1.6em 0 .5em}
 .lede{font-family:var(--serif);font-size:clamp(19px,2vw,24px);line-height:1.45;max-width:46ch;margin-bottom:1.6em}
 p+p{margin-top:1em}
@@ -86,6 +88,7 @@ p+p{margin-top:1em}
   font-family:var(--serif);font-weight:900;float:left;font-size:4.6em;line-height:.8;
   padding:.06em .1em 0 0;color:var(--clay);
 }
+.dark .dropcap::first-letter{color:var(--ball)}
 .small{font-size:13px;color:var(--ink-soft)}
 .dark .small{color:rgba(246,241,231,.75)}
 .ts{font-variant-numeric:tabular-nums;font-size:.82em;color:var(--ink-soft);white-space:nowrap}
@@ -97,7 +100,7 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:40px 0}
   font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(24px,3vw,36px);line-height:1.2;
   border-top:3px solid var(--clay);border-bottom:1px solid var(--line);padding:22px 0;margin:36px 0;max-width:30ch;
 }
-.pull cite{display:block;font-family:var(--sans);font-style:normal;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-top:12px;color:var(--clay)}
+.pull cite{display:block;font-family:var(--sans);font-style:normal;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-top:12px;color:var(--clay-text)}
 .dark .pull{border-top-color:var(--ball);border-bottom-color:rgba(246,241,231,.25)}
 .dark .pull cite{color:var(--ball)}
 
@@ -105,7 +108,7 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:40px 0}
   background:var(--ink);color:var(--paper);border-radius:4px;padding:32px 36px;margin:28px 0;
   font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.4vw,28px);line-height:1.35;position:relative;
 }
-.question::before{content:"Hoofdvraag";display:block;font-family:var(--sans);font-style:normal;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.question::before{content:"Hoofdvraag";display:block;font-family:var(--sans);font-style:normal;font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 .question.paa::before{content:"Hoofdvraag plan van aanpak"}
 
 /* ---------- Generic components ---------- */
@@ -113,10 +116,11 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:40px 0}
 .g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
 .g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.card{background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.clay .card .small{color:var(--ink-soft)}
 .card h4{font-family:var(--serif);font-size:20px;font-weight:800;line-height:1.2;margin-bottom:8px}
-.card .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:var(--paper-2);margin-bottom:12px}
-.dark .card{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16)}
+.card .tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:var(--paper-2);margin-bottom:12px}
+.dark .card{background:rgba(255,255,255,.07);color:inherit;border-color:rgba(255,255,255,.16)}
 .dark .card .tag{background:rgba(217,228,78,.18);color:var(--ball)}
 .card.clayc{background:var(--clay);color:var(--white);border:0}
 .card.courtc{background:var(--court);color:var(--paper);border:0}
@@ -124,7 +128,7 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:40px 0}
 .card.clayc .tag,.card.courtc .tag,.card.inkc .tag{background:rgba(255,255,255,.16)}
 
 table.mag{width:100%;border-collapse:collapse;font-size:14.5px;margin:20px 0 8px}
-table.mag th{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-align:left;padding:10px 14px;border-bottom:2px solid var(--ink)}
+table.mag th{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-align:left;padding:10px 14px;border-bottom:2px solid var(--ink)}
 table.mag td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
 table.mag td:first-child{font-weight:600}
 .dark table.mag th{border-color:var(--paper)}
@@ -153,7 +157,7 @@ table.mag td:first-child{font-weight:600}
 .cover-grain{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(255,220,180,.35),transparent 60%),linear-gradient(180deg,rgba(0,0,0,.05),rgba(60,20,5,.35));}
 .cover-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;padding:28px 44px 0 64px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
 .masthead{
-  position:relative;z-index:2;font-family:var(--serif);font-weight:900;color:var(--gold);
+  position:relative;z-index:2;font-family:var(--serif);font-weight:900;color:var(--gold-light);
   font-size:clamp(84px,14.5vw,184px);line-height:.82;letter-spacing:-.02em;padding:6px 0 0 54px;
   text-shadow:0 6px 30px rgba(80,25,5,.25);
 }
@@ -169,7 +173,7 @@ table.mag td:first-child{font-weight:600}
 .ball::after{right:-62%;top:0}
 @keyframes float{50%{transform:translateY(-14px) rotate(6deg)}}
 .coverlines{position:absolute;z-index:2;left:64px;bottom:96px;max-width:min(46%,440px)}
-.coverlines .big{font-family:var(--serif);font-weight:900;font-size:clamp(34px,4.6vw,60px);line-height:.95;color:var(--gold);text-transform:uppercase}
+.coverlines .big{font-family:var(--serif);font-weight:900;font-size:clamp(34px,4.6vw,60px);line-height:.95;color:var(--gold-light);text-transform:uppercase}
 .coverlines .big em{color:var(--white);font-style:italic;text-transform:none;display:block;font-size:.62em;margin-top:6px}
 .coverlines p{font-size:15px;line-height:1.5;margin-top:16px;max-width:38ch}
 .coverside{position:absolute;z-index:2;right:200px;bottom:30px;text-align:right;font-family:var(--serif)}
@@ -181,7 +185,7 @@ table.mag td:first-child{font-weight:600}
 
 /* ---------- TOC ---------- */
 .toc-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:center;min-height:100%}
-.toc-visual{height:min(560px,calc(100vh - 230px));border-radius:12px;position:relative;overflow:hidden;background:var(--court)}
+.toc-visual{height:min(560px,calc(100vh - 230px));height:min(560px,calc(100dvh - 230px));border-radius:12px;position:relative;overflow:hidden;background:var(--court)}
 .toc-visual .court{position:absolute;inset:8%;border:3px solid rgba(255,255,255,.8)}
 .toc-visual .court::before{content:"";position:absolute;left:12%;right:12%;top:0;bottom:0;border-left:3px solid rgba(255,255,255,.8);border-right:3px solid rgba(255,255,255,.8)}
 .toc-visual .court::after{content:"";position:absolute;left:12%;right:12%;top:28%;bottom:28%;border-top:3px solid rgba(255,255,255,.8);border-bottom:3px solid rgba(255,255,255,.8);background:linear-gradient(90deg,transparent calc(50% - 1.5px),rgba(255,255,255,.8) calc(50% - 1.5px),rgba(255,255,255,.8) calc(50% + 1.5px),transparent calc(50% + 1.5px))}
@@ -192,7 +196,7 @@ table.mag td:first-child{font-weight:600}
 .toc{list-style:none}
 .toc li{border-bottom:1px solid var(--line)}
 .toc a{display:grid;grid-template-columns:72px 1fr auto;align-items:baseline;gap:12px;padding:12px 4px;text-decoration:none;transition:padding .2s,color .2s}
-.toc a:hover,.toc a:focus-visible{padding-left:12px;color:var(--clay)}
+.toc a:hover,.toc a:focus-visible{padding-left:12px;color:var(--clay-text)}
 .toc .n{font-family:var(--serif);font-weight:900;font-size:30px;line-height:1}
 .toc .t{font-size:15px;font-weight:500}
 .toc .arrow{opacity:0;transition:opacity .2s}
@@ -226,7 +230,7 @@ table.mag td:first-child{font-weight:600}
 .vs .row{display:contents}
 .vs .cell{padding:14px 22px;border-top:1px solid var(--line);font-size:14.5px;background:var(--white)}
 .vs .cell:nth-child(odd){border-right:1px solid var(--line)}
-.vs .lbl{grid-column:1/-1;padding:10px 22px 0;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);background:var(--white);border-top:1px solid var(--line)}
+.vs .lbl{grid-column:1/-1;padding:10px 22px 0;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--clay-text);background:var(--white);border-top:1px solid var(--line)}
 .vs .lbl+.cell,.vs .lbl+.cell+.cell{border-top:0}
 
 /* ---------- Codes ---------- */
@@ -242,11 +246,11 @@ table.mag td:first-child{font-weight:600}
 .scoreboard .what{font-weight:600}
 .scoreboard .desc{font-size:14px;opacity:.8}
 
-.verdict{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:99px;margin-bottom:12px}
+.verdict{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:99px;margin-bottom:12px}
 .v-eens{background:var(--court);color:var(--paper)}
 .v-oneens{background:var(--clay);color:var(--white)}
 .v-verdeeld{background:var(--gold);color:var(--ink)}
-.stelling .code{font-family:var(--serif);font-weight:900;font-size:15px;color:var(--clay);display:block;margin-bottom:4px}
+.stelling .code{font-family:var(--serif);font-weight:900;font-size:15px;color:var(--clay-text);display:block;margin-bottom:4px}
 .stelling h4{font-size:19px}
 .stelling .theory{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-soft)}
 .stelling p{font-size:14.5px}
@@ -266,7 +270,7 @@ table.mag td:first-child{font-weight:600}
 .vote .who span{font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:99px;background:rgba(0,0,0,.12)}
 .vote.lose .who span{background:rgba(255,255,255,.14)}
 .vote .count{position:absolute;right:20px;top:14px;font-family:var(--serif);font-weight:900;font-size:44px;line-height:1;opacity:.9}
-.vote .win-badge{position:absolute;right:20px;bottom:-12px;background:var(--ink);color:var(--ball);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:99px}
+.vote .win-badge{position:absolute;right:20px;bottom:-12px;background:var(--ink);color:var(--ball);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:99px}
 
 /* ---------- Lessons ---------- */
 .lesson{display:grid;grid-template-columns:110px 1fr;gap:28px;padding:30px 0;border-top:1px solid var(--line)}
@@ -281,16 +285,16 @@ table.mag td:first-child{font-weight:600}
 
 /* ---------- Back cover ---------- */
 .back .page-inner{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative}
-.back .masthead{padding:0;font-size:clamp(70px,12vw,170px)}
+.back .masthead{color:var(--gold);padding:0;font-size:clamp(70px,12vw,170px)}
 
 /* ---------- Controls ---------- */
 .bar{
-  position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:10;
+  position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:10;
   display:flex;align-items:center;gap:6px;padding:6px;border-radius:99px;
   background:rgba(20,30,22,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   color:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.12);
 }
-.bar button{height:40px;min-width:40px;padding:0 14px;border-radius:99px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em}
+.bar button{height:44px;min-width:44px;touch-action:manipulation;padding:0 14px;border-radius:99px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em}
 .bar button:hover{background:rgba(255,255,255,.12)}
 .bar button:disabled{opacity:.35;cursor:default;background:none}
 .bar .counter{font-variant-numeric:tabular-nums;font-size:13px;min-width:70px;text-align:center;letter-spacing:.08em}
@@ -300,10 +304,11 @@ table.mag td:first-child{font-weight:600}
 .progress i{display:block;height:100%;width:0;background:var(--ball);transition:width .5s ease}
 .hint{position:fixed;right:24px;bottom:28px;z-index:9;font-size:12px;color:rgba(246,241,231,.6);letter-spacing:.06em}
 :focus-visible{outline:2px solid var(--ball);outline-offset:3px}
+.page-inner:focus{outline:none}
 
 /* ---------- Responsive ---------- */
 @media (max-width:860px){
-  .book{inset:10px 10px 74px}
+  .book{inset:10px 10px 78px}
   .page-inner{padding:36px 22px 64px 30px}
   .folio{padding:0 22px 0 30px}
   .split,.toc-wrap{grid-template-columns:minmax(0,1fr);gap:28px}
@@ -335,7 +340,7 @@ table.mag td:first-child{font-weight:600}
 </head>
 <body>
 
-<main class="book" id="book" aria-live="polite">
+<main class="book" id="book">
 
 <!-- 1 COVER -->
 <section class="page cover" data-title="Cover" aria-label="Cover">
@@ -343,7 +348,7 @@ table.mag td:first-child{font-weight:600}
     <div class="cover-grain"></div>
     <div class="court-lines"></div>
     <div class="cover-top"><span>Sales Edition · Nr. 01</span><span>Oktober Editie 2026</span></div>
-    <div class="masthead">WAARDE</div>
+    <h1 class="masthead">WAARDE</h1>
     <div class="masthead-sub">Het magazine over waardeverkoop in de zakelijke markt</div>
     <div class="ball" aria-hidden="true"></div>
     <div class="coverside">
@@ -584,12 +589,12 @@ table.mag td:first-child{font-weight:600}
       <div class="card"><span class="tag">Thema 3</span><h4>Na de handtekening</h4><p>Geen klachten betekent niet dat een klant tevreden is; beloning alleen op nieuwe klanten verwaarloost bestaande.</p><p class="small" style="margin-top:10px">Een klant die na een prijsverhoging niet klaagde, maar ook niet meer bestelde (Bas Kievits).</p></div>
       <div class="card"><span class="tag">Thema 4</span><h4>Van weten naar doen</h4><p>Verkopers moeten weten wat de organisatie kan waarmaken; tools en training ondersteunen.</p><p class="small" style="margin-top:10px">Meelopen bij logistiek en administratie (Joris Asmans, Bas Kievits); waardecalculators en referenties (Wendy Austermann).</p></div>
     </div>
-    <div class="pull" style="border-top-color:var(--gold);border-bottom-color:rgba(255,255,255,.3);max-width:none">Een stille klant is niet automatisch een tevreden klant.<cite style="color:var(--gold)">Les uit rondetafel 1</cite></div>
+    <div class="pull" style="border-top-color:var(--gold-light);border-bottom-color:rgba(255,255,255,.3);max-width:none">Een stille klant is niet automatisch een tevreden klant.<cite style="color:var(--white)">Les uit rondetafel 1</cite></div>
     <h3>Drie conclusies</h3>
     <div class="grid g3">
-      <div><div class="num-big" style="color:var(--gold)">1</div><p>Waardeverkoop begint bij de vraag achter de vraag en draait om betrouwbaarheid en ontzorging, niet om de laagste prijs.</p></div>
-      <div><div class="num-big" style="color:var(--gold)">2</div><p>Waarde wordt zichtbaar als de klant de meerwaarde zelf benoemt en je na de verkoop blijft opvolgen.</p></div>
-      <div><div class="num-big" style="color:var(--gold)">3</div><p>Verkopers kunnen waarde alleen waarmaken als de hele organisatie meedoet: meelopen, trainingen, rekentools en de juiste beloning.</p></div>
+      <div><div class="num-big" style="color:var(--gold-light)">1</div><p>Waardeverkoop begint bij de vraag achter de vraag en draait om betrouwbaarheid en ontzorging, niet om de laagste prijs.</p></div>
+      <div><div class="num-big" style="color:var(--gold-light)">2</div><p>Waarde wordt zichtbaar als de klant de meerwaarde zelf benoemt en je na de verkoop blijft opvolgen.</p></div>
+      <div><div class="num-big" style="color:var(--gold-light)">3</div><p>Verkopers kunnen waarde alleen waarmaken als de hele organisatie meedoet: meelopen, trainingen, rekentools en de juiste beloning.</p></div>
     </div>
     <h3>Twee conceptadviezen</h3>
     <div class="grid g2">
@@ -638,13 +643,13 @@ table.mag td:first-child{font-weight:600}
     <div class="kicker">Hoofdstuk 6 · Rondetafel 2</div>
     <h2 class="title">Set 2: het <em>scorebord</em></h2>
     <p class="lede">Dinsdag 6 oktober 2026, 09.00–10.00 uur. Vier nieuwe deelnemers, twee thema’s, zes stellingen.</p>
-    <div class="scoreboard" role="table" aria-label="Verloop rondetafel 2">
-      <div class="srow" role="row"><span class="time">0:00–8:52</span><span class="what">Opening</span><span class="desc">Voorstelronde; uitnodiging om elkaar te onderbreken</span></div>
-      <div class="srow" role="row"><span class="time">8:54–12:51</span><span class="what">Thema’s en begrip</span><span class="desc">Openingsvraag ‘wat betekent waardeverkoop voor jou?’; definitie gegeven</span></div>
-      <div class="srow" role="row"><span class="time">13:01–37:16</span><span class="what">Thema 1 · Max</span><span class="desc">Drie stellingen over waarde meetbaar en zichtbaar maken</span></div>
-      <div class="srow" role="row"><span class="time">38:00–53:13</span><span class="what">Thema 2 · Esmee</span><span class="desc">Drie stellingen over van weten naar doen</span></div>
-      <div class="srow" role="row"><span class="time">53:21–57:31</span><span class="what">Slotvraag</span><span class="desc">Welk onderwerp is het interessantst om te onderzoeken?</span></div>
-      <div class="srow" role="row"><span class="time">57:33–59:53</span><span class="what">Afsluiting</span><span class="desc">Bedanken en samenvatting</span></div>
+    <div class="scoreboard" aria-label="Verloop rondetafel 2">
+      <div class="srow"><span class="time">0:00–8:52</span><span class="what">Opening</span><span class="desc">Voorstelronde; uitnodiging om elkaar te onderbreken</span></div>
+      <div class="srow"><span class="time">8:54–12:51</span><span class="what">Thema’s en begrip</span><span class="desc">Openingsvraag ‘wat betekent waardeverkoop voor jou?’; definitie gegeven</span></div>
+      <div class="srow"><span class="time">13:01–37:16</span><span class="what">Thema 1 · Max</span><span class="desc">Drie stellingen over waarde meetbaar en zichtbaar maken</span></div>
+      <div class="srow"><span class="time">38:00–53:13</span><span class="what">Thema 2 · Esmee</span><span class="desc">Drie stellingen over van weten naar doen</span></div>
+      <div class="srow"><span class="time">53:21–57:31</span><span class="what">Slotvraag</span><span class="desc">Welk onderwerp is het interessantst om te onderzoeken?</span></div>
+      <div class="srow"><span class="time">57:33–59:53</span><span class="what">Afsluiting</span><span class="desc">Bedanken en samenvatting</span></div>
     </div>
 
     <h3>Herkenning van ronde 1</h3>
@@ -880,19 +885,19 @@ table.mag td:first-child{font-weight:600}
     <div class="masthead" style="margin:10px 0 18px">WAARDE</div>
     <p class="lede" style="color:var(--paper)">Wie alleen levert wat gevraagd wordt, mist wat de klant echt belangrijk vindt.</p>
     <p class="small">Esmee Hoetink · studentnummer 212783<br>Commerciële Economie, afstudeerrichting Sales · HAN University of Applied Sciences<br>G-cluster, semester 1, 2026–2027 · Tutor: Hans Arentsen · Tweede lezer: Winny Goldsmith<br>Nijmegen, oktober 2026</p>
-    <button class="chip" style="margin-top:30px;color:var(--paper)" data-goto="1">↺ Terug naar de cover</button>
+    <button class="chip" style="margin-top:30px;min-height:44px;color:var(--paper)" data-goto="1">Terug naar de cover</button>
   </div>
 </section>
 
 </main>
 
 <nav class="bar" aria-label="Bladeren">
-  <button id="prev" aria-label="Vorige pagina"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg><span class="lbl">Vorige</span></button>
-  <button id="tocBtn" aria-label="Naar de inhoud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="lbl">Inhoud</span></button>
-  <span class="counter" id="counter"><b>01</b> / 17</span>
-  <button id="next" aria-label="Volgende pagina"><span class="lbl">Volgende</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+  <button id="prev" aria-label="Vorige pagina"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg><span class="lbl">Vorige</span></button>
+  <button id="tocBtn" aria-label="Naar de inhoud"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="lbl">Inhoud</span></button>
+  <span class="counter" id="counter" role="status" aria-live="polite"><b>01</b> / 17</span>
+  <button id="next" aria-label="Volgende pagina"><span class="lbl">Volgende</span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
 </nav>
-<div class="hint">← → om te bladeren</div>
+<div class="hint" aria-hidden="true">← → om te bladeren</div>
 <div class="progress"><i id="progress"></i></div>
 
 <script>
@@ -901,7 +906,7 @@ table.mag td:first-child{font-weight:600}
   const total=pages.length;
   const pad=n=>String(n).padStart(2,'0');
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let cur=0, busy=false;
+  let cur=0;
 
   // Build table of contents from pages that carry data-toc
   const toc=document.getElementById('toc');
@@ -927,15 +932,26 @@ table.mag td:first-child{font-weight:600}
     cur=i; update();
   }
 
-  function go(target){
+  // Move keyboard/screen-reader focus to the new page after a turn
+  function focusPage(i){
+    const inner=pages[i].querySelector('.page-inner');
+    inner.setAttribute('tabindex','-1');
+    inner.focus({preventScroll:true});
+  }
+
+  let anim=null, done=null;
+  // A new request interrupts a running turn instead of being ignored
+  function settle(){if(anim){anim.onfinish=null;anim.cancel();anim=null;done();}}
+  function step(d,moveFocus){settle();go(cur+d,moveFocus);}
+  function go(target,moveFocus=true){
+    settle();
     target=Math.max(0,Math.min(total-1,target));
-    if(target===cur||busy) return;
+    if(target===cur) return;
     const from=pages[cur], to=pages[target], fwd=target>cur;
     to.querySelector('.page-inner').scrollTop=0;
-    if(reduce||!from.animate){show(target);return;}
-    busy=true;
-    const opts={duration:720,easing:'cubic-bezier(.55,.05,.3,1)'};
-    let anim;
+    if(reduce||!from.animate){show(target);if(moveFocus)focusPage(target);return;}
+    // Forward turns accelerate away; backward turns decelerate into place
+    const opts=fwd?{duration:560,easing:'cubic-bezier(.5,0,.75,0)'}:{duration:620,easing:'cubic-bezier(.2,.8,.3,1)'};
     if(fwd){
       // current page flips away to the left, revealing the next one underneath
       to.classList.add('under');
@@ -952,20 +968,22 @@ table.mag td:first-child{font-weight:600}
         {transform:'rotateY(0deg)',filter:'brightness(1)'}
       ],opts);
     }
-    anim.onfinish=()=>{busy=false;show(target);};
+    done=()=>{show(target);if(moveFocus)focusPage(target);};
+    anim.onfinish=()=>{anim=null;done();};
   }
 
-  document.getElementById('prev').onclick=()=>go(cur-1);
-  document.getElementById('next').onclick=()=>go(cur+1);
-  document.getElementById('tocBtn').onclick=()=>go(1);
+  // Bar buttons keep focus so they can be pressed repeatedly
+  document.getElementById('prev').onclick=()=>step(-1,false);
+  document.getElementById('next').onclick=()=>step(1,false);
+  document.getElementById('tocBtn').onclick=()=>go(1,false);
   document.addEventListener('click',e=>{
     const a=e.target.closest('[data-goto]');
     if(a){e.preventDefault();go(+a.dataset.goto-1);}
   });
   document.addEventListener('keydown',e=>{
     if(e.target.closest('input,textarea')) return;
-    if(e.key==='ArrowRight'){e.preventDefault();go(cur+1);}
-    if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1);}
+    if(e.key==='ArrowRight'){e.preventDefault();step(1);}
+    if(e.key==='ArrowLeft'){e.preventDefault();step(-1);}
     if(e.key==='Home'){go(0);} if(e.key==='End'){go(total-1);}
   });
 
@@ -975,7 +993,7 @@ table.mag td:first-child{font-weight:600}
   book.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;st=Date.now();},{passive:true});
   book.addEventListener('touchend',e=>{
     const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
-    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5&&Date.now()-st<800) go(cur+(dx<0?1:-1));
+    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5&&Date.now()-st<800) step(dx<0?1:-1,false);
   },{passive:true});
 
   window.addEventListener('hashchange',()=>{
