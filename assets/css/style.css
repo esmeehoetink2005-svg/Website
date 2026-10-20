@@ -408,6 +408,9 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
 .sources__list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; max-width: 80ch; }
 .sources__list li { padding-left: 2.5em; text-indent: -2.5em; color: var(--text-on-dark); font-size: .95rem; line-height: 1.6; overflow-wrap: anywhere; }
 .sources__list a { color: var(--mint-pale); }
+.sources__title--ai { margin-top: clamp(40px, 6vw, 64px); }
+.sources__ai { margin-top: 16px; display: grid; gap: 10px; max-width: 70ch; color: var(--text-on-dark); }
+.footer__note a { color: var(--mint-pale); }
 
 /* ---------- Footer ---------- */
 .footer { background: var(--forest); padding-block: 72px 48px; }

@@ -416,6 +416,9 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
 .sources__list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; max-width: 80ch; }
 .sources__list li { padding-left: 2.5em; text-indent: -2.5em; color: var(--text-on-dark); font-size: .95rem; line-height: 1.6; overflow-wrap: anywhere; }
 .sources__list a { color: var(--mint-pale); }
+.sources__title--ai { margin-top: clamp(40px, 6vw, 64px); }
+.sources__ai { margin-top: 16px; display: grid; gap: 10px; max-width: 70ch; color: var(--text-on-dark); }
+.footer__note a { color: var(--mint-pale); }
 
 /* ---------- Footer ---------- */
 .footer { background: var(--forest); padding-block: 72px 48px; }
@@ -745,6 +748,13 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
           <li>T-Challenge. (2026). <i>Resultatenexport en HRM-marktonderzoeken Dubbelgoed, ronde 1 tot en met 8, pool 5, team 4, game-ID 1517</i> [Ongepubliceerde spelrapportages].</li>
           <li>Van der Weijden, M. (2026). <i>Waardecreatie bij Simenco: CEO-dossier bij de T-Challenge managementgame</i> [Ongepubliceerd dossier]. HAN University of Applied Sciences.</li>
         </ul>
+
+        <h2 class="sources__title sources__title--ai" id="ai">Verantwoording AI-gebruik</h2>
+        <div class="sources__ai">
+          <p>Deze website is gemaakt met behulp van Claude, een AI-assistent van Anthropic. Claude heeft het ontwerp en de code van de site gebouwd op basis van mijn eigen logboek, de cijfers uit de spelrapportages van de T-Challenge en de presentatie van ons team.</p>
+          <p>In de tekst van mijn logboek heb ik AI gebruikt om de spelling, de zinsopbouw en de juiste APA-bronvermelding te controleren.</p>
+          <p>De keuzes in de game, de cijfers, de analyses per ronde en de reflectie zijn van mijzelf.</p>
+        </div>
       </div>
     </section>
   </main>
@@ -757,6 +767,7 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
           <p class="footer__name">Esmée Hoetink</p>
           <p>CHRO van Dubbelgoed</p>
           <p class="footer__note">Logboek T-Challenge<br>Commerciële Economie, afstudeerrichting Sales<br>HAN University of Applied Sciences, oktober 2026</p>
+          <p class="footer__note">Website gemaakt met behulp van Claude (AI). <a href="#ai">Lees de verantwoording</a></p>
         </div>
       </div>
       <div class="footer__team">
