@@ -31,7 +31,7 @@ const ROUNDS = [
   {
     season: 'Lente', title: 'De werkdruk oplossen', source: 'mix',
     sourceText: 'Uit onze visie, daarna vaste afspraak',
-    chose: 'Twaalf productiemedewerkers geworven vóór de derde ploeg, salaris +4% en +3%, pensioenpremie van 9 naar 12.',
+    chose: 'Twaalf productiemedewerkers geworven vóór de derde ploeg, salaris +4% en +3%, pensioenpremie van 9 naar 12 en het opleidingsbudget naar 9% op alle drie de afdelingen.',
     result: 'De werkdruk zakte van 105% naar 62%, maar het verzuim liep op naar 7,0% en kostte 1.130.250 stuks productiecapaciteit. Mijn KPI zakte naar 5,70.',
     adjust: 'Alles wat zichtbaar is, wordt binnen twee ronden gekopieerd. Pensioen en winstdeling hield ik bewust achter de hand.',
   },
@@ -52,8 +52,8 @@ const ROUNDS = [
   {
     season: 'Winter', title: 'De krimp terugdraaien', source: 'plan',
     sourceText: 'Mijn eigen plan uit ronde 4',
-    chose: 'Geen ontslagen, één medewerker erbij bij Sales, salaris +2,0% en het pakket onaangeroerd.',
-    result: 'Loyaliteit van 55,1 naar 67,1: twaalf punten in één kwartaal, bij alle drie de afdelingen. Mijn KPI ging naar 5,62. De fabrieksbezetting ging van 37% naar 61%.',
+    chose: 'Geen ontslagen, één medewerker erbij bij Sales, salaris +2,0% en de arbeidsvoorwaarden onaangeroerd. Het opleidingsbudget ging wel omlaag, van 9/7/5 naar 5/5/5%.',
+    result: 'Loyaliteit van 55,1 naar 67,1: twaalf punten in één kwartaal, bij alle drie de afdelingen. Mijn KPI ging naar 5,62. De werkdruk ging van 42% naar 67%: er was weer werk.',
     adjust: 'Het aantal ploegen is een gezamenlijke beslissing van productie en HR. Als team hielden we het personeelsbudget voortaan buiten de bezuinigingen, en de loyaliteit bleef daarna tussen 67 en 69.',
   },
   {
