@@ -492,6 +492,95 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
 .lightbox p { margin-top: 10px; font-size: .9rem; }
 .lightbox__close { position: absolute; top: 6px; right: 10px; width: 44px; height: 44px; border: 0; background: none; font-size: 2rem; line-height: 1; cursor: pointer; color: var(--forest); }
 
+/* ---------- Plan vooraf ---------- */
+.plan { background: var(--forest-deep); padding-block: var(--section); }
+.plan__lead { max-width: 62ch; margin-top: 24px; font-size: 1.05rem; color: var(--text-on-dark); }
+.sub--light { color: var(--mint-pale); }
+.route { background: var(--white); border-radius: var(--radius-md); padding: 8px 16px; }
+.route table { color: var(--ink); min-width: 560px; }
+.route th, .route td { border-bottom: 1px solid rgba(4, 41, 31, .1); }
+.route thead th { color: #3D5A50; }
+.route tbody th { font-weight: 500; }
+.route__mine th, .route__mine td { background: #DDF5EB; font-weight: 700; color: var(--forest-deep); }
+.route__total th, .route__total td { font-weight: 700; border-bottom: 0; }
+.plan__src { margin-top: 12px; font-size: .85rem; color: var(--muted-on-dark); max-width: 70ch; }
+.plan__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; align-items: start; }
+.plan__card { background: var(--forest); border-radius: var(--radius-lg); padding: clamp(24px, 3vw, 36px); display: grid; gap: 12px; }
+.plan__card h3 { font-size: 1.25rem; font-weight: 700; color: var(--white); }
+.plan__card ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+.plan__card li, .plan__card p { color: var(--text-on-dark); font-size: .95rem; }
+.plan__card blockquote { margin: 0; padding-left: 14px; border-left: 3px solid var(--mint); color: var(--white); font-style: italic; }
+.plan__cite { font-size: .82rem !important; color: var(--mint-pale) !important; }
+.rules { margin: 0; padding: 0; list-style: none; counter-reset: rule; display: grid; gap: 8px; max-width: 900px; }
+.rules > li { counter-increment: rule; display: grid; grid-template-columns: 2.4em 1fr; gap: 4px 12px; padding: 12px 16px; border-radius: 14px; background: rgba(255, 255, 255, .05); color: var(--text-on-dark); }
+.rules > li::before { content: counter(rule); font-family: var(--font-display); font-size: 1.4rem; line-height: 1.1; color: var(--mint); grid-row: span 2; }
+.rules__key { background: var(--mint-pale) !important; color: var(--ink) !important; padding: 18px 20px !important; }
+.rules__key::before { color: var(--forest) !important; font-size: 2rem !important; }
+.rules__text { font-weight: 700; font-size: 1.1rem; color: var(--forest-deep); }
+.rules__why { font-size: .93rem; color: #33443E; }
+@media (max-width: 860px) { .plan__grid { grid-template-columns: 1fr; } }
+
+/* ---------- Streefwaarden ---------- */
+.ruler { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; }
+.ruler__note { max-width: 70ch; margin-bottom: 20px; font-size: .95rem; }
+.ruler__target { padding-top: 8px; margin-top: 8px !important; border-top: 1px dashed rgba(4, 41, 31, .3); }
+.ruler__item--team { border-top-color: var(--emerald); }
+.when { display: inline-block; font-style: normal; font-size: .72rem; font-weight: 700; padding: 1px 8px; border-radius: 99px; vertical-align: 1px; white-space: nowrap; }
+.when--pre { background: var(--forest); color: var(--white); }
+.when--post { background: #F6D89A; color: #4A3207; }
+.table-note { font-size: .82rem; color: var(--muted-on-dark); padding: 0 0 14px; max-width: 80ch; }
+.chart__stats { flex-wrap: wrap; row-gap: 10px; }
+
+/* ---------- Eindevaluatie ---------- */
+.eval { background: var(--mint-pale); color: var(--ink); padding-block: var(--section); }
+.eval__lead { max-width: 62ch; margin-top: 24px; font-size: 1.05rem; }
+.eval__table { margin-top: 40px; background: var(--white); border-radius: var(--radius-md); padding: 8px 16px; }
+.eval__table table { color: var(--ink); min-width: 860px; }
+.eval__table th, .eval__table td { text-align: left; white-space: normal; vertical-align: top; padding: 12px 10px; border-bottom: 1px solid rgba(4, 41, 31, .1); font-size: .9rem; }
+.eval__table thead th { color: #3D5A50; white-space: nowrap; }
+.eval__table tbody th { font-weight: 700; color: var(--forest-deep); width: 16%; }
+.eval__table tr:last-child th, .eval__table tr:last-child td { border-bottom: 0; }
+.hit { display: inline-block; font-size: .8rem; font-weight: 700; padding: 3px 10px; border-radius: 99px; white-space: nowrap; }
+.hit--yes { background: #DDF5EB; color: var(--forest); }
+.hit--part { background: #FDEFD3; color: #6B4508; }
+.hit--no { background: #F7DED6; color: #7A2B14; }
+.eval__note { margin-top: 12px; font-size: .85rem; }
+@media (max-width: 760px) {
+  .eval__table { padding: 0; background: none; }
+  .eval__table table, .eval__table tbody, .eval__table tr, .eval__table th, .eval__table td { display: block; min-width: 0; width: auto !important; }
+  .eval__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .eval__table tr { background: var(--white); border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 12px; }
+  .eval__table tbody th { font-size: 1.05rem; padding: 0 0 8px; border: 0; }
+  .eval__table td { padding: 6px 0; border: 0; }
+  .eval__table td::before { content: attr(data-label); display: block; font-size: .75rem; font-weight: 700; color: var(--emerald); }
+}
+
+/* ---------- Print / pdf ---------- */
+@media print {
+  .nav, .progress, .skip, .hero__bubbles, .hero__video, .marquee, .wave, .lightbox, .cans, .compare__ice-wrap, .hero .btn { display: none !important; }
+  body { background: var(--forest) !important; }
+  .hero { min-height: auto; padding-top: 40px; }
+  .js .split .line > span, .js .reveal, .js .stagger > *, .hero__title .line > span, .hero__can, .hero__splash, .hero__mint, .hero__leaf--a { opacity: 1 !important; transform: none !important; }
+  .chart, .chart__inner { position: static !important; }
+  .step { opacity: 1 !important; }
+  .hero__visual, .hero__circle { display: none !important; }
+  .hero { grid-template-columns: 1fr; }
+  .eval__table { padding: 0; background: none; }
+  .eval__table table, .eval__table tbody, .eval__table tr, .eval__table th, .eval__table td { display: block; min-width: 0; width: auto !important; }
+  .eval__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .eval__table tr { background: var(--white); border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 12px; }
+  .eval__table tbody th { font-size: 1.05rem; padding: 0 0 8px; border: 0; }
+  .eval__table td { padding: 6px 0; border: 0; }
+  .eval__table td::before { content: attr(data-label); display: block; font-size: .75rem; font-weight: 700; color: var(--emerald); }
+  .proof__item, .ruler__item, .role, .cycle li, .vcard, .vs, .rules > li, tr { break-inside: avoid; }
+  .table-scroll { overflow: visible !important; }
+  .route table, .eval__table table, .log table { min-width: 0 !important; }
+  .proof__item .proof__shot { width: calc(33.333% - 6px); }
+  #data-table { font-size: .68rem; }
+  #data-table th, #data-table td { padding: 5px 4px; }
+  #data-table tbody th { white-space: normal; min-width: 9em; }
+}
+
 /* ---------- Footer ---------- */
 .footer { background: var(--forest); padding-block: 72px 48px; }
 .footer__wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
@@ -525,9 +614,9 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
     <a href="#top" class="nav__logo"><img src="data:image/webp;base64,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" alt="Dubbelgoed" width="146" height="29"></a>
     <nav aria-label="Hoofdmenu">
       <ul>
-        <li class="nav__opt"><a href="#team">Team</a></li>
+        <li class="nav__opt"><a href="#plan">Plan</a></li>
         <li><a href="#rondes">Rondes</a></li>
-        <li><a href="#lessen">Lessen</a></li>
+        <li><a href="#evaluatie">Evaluatie</a></li>
         <li class="nav__opt"><a href="#bewijs">Bewijs</a></li>
         <li><a href="#leerdoel">Leerdoel</a></li>
       </ul>
@@ -624,7 +713,7 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
         <ol class="cycle stagger">
           <li><p class="cycle__step">Plan</p><p>Vóór ronde 1 legden we in het strategiedocument de missie, visie, de KPI-route per ronde, de opdracht per functie en tien vaste beslisregels vast.</p><p class="cycle__src">Bron: strategiedocument (Directie Dubbelgoed, 2026a)</p></li>
           <li><p class="cycle__step">Uitvoeren</p><p>Na elke ronde had ieder ongeveer een uur om de eigen cijfers te analyseren. Daarna namen we samen de besluiten, in een vaste volgorde: eerst capaciteit en geld, dan markt en mensen. Ieder voerde de eigen velden in.</p><p class="cycle__src">Bron: "aan de knoppen" per kwartaal in het BG-document (Van den Brink et al., 2026)</p></li>
-          <li><p class="cycle__step">Controleren</p><p>De besluiten werden vastgelegd in het besluitenlogboek. Na kwartaal 3 en 6 evalueerden we met Niels Vulling (HQ), wat leidde tot twee managementsamenvattingen.</p><p class="cycle__src">Bron: besluitenlogboek (Van der Weijden, 2026) en BG-document</p></li>
+          <li><p class="cycle__step">Controleren</p><p>De besluiten werden vastgelegd in het besluitenlogboek. Na kwartaal 3 en 6 evalueerden we met Niels Vulling (HQ), wat leidde tot twee managementsamenvattingen (Vulling, 2026).</p><p class="cycle__src">Bron: besluitenlogboek (Van der Weijden, 2026) en BG-document</p></li>
           <li><p class="cycle__step">Bijsturen</p><p>Na ronde 4 hielden we spelregel 9 weer als harde regel aan. Na ronde 6 toetsten we elk besluit vooraf aan de beslisregels en werd de productieopdracht het eerste besluit. Op 11 september besloten we terug te gaan naar het oorspronkelijke plan.</p><p class="cycle__src">Bron: CEO-dossier, paragraaf 4.4 (Van der Weijden, 2026)</p></li>
         </ol>
 
@@ -647,6 +736,71 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
       </div>
     </section>
 
+    <!-- PLAN VOORAF -->
+    <section class="plan" id="plan">
+      <div class="wrap">
+        <h2 class="display split">Ons plan vooraf</h2>
+        <p class="plan__lead reveal">Vóór ronde 1 schreven we op basis van de testgame een strategiedocument. Daarin staan de KPI-route, de opdracht per functie en tien spelregels die de hele game hetzelfde bleven (Directie Dubbelgoed, 2026a). Hieronder staat het deel dat voor mij als CHRO telde. Bij elke ronde verwijs ik hiernaar.</p>
+
+        <h3 class="sub sub--light">KPI-route: waar we na ronde 2, 4, 6 en 8 wilden staan</h3>
+        <div class="table-scroll route reveal">
+          <table>
+            <thead><tr><th scope="col">KPI</th><th scope="col">Weging</th><th scope="col">Start</th><th scope="col">R2</th><th scope="col">R4</th><th scope="col">R6</th><th scope="col">R8</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Rentabiliteit totaal vermogen</th><td>20%</td><td>5,50</td><td>9,0</td><td>10,0</td><td>10,0</td><td>10,0</td></tr>
+              <tr><th scope="row">Current ratio</th><td>15%</td><td>5,50</td><td>6,0</td><td>7,0</td><td>8,0</td><td>8,5</td></tr>
+              <tr><th scope="row">Marktaandeel</th><td>15%</td><td>5,50</td><td>7,0</td><td>8,5</td><td>9,0</td><td>9,5</td></tr>
+              <tr><th scope="row">Omzet</th><td>15%</td><td>5,50</td><td>7,5</td><td>8,5</td><td>9,0</td><td>9,5</td></tr>
+              <tr class="route__mine"><th scope="row">Medewerkersloyaliteit (mijn KPI)</th><td>15%</td><td>5,50</td><td>7,0</td><td>8,0</td><td>8,5</td><td>9,0</td></tr>
+              <tr><th scope="row">MVO</th><td>10%</td><td>5,50</td><td>9,0</td><td>10,0</td><td>10,0</td><td>10,0</td></tr>
+              <tr><th scope="row">Marktkennis</th><td>6%</td><td>5,50</td><td>7,0</td><td>8,0</td><td>8,5</td><td>9,0</td></tr>
+              <tr><th scope="row">Innovatiegraad</th><td>4%</td><td>5,50</td><td>6,5</td><td>7,5</td><td>8,0</td><td>8,5</td></tr>
+              <tr class="route__total"><th scope="row">Totale score</th><td></td><td>5,50</td><td>7,5</td><td>8,6</td><td>9,0</td><td>9,3</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="plan__src reveal">Alle KPI's zijn relatief aan de pool en starten voor iedereen op 5,50. Bron: strategiedocument (Directie Dubbelgoed, 2026a).</p>
+
+        <div class="plan__grid">
+          <article class="plan__card reveal">
+            <h3>Mijn opdracht als CHRO</h3>
+            <ul>
+              <li>In ronde 1 als eerste bewegen. Iedereen start op pakket A en 0,5% loonstijging, dus de eerste stap is goedkoop en levert direct relatief voordeel op. Daarna elke twee ronden opnieuw bewegen, want de rest kopieert ons.</li>
+              <li>Ronde 1 het hele pakket neerzetten, in ronde 3 en 4 de trap pakken die dan nog vrij is, en vanaf ronde 5 de voorsprong zoeken in opleiding en werkdruk. Die zijn het moeilijkst te kopiëren.</li>
+              <li>Elke ronde het HRM-marktonderzoek kopen.</li>
+              <li>Het cijfer dat telt is loyaliteit. Die reageert traag: wat je nu doet, telt over twee ronden.</li>
+              <li>Nooit alles met salaris oplossen. Het pakket is goedkoper en onderscheidender dan een loonsverhoging.</li>
+            </ul>
+            <p class="plan__cite">Bron: strategiedocument, "Wat dit per rol betekent" (Directie Dubbelgoed, 2026a)</p>
+          </article>
+          <article class="plan__card reveal">
+            <h3>Aanbeveling 6 uit de testgame</h3>
+            <blockquote>Behandel het personeelsbudget als capaciteitsbudget. Bezuinig er niet op om een marge te halen, en beweeg als eerste in de pool omdat de eerste stap het goedkoopst is.</blockquote>
+            <p>Uit de testgame trokken we zes conclusies, elk met een aanbeveling. Dit is de zesde. Ronde 1 komt hier rechtstreeks uit: alle vier de teams begonnen gelijk, dus wie als eerste het pakket verbeterde, won het meeste relatieve voordeel. In het strategiedocument staat dezelfde les als mijn CHRO-opdracht.</p>
+            <p class="plan__cite">Bron: CEO-dossier, paragraaf 2.4 (Van der Weijden, 2026); strategiedocument (Directie Dubbelgoed, 2026a)</p>
+          </article>
+        </div>
+
+        <h3 class="sub sub--light">Onze tien vaste spelregels</h3>
+        <ol class="rules reveal">
+          <li>Produceer altijd tot circa 98% van de beschikbare capaciteit zolang er gemiste verkopen zijn, en controleer altijd of het veld écht is aangepast.</li>
+          <li>Verhoog nooit de prijs zonder de kwaliteit mee te verhogen.</li>
+          <li>Een KPI op 10,00 krijgt geen euro meer.</li>
+          <li>Wij voeren één boodschap, alle acht de ronden: Gezond &amp; milieuvriendelijk.</li>
+          <li>Verdeel reclamebudget nooit gelijk over kanalen; volg de doelgroepdata.</li>
+          <li>Koop elk marktonderzoek, elke ronde.</li>
+          <li>Wissel per ronde één variabele bij leveranciers, zodat je weet waar het effect vandaan komt.</li>
+          <li>Bied op elk contract dat we qua kwaliteit halen; vul de rest expliciet op 0,00 in, want een bod loopt automatisch door.</li>
+          <li class="rules__key">
+            <p class="rules__text">Personeelsbudget is capaciteitsbudget. Daar wordt niet op bezuinigd om de marge te halen.</p>
+            <p class="rules__why">Op deze regel draait ronde 4. In ons plan zijn personeelskosten capaciteit: elk procentpunt verzuim kost ongeveer 150.000 flesjes. Op 10 september besloten we toch om lonen en opleiding te verlagen, en mijn loyaliteit zakte daarna van 60,9 naar 55,1. Als CHRO had ik deze regel op tafel moeten leggen, en dat deed ik niet.</p>
+          </li>
+          <li>Iedere ronde eindigt met het logboek: situatie, beslissing, onderbouwing, resultaat.</li>
+        </ol>
+        <p class="plan__src reveal">De regels staan letterlijk zoals in het strategiedocument (Directie Dubbelgoed, 2026a).</p>
+      </div>
+    </section>
+
     <!-- KPI -->
     <section class="kpi" id="kpi">
       <div class="wrap kpi__wrap">
@@ -662,12 +816,14 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
       </div>
 
       <div class="wrap">
-        <h3 class="sub">Mijn doelen, vastgesteld vóór ronde 1</h3>
+        <h3 class="sub">Mijn doelen, middelen en streefwaarden</h3>
+        <p class="ruler__note reveal">De doelen, middelen en metingen stelde ik vóór ronde 1 vast. Bij de streefwaarden staat waar ze vandaan komen: <span class="when when--pre">vooraf</span> komt uit het strategiedocument, <span class="when when--post">achteraf</span> heb ik na de game zelf geformuleerd op basis van de spelcijfers.</p>
         <div class="ruler stagger">
-          <div class="ruler__item"><h4>Meest loyale medewerkers van de pool</h4><p><span>Middel</span> primaire, secundaire en tertiaire arbeidsvoorwaarden</p><p><span>Meting</span> loyaliteitsscore</p></div>
-          <div class="ruler__item"><h4>Kennisniveau op peil</h4><p><span>Middel</span> opleidingsbudget</p><p><span>Meting</span> medewerkerskwaliteit (25–100)</p></div>
-          <div class="ruler__item"><h4>Werkdruk beheersbaar</h4><p><span>Middel</span> bezetting en ploegenindeling</p><p><span>Meting</span> ziekteverzuim en werkdruk</p></div>
-          <div class="ruler__item"><h4>Loonkosten in verhouding</h4><p><span>Middel</span> salarisaanpassing en verloop</p><p><span>Meting</span> personeelskosten als % van de omzet</p></div>
+          <div class="ruler__item"><h4>Meest loyale medewerkers van de pool</h4><p><span>Middel</span> primaire, secundaire en tertiaire arbeidsvoorwaarden</p><p><span>Meting</span> loyaliteitsscore (mijn KPI)</p><p class="ruler__target"><span>Streefwaarde</span> KPI 7,0 na ronde 2, 8,0 na ronde 4, 8,5 na ronde 6 en 9,0 na ronde 8 <em class="when when--pre">vooraf</em></p></div>
+          <div class="ruler__item"><h4>Kennisniveau op peil</h4><p><span>Middel</span> opleidingsbudget</p><p><span>Meting</span> medewerkerskwaliteit (25–100)</p><p class="ruler__target"><span>Streefwaarde</span> 95 of hoger op alle afdelingen <em class="when when--post">achteraf</em></p></div>
+          <div class="ruler__item"><h4>Werkdruk beheersbaar</h4><p><span>Middel</span> bezetting en ploegenindeling</p><p><span>Meting</span> ziekteverzuim en werkdruk</p><p class="ruler__target"><span>Streefwaarde</span> verzuim 8% of lager <em class="when when--pre">vooraf</em> (de signaalwaarde in de risicotabel). Werkdruk tussen 60% en 98%: de 98% komt uit spelregel 1 <em class="when when--pre">vooraf</em>, de ondergrens van 60% na ronde 4 en 6 <em class="when when--post">achteraf</em></p></div>
+          <div class="ruler__item"><h4>Loonkosten in verhouding</h4><p><span>Middel</span> salarisaanpassing en verloop</p><p><span>Meting</span> personeelskosten als % van de omzet</p><p class="ruler__target"><span>Streefwaarde</span> 15% of lager <em class="when when--post">achteraf</em>. In ronde 3 liepen ze op tot 15,4% en daar werden ze een probleem.</p></div>
+          <div class="ruler__item ruler__item--team"><h4>Totaalscore Dubbelgoed</h4><p><span>Middel</span> alle besluiten van de directie samen</p><p><span>Meting</span> totaalscore (relatief aan de pool)</p><p class="ruler__target"><span>Streefwaarde</span> 7,5 na ronde 2, oplopend tot 9,3 na ronde 8 <em class="when when--pre">vooraf</em></p><p class="ruler__target"><span>Bijgesteld na ronde 1</span> De hoogste score van alle twintig teams was 6,86. Nieuw doel: eerste in pool 5 en top drie landelijk.</p></div>
         </div>
       </div>
     </section>
@@ -698,6 +854,8 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
             <dl class="chart__stats">
               <div><dt>Verzuim</dt><dd id="st-verzuim">4,0%</dd></div>
               <div><dt>Personeelskosten</dt><dd id="st-kosten">€ 755k</dd></div>
+              <div><dt>Kosten % omzet</dt><dd id="st-kostenpct">12,3%</dd></div>
+              <div><dt>Werkdruk</dt><dd id="st-werkdruk">88%</dd></div>
             </dl>
             <p id="chart-summary" class="sr-only">Loyaliteit steeg van 52,4 bij de start naar 67,5 na ronde 8 en tevredenheid van 54,5 naar 75,2. Mijn relatieve KPI zakte in dezelfde periode van 5,50 naar 4,95.</p>
           </div>
@@ -712,7 +870,30 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
           <div class="table-scroll">
             <table id="data-table"></table>
           </div>
+          <p class="table-note">* Berekend uit de resultatenexport: personeelskosten gedeeld door de omzet (T-Challenge, 2026). ** Medewerkerskwaliteit staat niet in de export. De cijfers komen uit mijn logboek: 96, 97 en 100 voor de drie afdelingen in ronde 3, en 100 in ronde 6. Voor de andere ronden heb ik geen cijfer vastgelegd.</p>
         </details>
+      </div>
+    </section>
+
+    <!-- EINDEVALUATIE -->
+    <section class="eval" id="evaluatie">
+      <div class="wrap">
+        <h2 class="display display--dark split">Eindevaluatie op mijn KPI's</h2>
+        <p class="eval__lead reveal">Na ronde 8 leg ik elk doel naast de streefwaarde. Gemiddelden gaan over ronde 1 tot en met 8 en zijn berekend uit de resultatenexport (T-Challenge, 2026).</p>
+        <div class="table-scroll eval__table reveal">
+          <table>
+            <thead><tr><th scope="col">Doel</th><th scope="col">Streefwaarde</th><th scope="col">Resultaat na ronde 8</th><th scope="col">Gehaald?</th><th scope="col">Verklaring</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Totaalscore en positie</th><td data-label="Streefwaarde">9,3 na ronde 8 <em class="when when--pre">vooraf</em>. Na ronde 1 bijgesteld naar: eerste in pool 5 en top drie landelijk.</td><td data-label="Resultaat na ronde 8">Eindscore 4,70. Dubbelgoed werd één na laatste, en ook pool 5 hoorde bij de laatste pools.</td><td data-label="Gehaald?"><span class="hit hit--no">Nee</span></td><td data-label="Verklaring">Ronde 3 (16,5 miljoen stuks gemaakt, 8,9 miljoen verkocht) en ronde 6 (drie besluiten tegen onze eigen spelregels) kostten de meeste punten.</td></tr>
+              <tr><th scope="row">Meest loyale medewerkers (mijn KPI)</th><td data-label="Streefwaarde">KPI 9,0 na ronde 8 <em class="when when--pre">vooraf</em></td><td data-label="Resultaat na ronde 8">KPI 4,95, gemiddeld 5,48. Absoluut steeg de loyaliteit van 52,4 naar 67,5.</td><td data-label="Gehaald?"><span class="hit hit--no">Nee</span></td><td data-label="Verklaring">De KPI is relatief. Mijn pakket werd binnen twee ronden gekopieerd, en mijn twee grootste dalingen (−0,57 en −0,59) kwamen in ronde 4 en 6, toen ik in het moment bezuinigde.</td></tr>
+              <tr><th scope="row">Kennisniveau op peil</th><td data-label="Streefwaarde">Medewerkerskwaliteit 95 of hoger <em class="when when--post">achteraf</em></td><td data-label="Resultaat na ronde 8">96, 97 en 100 in ronde 3 en 100 in ronde 6. Voor de andere ronden heb ik geen cijfer vastgelegd.</td><td data-label="Gehaald?"><span class="hit hit--yes">Ja, voor zover bekend</span></td><td data-label="Verklaring">De kwaliteit stond zo hoog dat ik het opleidingsbudget in ronde 5 en 6 verlaagde. Dat kostte wel tevredenheid: −4,5 punt in ronde 6.</td></tr>
+              <tr><th scope="row">Werkdruk beheersbaar: verzuim</th><td data-label="Streefwaarde">8% of lager <em class="when when--pre">vooraf</em></td><td data-label="Resultaat na ronde 8">4,0%, gemiddeld 4,8%. Hoogste waarde 7,0% in ronde 2.</td><td data-label="Gehaald?"><span class="hit hit--yes">Ja</span></td><td data-label="Verklaring">Na ronde 2 nam ik mensen aan vóórdat een nieuwe ploeg startte. Daarna kwam het verzuim niet meer boven de 6,0%.</td></tr>
+              <tr><th scope="row">Werkdruk beheersbaar: werkdruk</th><td data-label="Streefwaarde">Tussen 60% en 98% (98% <em class="when when--pre">vooraf</em>, 60% <em class="when when--post">achteraf</em>)</td><td data-label="Resultaat na ronde 8">72%, gemiddeld 71%. Buiten de band in ronde 1 (105%), ronde 4 (42%) en ronde 6 (39%).</td><td data-label="Gehaald?"><span class="hit hit--part">Deels</span></td><td data-label="Verklaring">Ik lette vooral op te hoge werkdruk. Te lage werkdruk kostte net zo goed loyaliteit en tevredenheid, en dat zag ik pas in ronde 5.</td></tr>
+              <tr><th scope="row">Loonkosten in verhouding</th><td data-label="Streefwaarde">Personeelskosten 15% van de omzet of lager <em class="when when--post">achteraf</em></td><td data-label="Resultaat na ronde 8">12,4%, gemiddeld 13,9%. Boven de 15% in ronde 1 (18,2%), ronde 3 (15,4%), ronde 4 (16,2%) en ronde 6 (16,2%).</td><td data-label="Gehaald?"><span class="hit hit--part">Deels</span></td><td data-label="Verklaring">In ronde 1 kwam het hele pakket in één keer. In ronde 3 groeide het personeel mee met een vierde ploeg terwijl de vraag uitbleef. In ronde 4 en 6 daalde de omzet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="eval__note reveal"><span class="when when--pre">vooraf</span> = strategiedocument (Directie Dubbelgoed, 2026a). <span class="when when--post">achteraf</span> = door mij geformuleerd na de game.</p>
       </div>
     </section>
 
@@ -732,7 +913,7 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
           </article>
           <article class="lesson">
             <h3>Een vervelend besluit kun je zachter maken</h3>
-            <p>Snijd je in mensen, investeer dan in wie blijft. Dat is het enige wat ik binnen het spel echt heb aangetoond, en daar ben ik trots op. Ronde 4 en ronde 8 hieronder laten het zien.</p>
+            <p>Snijd je in mensen, investeer dan in wie blijft. Dat is het enige wat ik binnen het spel heb aangetoond, en daar ben ik trots op. Ronde 4 en ronde 8 hieronder laten het zien.</p>
           </article>
         </div>
       </div>
@@ -773,7 +954,7 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
     <section class="value" id="waarde">
       <div class="wrap">
         <h2 class="display display--dark split">Waarde voor stakeholders</h2>
-        <p class="value__lead reveal">Medewerkers horen bij de partijen met veel macht én veel belang: hun verzuim is direct productiecapaciteit. Zo staat het na ronde 8 ten opzichte van de start.</p>
+        <p class="value__lead reveal">Een stakeholder is iedere partij die een organisatie beïnvloedt of erdoor wordt beïnvloed (Freeman, 1984/2010). In de stakeholderanalyse van ons CEO-dossier staan de medewerkers in de macht-belangmatrix van Mendelow (1981) bij de partijen met veel macht én veel belang: hun verzuim is direct productiecapaciteit (Van der Weijden, 2026). Hieronder zet ik de waarde van mijn beleid in de indeling People, Planet, Profit van Elkington (1997): de stand na ronde 8 naast de start.</p>
         <div class="value__grid stagger">
           <article class="vcard">
             <p class="vcard__dim">People</p>
@@ -791,7 +972,7 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
               <div><dt>Ziekteverzuim</dt><dd>4,0% <span aria-hidden="true">→</span><span class="sr-only">naar</span> <strong>4,0%</strong></dd></div>
               <div><dt>Personeelskosten per kwartaal</dt><dd>€ 755k <span aria-hidden="true">→</span><span class="sr-only">naar</span> <strong>€ 1.517k</strong></dd></div>
             </dl>
-            <p>Verzuim bleef gelijk terwijl het bedrijf opschaalde; elk procentpunt kost zo'n 150.000 flesjes. De afruil: de personeelskosten verdubbelden, dus een deel van de waarde is betaald met marge.</p>
+            <p>Het verzuim eindigde op 4,0%, gelijk aan de start, terwijl de omzet per kwartaal verdubbelde van € 6,12 naar € 12,22 miljoen. Elk procentpunt verzuim kost zo'n 150.000 flesjes. De afruil: de personeelskosten verdubbelden ook, dus een deel van de waarde is betaald met marge.</p>
           </article>
           <article class="vcard vcard--quiet">
             <p class="vcard__dim">Klant en Planet</p>
@@ -807,7 +988,7 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
     <section class="advice">
       <div class="wrap">
         <h2 class="display split">Drie aanbevelingen</h2>
-        <p class="advice__lead reveal">Voor een volgende CHRO in de T-Challenge, en vertaald naar een HR-afdeling in een echt productiebedrijf.</p>
+        <p class="advice__lead reveal">Voor een volgende CHRO in de T-Challenge, en vertaald naar de HR-afdeling van een productiebedrijf buiten de game.</p>
         <ol class="advice__list stagger">
           <li>
             <h3>Stuur op bezetting, niet alleen op werkdruk</h3>
@@ -882,20 +1063,23 @@ thead th { color: var(--muted-on-dark); font-weight: 500; }
       <div class="wrap">
         <h2 class="sources__title">Bronnenlijst</h2>
         <ul class="sources__list">
-          <li>Directie Dubbelgoed. (2026a). <i>T-Challenge: Missie, visie en strategie ronde 1 tot en met 8</i> [Ongepubliceerd strategiedocument, T-Challenge pool 5, team 4, game-ID 1517]. HAN University of Applied Sciences.</li>
-          <li>Directie Dubbelgoed. (2026b). <i>Evaluatiepresentatie T-Challenge, pool 5, team 4</i> [Ongepubliceerde presentatie]. HAN University of Applied Sciences.</li>
+          <li>Anthropic. (2026). <i>Claude</i> [Groot taalmodel]. <a href="https://claude.ai">https://claude.ai</a></li>
+          <li>Directie Dubbelgoed. (2026a). <i>Strategiedocument Dubbelgoed: Missie, visie en strategie ronde 1 tot en met 8</i> [Ongepubliceerd document]. HAN University of Applied Sciences.</li>
+          <li>Directie Dubbelgoed. (2026b). <i>Evaluatiepresentatie: T-Challenge pool 5, team 4</i> [Ongepubliceerde presentatie]. HAN University of Applied Sciences.</li>
           <li>Elkington, J. (1997). <i>Cannibals with forks: The triple bottom line of 21st century business</i>. Capstone.</li>
-          <li>Freeman, R. E. (2010). Strategic Management. In <i>Cambridge University Press eBooks</i>. <a href="https://doi.org/10.1017/cbo9781139192675">https://doi.org/10.1017/cbo9781139192675</a></li>
-          <li>T-Challenge. (2026). <i>Resultatenexport en HRM-marktonderzoeken Dubbelgoed, ronde 1 tot en met 8, pool 5, team 4, game-ID 1517</i> [Ongepubliceerde spelrapportages].</li>
-          <li>Van den Brink, D., Hoetink, E., Jacobs, R., Kemperman, M., Van der Weijden, M., &amp; Wentink, H. (2026). <i>Business game T-Challenge: Samenwerkingsdocument HUB-team. Strategische keuzes, resultaten en reflectie</i> [Ongepubliceerd samenwerkingsdocument]. HAN University of Applied Sciences.</li>
-          <li>Van der Weijden, M. (2026). <i>Waardecreatie bij Simenco: CEO-dossier bij de T-Challenge managementgame</i> [Ongepubliceerd dossier]. HAN University of Applied Sciences.</li>
+          <li>Freeman, R. E. (2010). <i>Strategic management: A stakeholder approach</i>. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781139192675">https://doi.org/10.1017/CBO9781139192675</a> (Oorspronkelijk werk gepubliceerd in 1984)</li>
+          <li>Mendelow, A. L. (1981). Environmental scanning: The impact of the stakeholder concept. In <i>Proceedings of the Second International Conference on Information Systems</i>.</li>
+          <li>T-Challenge. (2026). <i>Spelcijfers T-Challenge: Resultatenexport en HRM-marktonderzoeken Dubbelgoed, ronde 1 tot en met 8, pool 5, team 4, game-ID 1517</i> [Ongepubliceerde spelrapportages].</li>
+          <li>Van den Brink, D., Hoetink, E., Jacobs, R., Kemperman, M., Van der Weijden, M., &amp; Wentink, H. (2026). <i>Samenwerkingsdocument HUB-team: Business game T-Challenge</i> [Ongepubliceerd document]. HAN University of Applied Sciences.</li>
+          <li>Van der Weijden, M. (2026). <i>CEO-dossier: Waardecreatie bij Simenco</i> [Ongepubliceerd dossier]. HAN University of Applied Sciences.</li>
+          <li>Vulling, N. (2026). <i>Managementsamenvattingen kwartaal 3 en kwartaal 6</i> [Ongepubliceerde documenten]. HAN University of Applied Sciences.</li>
         </ul>
 
         <h2 class="sources__title sources__title--ai" id="ai">Verantwoording AI-gebruik</h2>
         <div class="sources__ai">
-          <p>Deze website is gemaakt met behulp van Claude, een AI-assistent van Anthropic. Claude heeft het ontwerp en de code van de site gebouwd op basis van mijn eigen logboek, de cijfers uit de spelrapportages van de T-Challenge en de presentatie van ons team.</p>
-          <p>In de tekst van mijn logboek heb ik AI gebruikt om de spelling, de zinsopbouw en de juiste APA-bronvermelding te controleren.</p>
-          <p>De keuzes in de game, de cijfers, de analyses per ronde en de reflectie zijn van mijzelf.</p>
+          <p>Deze website is gemaakt met behulp van Claude, een AI-tool van Anthropic (Anthropic, 2026). Claude bouwde het ontwerp en de code en schreef de teksten op basis van mijn logboek, mijn antwoorden op vragen, de spelcijfers en de documenten van ons team.</p>
+          <p>Bij mijn logboek heb ik Claude gebruikt om mijn eerste versie te herstructureren en taalkundig te verbeteren, de feedback van mijn tutor te verwerken, tabellen en figuren op te maken en de APA-bronvermelding te controleren.</p>
+          <p>De keuzes per ronde, de cijfers en de reflectie zijn van mij. Ik heb de teksten die met hulp van AI zijn geformuleerd gecontroleerd tegen de bronnen, en ik ben eindverantwoordelijk voor de inhoud.</p>
         </div>
       </div>
     </section>
@@ -942,6 +1126,12 @@ const DATA = {
   verzuim: [4, 4, 7, 6, 4, 5, 4, 4, 4],
   kosten: [755, 1090, 1315, 1849, 1591, 1425, 1419, 1466, 1517],
   kpi: [5.5, 5.94, 5.7, 5.94, 5.37, 5.62, 5.03, 5.31, 4.95],
+  // werkdruk (%) uit de resultatenexport
+  werkdruk: [88, 105, 62, 83, 42, 67, 39, 96, 72],
+  // personeelskosten als % van de omzet, berekend uit de resultatenexport (personeelskosten / omzet)
+  kostenPct: [12.3, 18.2, 10.5, 15.4, 16.2, 12.0, 16.2, 9.9, 12.4],
+  // medewerkerskwaliteit (25–100): staat niet in de export; alleen de waarden uit mijn logboek
+  kwaliteit: [null, null, null, '96 / 97 / 100', null, null, '100', null, null],
 };
 
 const WEIGHTS = [
@@ -975,8 +1165,8 @@ const ROUNDS = [
     season: 'Zomer', title: 'Groeien zonder vraag', source: 'plan',
     sourceText: 'Uit het plan, met een misstap',
     chose: 'Pensioen naar 15 en winstdeling naar 10, allebei het hoogste van de pool. Salaris +5,5% en dertien mensen voor een vierde ploeg, omdat we op 24% marktgroei rekenden.',
-    result: 'Die groei kwam er niet. Het bedrijf zakte van 5,96 naar 4,04, van plek 6 naar 17. We produceerden 16,5 miljoen stuks en verkochten er 8,9 miljoen. Mijn loyaliteit daalde 7,0 punten.',
-    adjust: 'Ik dacht aan verdunning door nieuwe collega’s, maar Staf (−11,4) en Sales (−12,1) kregen niemand nieuw en zakten het hardst. Het was werkdruk, niet samenstelling.',
+    result: 'Die groei kwam er niet. Het bedrijf zakte van 5,96 naar 4,04, van plek 6 naar 17. We produceerden 16,5 miljoen stuks en verkochten er 8,9 miljoen. Mijn loyaliteit daalde 7,0 punten. Mijn KPI steeg toch van 5,70 naar 5,94: bij de concurrentie zakte de loyaliteit harder dan bij ons.',
+    adjust: 'Ik dacht eerst aan verdunning door nieuwe collega’s. Staf (−11,4) en Sales (−12,1) kregen niemand nieuw en zakten het hardst, dus de oorzaak lag bij de werkdruk. Gevolg voor ronde 4: geen extra geld meer in het pakket of in opleiding. Het pakket bleef staan en het opleidingsbudget ging naar 9/7/5%.',
   },
   {
     season: 'Herfst', title: 'Bezuinigen onder druk', source: 'moment',
@@ -987,8 +1177,8 @@ const ROUNDS = [
   },
   {
     season: 'Winter', title: 'De krimp terugdraaien', source: 'plan',
-    sourceText: 'Mijn eigen plan uit ronde 4',
-    chose: 'Geen ontslagen, één medewerker erbij bij Sales, salaris +2,0% en de arbeidsvoorwaarden onaangeroerd. Het opleidingsbudget ging wel omlaag, van 9/7/5 naar 5/5/5%.',
+    sourceText: 'Mijn eigen plan uit ronde 4, met één afwijking',
+    chose: 'Geen ontslagen, één medewerker erbij bij Sales, salaris +2,0% en de arbeidsvoorwaarden onaangeroerd. Het opleidingsbudget ging wel omlaag, van 9/7/5 naar 5/5/5%, omdat de medewerkerskwaliteit al rond de 100 stond en meer opleiding daar niets aan toevoegde. Dat botste met het plan, dat mijn voorsprong vanaf ronde 5 in opleiding legde.',
     result: 'Loyaliteit van 55,1 naar 67,1: twaalf punten in één kwartaal, bij alle drie de afdelingen. Mijn KPI ging naar 5,62. De werkdruk ging van 42% naar 67%: er was weer werk.',
     adjust: 'Het aantal ploegen is een gezamenlijke beslissing van productie en HR. Als team hielden we het personeelsbudget voortaan buiten de bezuinigingen, en de loyaliteit bleef daarna tussen 67 en 69.',
   },
@@ -1004,14 +1194,15 @@ const ROUNDS = [
     sourceText: 'Bewuste correctie, met het salarisonderzoek',
     chose: 'Salaris +5,5%, +6,0% en +5,0%, pensioen naar 17 en winstdeling naar 8. Bewust 96% werkdruk voor deze ene ronde, voor een volle bezetting.',
     result: 'De beste ronde van het bedrijf: omzet € 14,77 miljoen, nettowinst € 1,59 miljoen en een RTV-score van 1,00 naar 6,01. Verzuim bleef 4,0%.',
-    adjust: 'Als er bezuinigd moet worden, dan niet tegelijk op mensen én op het pakket.',
+    adjust: 'Als er bezuinigd moet worden, dan niet tegelijk op mensen én op het pakket. In ronde 8 heb ik dat zo gedaan: bij de krimp ging het salaris 6,5% omhoog en het opleidingsbudget van € 15.447 naar € 35.957.',
   },
   {
     season: 'Herfst', title: 'Krimpen en investeren in wie blijft', source: 'plan',
     sourceText: 'Mijn plan uit ronde 7',
     chose: 'Een ploeg minder (productie van 40 naar 28 FTE), maar salaris +6,5% en het opleidingsbudget van € 15.447 naar € 35.957.',
     result: 'Evenveel ontslagen als in ronde 4, maar zes keer minder loyaliteitsschade. Tevredenheid omhoog naar 75,2. Van plek 19 naar 16.',
-    adjust: 'Een schone balans achtergelaten: current ratio 6,20 en solvabiliteit 74,2%.',
+    adjLabel: 'Eindresultaat',
+    adjust: 'Dit was de laatste ronde, dus er volgde geen bijstelling meer. Het bedrijf eindigde met een schone balans: current ratio 6,20 en solvabiliteit 74,2%.',
   },
 ];
 
@@ -1111,7 +1302,7 @@ document.getElementById('steps').innerHTML = ROUNDS.map((r, i) => `
     <dl class="step__body">
       <div><dt>Gekozen</dt><dd>${r.chose}</dd></div>
       <div><dt>Resultaat</dt><dd>${r.result}</dd></div>
-      <div><dt>Bijgesteld</dt><dd>${r.adjust}</dd></div>
+      <div><dt>${r.adjLabel || 'Bijgesteld'}</dt><dd>${r.adjust}</dd></div>
     </dl>
     ${proofHTML(PROOF[i])}
   </li>`).join('');
@@ -1189,6 +1380,8 @@ const roundEl = document.getElementById('chart-round');
 const kpiEl = document.getElementById('chart-kpi');
 const verzuimEl = document.getElementById('st-verzuim');
 const kostenEl = document.getElementById('st-kosten');
+const werkdrukEl = document.getElementById('st-werkdruk');
+const kostenPctEl = document.getElementById('st-kostenpct');
 
 let current = -1;
 function setRound(idx) {
@@ -1205,6 +1398,8 @@ function setRound(idx) {
   kpiEl.textContent = nl(DATA.kpi[idx], 2);
   verzuimEl.textContent = `${nl(DATA.verzuim[idx])}%`;
   kostenEl.textContent = `€ ${DATA.kosten[idx].toLocaleString('nl-NL')}k`;
+  werkdrukEl.textContent = `${DATA.werkdruk[idx]}%`;
+  kostenPctEl.textContent = `${nl(DATA.kostenPct[idx])}%`;
   document.querySelectorAll('.step').forEach(s => s.classList.toggle('is-active', +s.dataset.index === idx));
 }
 setRound(0);
@@ -1225,6 +1420,9 @@ const rows = [
   ['Tevredenheid', DATA.tevredenheid.map(v => nl(v))],
   ['Ziekteverzuim', DATA.verzuim.map(v => nl(v) + '%')],
   ['Personeelskosten (× € 1.000)', DATA.kosten.map(v => v.toLocaleString('nl-NL'))],
+  ['Personeelskosten (% van de omzet)*', DATA.kostenPct.map(v => nl(v) + '%')],
+  ['Werkdruk', DATA.werkdruk.map(v => v + '%')],
+  ['Medewerkerskwaliteit (25–100)**', DATA.kwaliteit.map(v => v === null ? '–' : v)],
   ['Mijn KPI', DATA.kpi.map(v => nl(v, 2))],
 ];
 document.getElementById('data-table').innerHTML =

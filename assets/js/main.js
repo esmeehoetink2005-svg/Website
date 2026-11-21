@@ -6,6 +6,12 @@ const DATA = {
   verzuim: [4, 4, 7, 6, 4, 5, 4, 4, 4],
   kosten: [755, 1090, 1315, 1849, 1591, 1425, 1419, 1466, 1517],
   kpi: [5.5, 5.94, 5.7, 5.94, 5.37, 5.62, 5.03, 5.31, 4.95],
+  // werkdruk (%) uit de resultatenexport
+  werkdruk: [88, 105, 62, 83, 42, 67, 39, 96, 72],
+  // personeelskosten als % van de omzet, berekend uit de resultatenexport (personeelskosten / omzet)
+  kostenPct: [12.3, 18.2, 10.5, 15.4, 16.2, 12.0, 16.2, 9.9, 12.4],
+  // medewerkerskwaliteit (25–100): staat niet in de export; alleen de waarden uit mijn logboek
+  kwaliteit: [null, null, null, '96 / 97 / 100', null, null, '100', null, null],
 };
 
 const WEIGHTS = [
@@ -39,8 +45,8 @@ const ROUNDS = [
     season: 'Zomer', title: 'Groeien zonder vraag', source: 'plan',
     sourceText: 'Uit het plan, met een misstap',
     chose: 'Pensioen naar 15 en winstdeling naar 10, allebei het hoogste van de pool. Salaris +5,5% en dertien mensen voor een vierde ploeg, omdat we op 24% marktgroei rekenden.',
-    result: 'Die groei kwam er niet. Het bedrijf zakte van 5,96 naar 4,04, van plek 6 naar 17. We produceerden 16,5 miljoen stuks en verkochten er 8,9 miljoen. Mijn loyaliteit daalde 7,0 punten.',
-    adjust: 'Ik dacht aan verdunning door nieuwe collega’s, maar Staf (−11,4) en Sales (−12,1) kregen niemand nieuw en zakten het hardst. Het was werkdruk, niet samenstelling.',
+    result: 'Die groei kwam er niet. Het bedrijf zakte van 5,96 naar 4,04, van plek 6 naar 17. We produceerden 16,5 miljoen stuks en verkochten er 8,9 miljoen. Mijn loyaliteit daalde 7,0 punten. Mijn KPI steeg toch van 5,70 naar 5,94: bij de concurrentie zakte de loyaliteit harder dan bij ons.',
+    adjust: 'Ik dacht eerst aan verdunning door nieuwe collega’s. Staf (−11,4) en Sales (−12,1) kregen niemand nieuw en zakten het hardst, dus de oorzaak lag bij de werkdruk. Gevolg voor ronde 4: geen extra geld meer in het pakket of in opleiding. Het pakket bleef staan en het opleidingsbudget ging naar 9/7/5%.',
   },
   {
     season: 'Herfst', title: 'Bezuinigen onder druk', source: 'moment',
@@ -51,8 +57,8 @@ const ROUNDS = [
   },
   {
     season: 'Winter', title: 'De krimp terugdraaien', source: 'plan',
-    sourceText: 'Mijn eigen plan uit ronde 4',
-    chose: 'Geen ontslagen, één medewerker erbij bij Sales, salaris +2,0% en de arbeidsvoorwaarden onaangeroerd. Het opleidingsbudget ging wel omlaag, van 9/7/5 naar 5/5/5%.',
+    sourceText: 'Mijn eigen plan uit ronde 4, met één afwijking',
+    chose: 'Geen ontslagen, één medewerker erbij bij Sales, salaris +2,0% en de arbeidsvoorwaarden onaangeroerd. Het opleidingsbudget ging wel omlaag, van 9/7/5 naar 5/5/5%, omdat de medewerkerskwaliteit al rond de 100 stond en meer opleiding daar niets aan toevoegde. Dat botste met het plan, dat mijn voorsprong vanaf ronde 5 in opleiding legde.',
     result: 'Loyaliteit van 55,1 naar 67,1: twaalf punten in één kwartaal, bij alle drie de afdelingen. Mijn KPI ging naar 5,62. De werkdruk ging van 42% naar 67%: er was weer werk.',
     adjust: 'Het aantal ploegen is een gezamenlijke beslissing van productie en HR. Als team hielden we het personeelsbudget voortaan buiten de bezuinigingen, en de loyaliteit bleef daarna tussen 67 en 69.',
   },
@@ -68,14 +74,15 @@ const ROUNDS = [
     sourceText: 'Bewuste correctie, met het salarisonderzoek',
     chose: 'Salaris +5,5%, +6,0% en +5,0%, pensioen naar 17 en winstdeling naar 8. Bewust 96% werkdruk voor deze ene ronde, voor een volle bezetting.',
     result: 'De beste ronde van het bedrijf: omzet € 14,77 miljoen, nettowinst € 1,59 miljoen en een RTV-score van 1,00 naar 6,01. Verzuim bleef 4,0%.',
-    adjust: 'Als er bezuinigd moet worden, dan niet tegelijk op mensen én op het pakket.',
+    adjust: 'Als er bezuinigd moet worden, dan niet tegelijk op mensen én op het pakket. In ronde 8 heb ik dat zo gedaan: bij de krimp ging het salaris 6,5% omhoog en het opleidingsbudget van € 15.447 naar € 35.957.',
   },
   {
     season: 'Herfst', title: 'Krimpen en investeren in wie blijft', source: 'plan',
     sourceText: 'Mijn plan uit ronde 7',
     chose: 'Een ploeg minder (productie van 40 naar 28 FTE), maar salaris +6,5% en het opleidingsbudget van € 15.447 naar € 35.957.',
     result: 'Evenveel ontslagen als in ronde 4, maar zes keer minder loyaliteitsschade. Tevredenheid omhoog naar 75,2. Van plek 19 naar 16.',
-    adjust: 'Een schone balans achtergelaten: current ratio 6,20 en solvabiliteit 74,2%.',
+    adjLabel: 'Eindresultaat',
+    adjust: 'Dit was de laatste ronde, dus er volgde geen bijstelling meer. Het bedrijf eindigde met een schone balans: current ratio 6,20 en solvabiliteit 74,2%.',
   },
 ];
 
@@ -175,7 +182,7 @@ document.getElementById('steps').innerHTML = ROUNDS.map((r, i) => `
     <dl class="step__body">
       <div><dt>Gekozen</dt><dd>${r.chose}</dd></div>
       <div><dt>Resultaat</dt><dd>${r.result}</dd></div>
-      <div><dt>Bijgesteld</dt><dd>${r.adjust}</dd></div>
+      <div><dt>${r.adjLabel || 'Bijgesteld'}</dt><dd>${r.adjust}</dd></div>
     </dl>
     ${proofHTML(PROOF[i])}
   </li>`).join('');
@@ -253,6 +260,8 @@ const roundEl = document.getElementById('chart-round');
 const kpiEl = document.getElementById('chart-kpi');
 const verzuimEl = document.getElementById('st-verzuim');
 const kostenEl = document.getElementById('st-kosten');
+const werkdrukEl = document.getElementById('st-werkdruk');
+const kostenPctEl = document.getElementById('st-kostenpct');
 
 let current = -1;
 function setRound(idx) {
@@ -269,6 +278,8 @@ function setRound(idx) {
   kpiEl.textContent = nl(DATA.kpi[idx], 2);
   verzuimEl.textContent = `${nl(DATA.verzuim[idx])}%`;
   kostenEl.textContent = `€ ${DATA.kosten[idx].toLocaleString('nl-NL')}k`;
+  werkdrukEl.textContent = `${DATA.werkdruk[idx]}%`;
+  kostenPctEl.textContent = `${nl(DATA.kostenPct[idx])}%`;
   document.querySelectorAll('.step').forEach(s => s.classList.toggle('is-active', +s.dataset.index === idx));
 }
 setRound(0);
@@ -289,6 +300,9 @@ const rows = [
   ['Tevredenheid', DATA.tevredenheid.map(v => nl(v))],
   ['Ziekteverzuim', DATA.verzuim.map(v => nl(v) + '%')],
   ['Personeelskosten (× € 1.000)', DATA.kosten.map(v => v.toLocaleString('nl-NL'))],
+  ['Personeelskosten (% van de omzet)*', DATA.kostenPct.map(v => nl(v) + '%')],
+  ['Werkdruk', DATA.werkdruk.map(v => v + '%')],
+  ['Medewerkerskwaliteit (25–100)**', DATA.kwaliteit.map(v => v === null ? '–' : v)],
   ['Mijn KPI', DATA.kpi.map(v => nl(v, 2))],
 ];
 document.getElementById('data-table').innerHTML =
