@@ -579,3 +579,7 @@ td .fill { display: inline-block; line-height: 1.5; }
 /* Bestuursfoto's */
 .avatar { display: block; width: 96px; height: 96px; border-radius: 50%; object-fit: cover; background: var(--pink-5); margin-bottom: 16px; }
 @media print { .avatar { width: 64px; height: 64px; } }
+
+/* Foto op de startpagina */
+.hero-img { display: block; width: 100%; height: auto; aspect-ratio: 702 / 688; object-fit: cover; border-radius: var(--radius); background: var(--pink-5); }
+@media print { .hero-img { max-width: 60%; } }
