@@ -575,3 +575,7 @@ td .fill { display: inline-block; line-height: 1.5; }
   .site-nav { max-height: calc(100dvh - 72px); overflow-y: auto; }
 }
 @media (min-width: 1140px) { .brand { flex: 0 0 auto; } }
+
+/* Bestuursfoto's */
+.avatar { display: block; width: 96px; height: 96px; border-radius: 50%; object-fit: cover; background: var(--pink-5); margin-bottom: 16px; }
+@media print { .avatar { width: 64px; height: 64px; } }
