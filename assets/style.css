@@ -242,8 +242,8 @@ a:hover { text-decoration-thickness: 2px; }
 @media (min-width: 720px) { .letter { padding: 48px 56px; } }
 
 .numcards { counter-reset: rec; }
-.numcards li { counter-increment: rec; }
-.numcards li::before {
+.numcards > li { counter-increment: rec; }
+.numcards > li::before {
   content: counter(rec); display: block;
   font-family: var(--f-head); font-weight: 800; font-size: 40px; line-height: 1;
   color: var(--pink); margin-bottom: 12px;

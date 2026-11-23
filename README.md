@@ -6,7 +6,7 @@ Playbook voor de head of meetings van het HAN Salesteam. Een statische website: 
 
 ```
 index.html, waarom.html, team.html, ...   de pagina's
-bijlagen.html + bijlagen/a.html t/m i.html   de bijlagen
+bijlagen.html + bijlagen/a.html t/m j.html   de bijlagen
 bronnen.html                                 de bronnenlijst
 assets/style.css                             alle vormgeving
 assets/site.js                               menu, tabbladen, afvinklijsten
