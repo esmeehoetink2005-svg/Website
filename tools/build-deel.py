@@ -16,6 +16,7 @@ js = open('assets/js/main.js').read()
 html = html.replace('<link rel="preload" href="assets/fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>\n', '')
 html = html.replace('<link rel="stylesheet" href="assets/css/style.css">', f'<style>\n{css}\n</style>')
 html = html.replace('<script src="assets/js/main.js"></script>', f'<script>\n{js}\n</script>')
+html = html.replace('<script src="assets/js/docs.js"></script>', f'<script>\n{open("assets/js/docs.js").read()}\n</script>')
 
 video = 'assets/video/blikje.mp4'
 if os.path.exists(video):

@@ -160,6 +160,14 @@ document.getElementById('weights').innerHTML = WEIGHTS.map(([name, w, mine]) => 
   </li>`).join('');
 
 /* ---------- Bewijs ---------- */
+// welke bron hoort bij welk document in de viewer
+function docFor(src) {
+  if (src.startsWith('BG-document')) return 'bg';
+  if (src.startsWith('Besluitenlogboek')) return 'logboekD';
+  if (src.startsWith('Resultatenexport')) return 'kpi';
+  if (src.startsWith('Mijn logboek')) return 'logboek';
+  return null;
+}
 const PROOF_LABEL = { quote: 'Citaat', data: 'Cijfer' };
 function shotHTML(key) {
   const s = SHOT[key];
@@ -169,7 +177,7 @@ function shotHTML(key) {
 function proofHTML(list) {
   const n = list.filter(p => p.type !== 'img').length;
   return `<details class="proof"><summary>Bewijs <span class="proof__n">${n} bronnen${list.some(p => p.type === 'img') ? ' en screenshot' : ''}</span></summary><ul class="proof__list">${list.map(p => p.type === 'img' ? shotHTML(p.shot) :
-    `<li class="proof__item proof__item--${p.type}"><p class="proof__src"><span class="proof__kind">${PROOF_LABEL[p.type]}</span>${p.src}</p>${p.type === 'quote' ? `<blockquote>${p.text}</blockquote>` : `<p>${p.text}</p>`}</li>`).join('')}</ul></details>`;
+    `<li class="proof__item proof__item--${p.type}"><p class="proof__src"><span class="proof__kind">${PROOF_LABEL[p.type]}</span>${docFor(p.src) ? `<button type="button" class="doc-link" data-doc="${docFor(p.src)}">${p.src}</button>` : p.src}</p>${p.type === 'quote' ? `<blockquote>${p.text}</blockquote>` : `<p>${p.text}</p>`}</li>`).join('')}</ul></details>`;
 }
 
 /* ---------- Rondes ---------- */
@@ -465,6 +473,27 @@ if (box) {
       boxImg.src = img.src; boxImg.alt = img.alt; boxCap.textContent = b.dataset.cap;
       box.showModal();
     } else if (e.target === box || e.target.closest('.lightbox__close')) box.close();
+  });
+}
+
+/* ---------- Documentviewer ---------- */
+const docview = document.getElementById('docview');
+if (docview && typeof DOCS !== 'undefined') {
+  const dvTitle = docview.querySelector('h2'), dvSrc = docview.querySelector('.docview__src'), dvBody = docview.querySelector('.docview__body');
+  const openDoc = key => {
+    const d = DOCS[key];
+    if (!d) return;
+    dvTitle.textContent = d.title;
+    dvSrc.textContent = `Bron: ${d.src}`;
+    dvBody.innerHTML = d.html;
+    dvBody.querySelectorAll('img[data-img]').forEach(img => { img.src = DOC_IMG[img.dataset.img]; img.loading = 'lazy'; });
+    dvBody.scrollTop = 0;
+    docview.showModal();
+  };
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-doc]');
+    if (b) { openDoc(b.dataset.doc); return; }
+    if (e.target === docview || e.target.closest('.docview__close')) docview.close();
   });
 }
 

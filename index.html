@@ -141,6 +141,7 @@
           </table>
         </div>
         <p class="log__note reveal">Aanwezig bij alle vastgelegde overleggen: de voltallige directie, ook ik. Bron: besluitenlogboek, bijlage D van het CEO-dossier (Van der Weijden, 2026).</p>
+        <p class="reveal"><button type="button" class="doc-open" data-doc="logboekD">Open het besluitenlogboek</button></p>
       </div>
     </section>
 
@@ -206,6 +207,7 @@
           <li>Iedere ronde eindigt met het logboek: situatie, beslissing, onderbouwing, resultaat.</li>
         </ol>
         <p class="plan__src reveal">De regels staan letterlijk zoals in het strategiedocument (Directie Dubbelgoed, 2026a).</p>
+        <p class="reveal"><button type="button" class="doc-open" data-doc="strategie">Open het strategiedocument</button></p>
       </div>
     </section>
 
@@ -447,14 +449,16 @@
     <section class="evidence" id="bewijs">
       <div class="wrap">
         <h2 class="display split">Bewijsstukken</h2>
-        <p class="evidence__lead reveal">Bij elke ronde hierboven staat onder "Bewijs" waar een besluit of cijfer vandaan komt. Dit zijn de stukken waarnaar ik verwijs.</p>
+        <p class="evidence__lead reveal">Bij elke ronde hierboven staat onder "Bewijs" waar een besluit of cijfer vandaan komt. Dit zijn de stukken waarnaar ik verwijs. Ze staan volledig in de bijlagen van mijn logboek en zijn hier te openen.</p>
         <ul class="evidence__list stagger">
-          <li><h3>Mijn logboek</h3><p>Wat ik per ronde zag, koos, verwachtte en bijstelde, opgeschreven tijdens en na de game.</p></li>
-          <li><h3>Strategiedocument</h3><p>Ons plan van vóór ronde 1: missie, visie, KPI-route, opdracht per functie en de tien beslisregels (Directie Dubbelgoed, 2026a).</p></li>
-          <li><h3>BG-document</h3><p>Per kwartaal de situatie, het besluit, de onderbouwing en onder "aan de knoppen" wie wat heeft ingevoerd (Van den Brink et al., 2026).</p></li>
-          <li><h3>Besluitenlogboek</h3><p>Datum, opsteller en besluiten van onze directieoverleggen, in het CEO-dossier van Max (Van der Weijden, 2026).</p></li>
-          <li><h3>Resultatenexport</h3><p>De Excel-export van de game met alle cijfers per kwartaal. Alle cijfers op deze site zijn daarmee gecontroleerd (T-Challenge, 2026).</p></li>
-          <li><h3>Screenshots uit de game</h3><p>HRM-marktonderzoek en historische data van het opleidingsbudget en de bezetting (T-Challenge, 2026).</p></li>
+          <li><h3>Mijn logboek</h3><p>Wat ik per ronde zag, koos, verwachtte en bijstelde, opgeschreven tijdens en na de game.</p><button type="button" class="doc-open" data-doc="logboek">Open document</button></li>
+          <li><h3>Strategiedocument</h3><p>Ons plan van vóór ronde 1: missie, visie, KPI-route, opdracht per functie en de tien beslisregels (Directie Dubbelgoed, 2026a).</p><button type="button" class="doc-open" data-doc="strategie">Open document</button></li>
+          <li><h3>BG-document</h3><p>Per kwartaal de situatie, het besluit, de onderbouwing en onder "aan de knoppen" wie wat heeft ingevoerd (Van den Brink et al., 2026).</p><button type="button" class="doc-open" data-doc="bg">Open document</button></li>
+          <li><h3>Besluitenlogboek</h3><p>Datum, opsteller en besluiten van onze directieoverleggen, in het CEO-dossier van Max (Van der Weijden, 2026).</p><button type="button" class="doc-open" data-doc="logboekD">Open document</button></li>
+          <li><h3>CEO-dossier</h3><p>Het dossier van Max met de stakeholderanalyse, de werkwijze van de directie en de bijstellingen na ronde 1, 4 en 6 (Van der Weijden, 2026).</p><button type="button" class="doc-open" data-doc="ceo">Open document</button></li>
+          <li><h3>Evaluatiepresentatie</h3><p>De presentatie waarmee we de game afsloten, met per functie de lessen. Op dia 9 staan mijn vier lessen als CHRO (Directie Dubbelgoed, 2026b).</p><button type="button" class="doc-open" data-doc="presentatie">Open document</button></li>
+          <li><h3>Resultatenexport</h3><p>De Excel-export van de game met alle cijfers per kwartaal. Alle cijfers op deze site zijn daarmee gecontroleerd (T-Challenge, 2026).</p><button type="button" class="doc-open" data-doc="kpi">Open KPI-scores en kerncijfers</button></li>
+          <li><h3>Screenshots uit de game</h3><p>HRM-marktonderzoek en historische data van het opleidingsbudget en de bezetting (T-Challenge, 2026). Klik op een screenshot hieronder om hem te vergroten.</p></li>
         </ul>
         <div class="evidence__shots reveal">
           <button type="button" class="proof__shot" data-cap="HRM-marktonderzoek tertiaire arbeidsvoorwaarden, kwartaal 3: alle vier de teams op werkplekpakket C (T-Challenge, 2026)"><img src="assets/img/bewijs/hrm-werkplek-k3.webp" alt="HRM-marktonderzoek kwartaal 3: werkplekpakket C bij alle teams" loading="lazy"><span>HRM-onderzoek werkplek, kwartaal 3</span></button>
@@ -525,6 +529,19 @@
     <p></p>
   </dialog>
 
+  <dialog class="docview" id="docview" aria-labelledby="docview-title">
+    <div class="docview__bar">
+      <div>
+        <p class="docview__kicker">Bijlage uit mijn logboek</p>
+        <h2 id="docview-title"></h2>
+        <p class="docview__src"></p>
+      </div>
+      <button type="button" class="docview__close" aria-label="Document sluiten">×</button>
+    </div>
+    <div class="docview__body"></div>
+  </dialog>
+
+  <script src="assets/js/docs.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
